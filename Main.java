@@ -84,7 +84,7 @@ import java.util.Iterator;
     }
     //-------------------------------------
     //----OUPUT VOI FILE-------------------
-    public void output(ArrayList<Student> students) {
+    public static void output(ArrayList<Student> students) {
         System.out.println("MSSV\t\tName\t\tSex\t\tBirth");
         System.out.println("-----------------------------------------------------------");
         for (Student student : students) {
@@ -94,6 +94,7 @@ import java.util.Iterator;
     //------------------------------------
     //----DELETE 1 STUDENT----------------
     abstract public void DELETE(ArrayList<Student> a);
+    abstract public void SEARCH(ArrayList<Student> a);
 }
 class QLStudent extends Student{
     public int point_avg;
@@ -107,6 +108,7 @@ class QLStudent extends Student{
           Scanner r=new Scanner(System.in);
         System.out.println("Enter student's mssv need delete:");
         int mssv=r.nextInt();
+        r.nextLine();
         Iterator<Student> i = a.iterator();//
         while (i.hasNext())
         {
@@ -115,9 +117,62 @@ class QLStudent extends Student{
             i.remove();
         }
     }
-        r.close();
+    
+    r.close();
     }
-
+//------- search 1 student-----
+    @Override public  void SEARCH (ArrayList<Student>a)
+    {
+      
+       Scanner r=new Scanner(System.in);
+       System.out.println("");
+       System.out.println("--------------Choose how to search ----------------");
+       System.out.println("1. Student ID");
+       System.out.println("2. Student name");
+       
+       System.out.print ("Enter choose : ");
+       int choose=r.nextInt();
+       
+       if (choose==1)
+       {
+         System.out.println ("Enter student's mssv need search : ");
+         int mssv=r.nextInt();
+          Iterator<Student> i =a.iterator();
+         while (i.hasNext())// i.hasNext con phan tu khong
+          {
+             Student student=i.next();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+            if (student.getMSSV()==mssv)
+            {
+         
+               System.out.println("MSSV\t\tName\t\tSex\t\tBirth");
+               System.out.println("-----------------------------------------------------------");
+               System.out.printf("%-8d\t%-15s\t%-8s\t%-4d%n"/*xac dinh kich thuoc cot va can le */, student.getMSSV(), student.getName(), student.getSex(), student.getBirth());
+        
+            }
+    
+          }
+       }
+       else if (choose==2)
+       {
+              r.nextLine();
+              System.out.print ("Enter student's name need search :");
+              String name = r.nextLine();
+               Iterator<Student> i =a.iterator();
+         while (i.hasNext())// i.hasNext con phan tu khong
+          {
+             Student student=i.next();
+            if (student.getName().equals(name))
+            {
+               System.out.println("MSSV\t\tName\t\tSex\t\tBirth");
+               System.out.println("-----------------------------------------------------------");
+               System.out.printf("%-8d\t%-15s\t%-8s\t%-4d%n"/*xac dinh kich thuoc cot va can le */, student.getMSSV(), student.getName(), student.getSex(), student.getBirth());
+        
+            }
+    
+          }
+       }
+       r.close();
+    }
 }
 abstract class Level 
 {
@@ -611,36 +666,11 @@ public class Main
 {
 public static void main(String agrs[])
 {
-                        //nhu a
-    // ArrayList<Student> students = Student.iStudents("dataStudent.txt");
-    // Student student = new QLStudent();
-    // student.output(students);
-    // student.DELETE(students);
-    // student.output(students);
-    ArrayList<Level>Levels10 =Level.isLevel("Level10.txt");
-    Level level10 = new QLLevel();
-    System.out.println("------------------------- 10 --------------------------");
-    level10.output(Levels10);
-    ArrayList<Level>Levels11 =Level.isLevel("Level11.txt");
-    Level level11=new QLLevel();
-    System.out.println("------------------------- 11 --------------------------");
-    level11.output(Levels11);
-     ArrayList<Level>Levels12 =Level.isLevel("Level12.txt");
-    Level level12=new QLLevel();
-    System.out.println("------------------------- 12 --------------------------");
-    level12.output(Levels12);
-
-    QLLevel qlLevel = new QLLevel();
-    qlLevel.Input(Levels10,Levels11,Levels12);
-    qlLevel.Search(Levels10, Levels11, Levels12);
-    qlLevel.Repair (Levels10,Levels11,Levels12);
-  
-    
-
-    
-
-   
-
-
+    String filePath="dataStudent.txt";
+    ArrayList<Student> students = Student.iStudents(filePath);
+    Student student = new QLStudent();
+    student.output(students);
+    student.DELETE(students);
+    System.out.println("CC");
 }
 } 
