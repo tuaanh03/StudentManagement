@@ -671,6 +671,6 @@ public static void main(String agrs[])
     Student student = new QLStudent();
     student.output(students);
     student.DELETE(students);
-    student.output(students);
+    System.out.println("CC");
 }
 } 
