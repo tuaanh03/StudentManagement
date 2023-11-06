@@ -8,7 +8,7 @@ import java.util.Iterator;
 
  abstract class Student
 {
-    private int mssv;
+    protected int mssv;
     private String name;
     private String sex;
     private int birth;
@@ -95,6 +95,54 @@ import java.util.Iterator;
     //----DELETE 1 STUDENT----------------
     abstract public void DELETE(ArrayList<Student> a);
 }
+
+abstract class Account extends Student
+{
+    private int mstk;
+    private int password;
+
+    public Account(int password)
+    {
+        this.mstk = mssv;
+        this.password = password;
+    }
+
+    public void set_mstk()
+    {
+        this.mstk = mssv;
+    }
+
+    public int get_mstk()
+    {
+        return this.mstk;
+    }
+
+    public void set_password(int password)
+    {
+        this.password = password;
+    }
+
+    public int get_password()
+    {
+        return this.password;
+    }
+    abstract public void DELETE(ArrayList<Student> a);
+
+    public void inputpassword()
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter a password: ");
+        password = sc.nextInt();
+
+    }
+
+}
+
+class QLAccount extends Account
+{
+    
+}
+
 class QLStudent extends Student{
     public int point_avg;
     public QLStudent()
