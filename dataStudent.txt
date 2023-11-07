@@ -1,4 +1,0 @@
-12345,nguyen van a,nam,25012004
-12346,nguyen thi be,nu,22022001
-12347,nguyen thi le,nu,10102003
-12348,aaaaaa,nam,771171
