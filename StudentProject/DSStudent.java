@@ -10,9 +10,9 @@ import java.util.List;
 import java.util.Scanner;
 
 public class DSStudent implements Function{
-    static List<Student> studentList = new ArrayList<Student>();
+    static ArrayList<Student> studentList = new ArrayList<Student>();
 
-    public void add_student() {
+    public void add() {
         Student stu = new Student();
         stu.input();
         studentList.add(stu);
@@ -25,7 +25,7 @@ public class DSStudent implements Function{
         }
     }
 
-    public void delete_student() {
+    public void delete() {
         Scanner sc = new Scanner(System.in);
         int check = 0;
         System.out.println("Enter name or ID Student you want to delete");
@@ -47,7 +47,7 @@ public class DSStudent implements Function{
         }
     }
 
-    public void search_student() {
+    public void search() {
         int check = 0;
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter name or ID of student: ");
@@ -66,7 +66,7 @@ public class DSStudent implements Function{
         }
     }
 
-    public void modify_student() {
+    public void modify() {
         int check = 0;
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter name or ID of student: ");
@@ -85,7 +85,7 @@ public class DSStudent implements Function{
         }
     }
 
-    public static List<Student> ReadData(String filePath) {
+    public static ArrayList<Student> ReadData(String filePath) {
 
         FileInputStream fis = null;
         InputStreamReader reade = null;
@@ -111,14 +111,13 @@ public class DSStudent implements Function{
                 stu.setPhoneNumber(Integer.parseInt(arr[5].trim()));
                 stu.setID_STUDENT(arr[6]);
                 stu.setGrade(Integer.parseInt(arr[7].trim()));
-                stu.setStudentClass(arr[8]);            
+                stu.setStudentClass(arr[8]);
                 studentList.add(stu);
             }
             System.out.println("Read File Successful");
             reader.close();
         } catch (Exception e) {
             System.out.println("An error occurred: " + e.getMessage());
-            
         }
         return studentList;
     }
@@ -156,19 +155,19 @@ public class DSStudent implements Function{
             choice = sc.nextInt();
             switch (choice) {
                 case 1: {
-                    add_student();
+                    add();
                     break;
                 }
                 case 2: {
-                    delete_student();
+                    delete();
                     break;
                 }
                 case 3: {
-                    search_student();
+                    search();
                     break;
                 }
                 case 4: {
-                    modify_student();
+                    modify();
                     break;
                 }
                 case 5: {

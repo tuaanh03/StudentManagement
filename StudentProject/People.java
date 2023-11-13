@@ -87,7 +87,7 @@ abstract public class People {
         mail = sc.nextLine();
         sc.nextLine();
 
-        System.out.println("Enter phonenumber: ");
+        System.out.println("Enter phone number: ");
         PhoneNumber = sc.nextLong();
     }
 

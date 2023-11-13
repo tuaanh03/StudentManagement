@@ -1,10 +1,10 @@
 package StudentProject;
 
 public interface Function {
-    public void add_student();
-    public void delete_student();
-    public void modify_student();
-    public void search_student();
+    public void add();
+    public void delete();
+    public void modify();
+    public void search();
     public void show();
 }
 
