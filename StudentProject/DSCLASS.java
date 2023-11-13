@@ -85,7 +85,7 @@ public class DSCLASS extends StudentClass implements Function<StudentClass>
       int n = r.nextInt();
        for (int i=0;i <n ;i++)
        {
-         System.out.print (" Which method do you want to delete ?  " );
+         System.out.println (" Which method do you want to delete ?  " );
          System.out.println("1. ID-CLASS");
          System.out.println("2. ID-Teacher");
          System.out.print (" Enter : ");
@@ -128,6 +128,7 @@ public class DSCLASS extends StudentClass implements Function<StudentClass>
     public void search(ArrayList<StudentClass>classes)
     {
        Scanner r = new Scanner(System.in);
+       System.out.println ("\n");
        System.out.println (" Which method do you want to seacher?  " );
        System.out.println("1. ID-CLASS");
        System.out.println("2. ID-Teacher");
@@ -136,7 +137,7 @@ public class DSCLASS extends StudentClass implements Function<StudentClass>
        r.nextLine();
        if (choice==1)
       {
-        System.out.print("Enter ID-Class ");
+        System.out.println("Enter ID-Class ");
         String find=r.nextLine();
         for (StudentClass CLASS:classes)
         {
@@ -172,6 +173,8 @@ public class DSCLASS extends StudentClass implements Function<StudentClass>
     public void modify(ArrayList<StudentClass>classes)
     {
       Scanner r = new Scanner(System.in);
+      System.out.println("\n");
+      System.out.println ("---------------------------- Modify---------------");
       System.out.println ("Enter ID-CLASS : ");
       String find= r.nextLine();
       for (StudentClass CLASS:classes)
