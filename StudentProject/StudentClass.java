@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.io.File;
  
 
-abstract class StudentClass 
+ class StudentClass 
 {
     public String ID_childminder;   
     public String ID_grade;
@@ -78,7 +78,7 @@ abstract class StudentClass
             {
                 String line = e.nextLine();
                 String[] arr = line.split("\\s*,\\s*");
-                StudentClass CLASS = new DSCLASS();
+                StudentClass CLASS = new StudentClass();
                 CLASS.setID_grade(arr[0].trim());
                 CLASS.setID_class(arr[1].trim());
                 CLASS.setID_teacher(arr[2].trim());
@@ -121,11 +121,9 @@ abstract class StudentClass
         System.out.print(" ID childminder : ");
         ID_childminder=sc.nextLine();
         
-        
     }
-       
     
-    abstract public void   Add_Childminder (ArrayList<StudentClass>classes);
-
+    
+     
    
 }

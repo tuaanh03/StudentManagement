@@ -2,20 +2,11 @@ package StudentProject;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Iterator;
-public class DSCLASS extends StudentClass implements Function<StudentClass>
-{
+public class DSCLASS implements Function<StudentClass>
+{            
     
     //ArrayList<StudentClass> classes = new ArrayList<StudentClass>();
-    DSCLASS (String ID_grade, String ID_class, String ID_teacher,String ID_childminder)
-    {
-        super(ID_grade, ID_class, ID_teacher,ID_childminder);
-        
-    }
-    DSCLASS()
-    {
-        super();
-        
-    }
+    
 
     public void show (ArrayList<StudentClass> classes)
     {
@@ -30,23 +21,7 @@ public class DSCLASS extends StudentClass implements Function<StudentClass>
                 }            
     }
      
-    @Override public void Add_Childminder (ArrayList<StudentClass>classes)
-    {
-          Scanner r = new Scanner(System.in);
-          System.out.println("\n");
-          System.out.println("------- ADD CHILDMINDER ------");
-           System.out.println ("* Ruler ");
-           System.out.println ("   + Boarding class : enter ID_childminder");
-           System.out.println ("   + Not boarding class : null ");
-          for (StudentClass CLASS :classes)
-          {
-             System.out.print(CLASS.getID_class() + ": " );
-             ID_childminder= r.nextLine();// ở cái lớp đó . mình tạo dữ liệu cho lớp đó
-             CLASS.setID_childminder(ID_childminder);// mình phải gán dữ liệu vào cái lớp đó
-          }
-         show(classes);
-        System.out.println("\n");      
-    }
+    
 
     public void add(ArrayList<StudentClass>classes)
     {
@@ -56,7 +31,7 @@ public class DSCLASS extends StudentClass implements Function<StudentClass>
       int n = r.nextInt();
        for (int i=0;i <n ;i++)
        {
-         StudentClass Add_CLASS = new DSCLASS();
+         StudentClass Add_CLASS = new StudentClass();
           Add_CLASS.input();
           classes.add(Add_CLASS);  
        }
@@ -188,6 +163,9 @@ public class DSCLASS extends StudentClass implements Function<StudentClass>
       show(classes);
 
     }
+
+
+    public void 
 }
 
 
