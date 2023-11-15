@@ -1,4 +1,6 @@
-Ngô Tuan Anh,3/11/2004,dasdsadsa,1,dsada@dasdasd,966770042,3122411007,10,10A24
-Ngoc Nhien,None,dsadsadsa,2,dassda@dasdas,966770042,None,10,10A24
-Hong Tham,None,dsdasdsasd,2,dasd@dasdasdsa,966770042,None,10,10A24
-Thuy Quyen,None,dasdasdsa,2,dasdsa@dasdsa,966770042,None,10,10A24
+grade10,10a1,01CN10
+grade10,10a2,02CN10
+grade11,11a1,03CN11
+grade11,11a2,04CN11
+grade11,11a2,04CN11
+grade12,12a2,06CN12
