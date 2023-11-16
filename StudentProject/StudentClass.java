@@ -65,7 +65,7 @@ import java.io.File;
     }
    
 
-    // doc file
+    
     void input ()
     {
         Scanner sc = new Scanner(System.in);
@@ -79,7 +79,7 @@ import java.io.File;
          System.out.print(" ID teacher : ");
         ID_teacher=sc.nextLine();
     
-         System.out.println (" types of class :");
+         System.out.println (" ----------- types of class----------- ");
             System.out.println (" there are 3: ");
             System.out.println (" * Day boarding  ");
             System.out.println (" * Boarding ");

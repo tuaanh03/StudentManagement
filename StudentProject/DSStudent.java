@@ -9,9 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class DSStudent implements Function<StudentClass>
-   
-    public void add_student() {
+public class DSStudent implements Function
+   ArrayList<Student> studentList = new ArrayList<>();
+    public void add() 
+    {
         Student stu = new Student();
         stu.input();
         studentList.add(stu);
@@ -139,10 +140,12 @@ public class DSStudent implements Function<StudentClass>
 
     }
 
-    public void input() {
+    public void input()
+    {
         int choice;
         Scanner sc = new Scanner(System.in);
-        do {
+        do 
+        {
             System.out.println("1. Add Student");
             System.out.println("2. Delete Student");
             System.out.println("3. Search Student");
@@ -155,7 +158,7 @@ public class DSStudent implements Function<StudentClass>
             choice = sc.nextInt();
             switch (choice) {
                 case 1: {
-                    add_student();
+                    add();
                     break;
                 }
                 case 2: {
