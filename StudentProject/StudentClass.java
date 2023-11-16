@@ -2,31 +2,30 @@ package StudentProject;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.File;
- 
-
  class StudentClass 
 {
-    public String ID_childminder;   
-    public String ID_grade;
-    public String ID_class;
-    public String ID_teacher;
+    private String ID_grade;
+    private String ID_class;
+    private String ID_teacher;
+    public  int price_item = 23000;
+    public int price_place_rest= 50000;
+    private String types;
+    public int pirce_tuition =500000;
     
     StudentClass() 
     {
         ID_grade ="";
         ID_class ="";
         ID_teacher="";
-        ID_childminder="";
-
-
+        types="";
     }
 
-    StudentClass(String ID_grade, String ID_class, String ID_teacher,String ID_childminder)
+    StudentClass(String ID_grade, String ID_class, String ID_teacher,String types)
     {
         this.ID_grade = ID_grade;
         this.ID_class = ID_class;
         this.ID_teacher = ID_teacher;
-        this.ID_childminder=ID_childminder;
+        this.types=types;
     }
 
     public String getID_grade()
@@ -42,15 +41,11 @@ import java.io.File;
         return ID_teacher;
 
     }
-    public String getID_childminder() 
+    public String getTypes()
     {
-        return ID_childminder;
+        return types;
     }
-    public void setID_childminder(String ID_childminder) 
-    {
-        this.ID_childminder= ID_childminder;
-    }
-      
+   
 
     public void setID_grade(String ID_grade) 
     {
@@ -64,48 +59,14 @@ import java.io.File;
     {
         this.ID_teacher= ID_teacher;
     }
+    public void setTypes(String types)
+    {
+        this.types=types;
+    }
    
 
     // doc file
-    public static ArrayList<StudentClass> is_Classes(String f)
-    {
-        ArrayList<StudentClass> classes = new ArrayList<StudentClass>();
-        try 
-        {
-              File myObj = new File (f);
-              Scanner e = new Scanner(myObj);
-            while (e.hasNextLine()) 
-            {
-                String line = e.nextLine();
-                String[] arr = line.split("\\s*,\\s*");
-                StudentClass CLASS = new StudentClass();
-                CLASS.setID_grade(arr[0].trim());
-                CLASS.setID_class(arr[1].trim());
-                CLASS.setID_teacher(arr[2].trim());
-                classes.add(CLASS);
-                
-            }
-            e.close();  
-        } 
-        catch (Exception e) {
-            System.out.println("An error occurred: " + e.getMessage());
-            e.printStackTrace();
-        }
-        return classes;
-    }
-
-    //xuat file
-    public void output(ArrayList<StudentClass> classes) 
-    {
-        System.out.printf("%-15s%-15s%-15s\n", "Grade", "Class", "ID Teacher");
-        System.out.println("-----------------------------------------------------------");
-        for (StudentClass CLASS : classes) 
-        {
-            System.out.printf("%-15s%-15s%-20s\n", CLASS.getID_grade(), CLASS.getID_class(), CLASS.getID_teacher());
-        }
-    }
-
-     void input ()
+    void input ()
     {
         Scanner sc = new Scanner(System.in);
         
@@ -115,15 +76,34 @@ import java.io.File;
         System.out.print(" Class : ");
          ID_class=sc.nextLine();
 
-        System.out.print(" ID teacher : ");
+         System.out.print(" ID teacher : ");
         ID_teacher=sc.nextLine();
-
-        System.out.print(" ID childminder : ");
-        ID_childminder=sc.nextLine();
+    
+         System.out.println (" types of class :");
+            System.out.println (" there are 3: ");
+            System.out.println (" * Day boarding  ");
+            System.out.println (" * Boarding ");
+            System.out.println (" * Outpatient ");
+            
+            while (true)
+         {   
+            System.out.print(" enter name :");   
+            types=sc.nextLine();
         
+            if (types.equals("Day boarding") || types.equals("Boarding")||types.equals("Outpatient"))
+            {
+                  break;
+            }
+            else 
+            {
+                System.out.println("Invalid type. Please enter a valid type.");
+            }
+         }
     }
     
-    
-     
-   
+    public int Price_student() 
+    {
+        int sum =0;
+       return sum;
+    }
 }

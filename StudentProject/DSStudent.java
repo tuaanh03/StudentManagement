@@ -9,9 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class DSStudent implements Function{
-    static List<Student> studentList = new ArrayList<Student>();
-
+public class DSStudent implements Function<StudentClass>
+   
     public void add_student() {
         Student stu = new Student();
         stu.input();
@@ -197,4 +196,4 @@ public class DSStudent implements Function{
         } while (choice != 0);
     }
 
-}
+
