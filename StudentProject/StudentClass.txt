@@ -2,5 +2,5 @@ grade10,10a1,01CN10
 grade10,10a2,02CN10
 grade11,11a1,03CN11
 grade11,11a2,04CN11
-grade11,11a2,04CN11
+grade11,12a1,04CN11
 grade12,12a2,06CN12

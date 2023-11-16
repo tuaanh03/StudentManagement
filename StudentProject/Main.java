@@ -9,9 +9,9 @@ public class Main {
 		// ql.input();
 
 		ArrayList<StudentClass> Classes = StudentClass.is_Classes ("D:\\StudentManager\\StudentManagement\\StudentClass.txt");
-        StudentClass CLASS = new DSCLASS();
+        StudentClass CLASS = new StudentClass();
          CLASS.output(Classes);
-	     CLASS. Add_Childminder (Classes);
+	     
 		 DSCLASS dsClass = new DSCLASS();
 		 dsClass.add(Classes);
 		 System.out.println("\n");
