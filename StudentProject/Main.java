@@ -7,17 +7,23 @@ public class Main {
 	{
 		// DSStudent ql = new DSStudent();
 		// ql.input();
-
-		ArrayList<StudentClass> Classes = StudentClass.is_Classes ("D:\\StudentManager\\StudentManagement\\StudentClass.txt");
+        
+		
         StudentClass CLASS = new StudentClass();
-         CLASS.output(Classes);
-	     
-		 DSCLASS dsClass = new DSCLASS();
-		 dsClass.add(Classes);
+		
+		 
 		 System.out.println("\n");
-		 dsClass.delete(Classes);
-		 dsClass.search(Classes);
-		dsClass.modify(Classes);
+         
+		 DSCLASS dsClass = new DSCLASS();
+		 dsClass.show();
+		 
+		 System.out.println("\n");
+		 dsClass.add();
+		 System.out.println("\n");
+		 dsClass.delete();
+		 dsClass.search();
+		 dsClass.modify();
+		 dsClass.show_all();
 
 	}
 
