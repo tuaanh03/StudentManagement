@@ -1,4 +1,5 @@
 package StudentProject;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileInputStream;
@@ -9,17 +10,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class DSStudent implements Function{
-    static ArrayList<Student> studentList = new ArrayList<Student>();
+public class QLTeacher implements Function{
+    static List<Teacher> teacherList = new ArrayList<Teacher>();
 
     public void add() {
-        Student stu = new Student();
-        stu.input();
-        studentList.add(stu);
+        Teacher tea = new Teacher();
+        tea.input();
+        teacherList.add(tea);
     }
 
     public void show() {
-        for (Student stu : studentList) {
+        for (Teacher stu : teacherList) {
             stu.output();
             System.out.println("-----------***----------");
         }
@@ -30,17 +31,17 @@ public class DSStudent implements Function{
         int check = 0;
         System.out.println("Enter name or ID Student you want to delete");
         String find = sc.nextLine();
-        List<Student> studentsToDelete = new ArrayList<Student>();
+        List<Teacher> teachersToDelete = new ArrayList<Teacher>();
 
-        for (Student st : studentList) {
-            if (find.equals(st.getID_STUDENT()) || find.equals(st.getName())) {
-                studentsToDelete.add(st);
+        for ( Teacher tea : teacherList) {
+            if (find.equals(tea.getID_GV()) || find.equals(tea.getName())) {
+                teachersToDelete.add(tea);
                 check = 1;
             }
         }
 
         if (check == 1) {
-            studentList.removeAll(studentsToDelete);
+            teacherList.removeAll(teachersToDelete);
             System.out.println("Student(s) deleted successfully.");
         } else {
             System.out.println("Student not found.");
@@ -53,8 +54,8 @@ public class DSStudent implements Function{
         System.out.println("Enter name or ID of student: ");
         String find = sc.nextLine();
 
-        for (Student st : studentList) {
-            if (find.equals(st.getName()) || find.equals(st.getID_STUDENT())) {
+        for (Teacher st : teacherList) {
+            if (find.equals(st.getName()) || find.equals(st.getID_GV())) {
                 check = 1;
                 System.out.println("Student found successfully!");
                 st.output();
@@ -72,8 +73,8 @@ public class DSStudent implements Function{
         System.out.println("Enter name or ID of student: ");
         String find = sc.nextLine();
 
-        for (Student st : studentList) {
-            if (find.equals(st.getName()) || find.equals(st.getID_STUDENT())) {
+        for (Teacher st : teacherList) {
+            if (find.equals(st.getName()) || find.equals(st.getID_GV())) {
                 check = 1;
                 System.out.println("Looking for student successfully!");
                 st.input();
@@ -85,14 +86,14 @@ public class DSStudent implements Function{
         }
     }
 
-    public static ArrayList<Student> ReadData(String filePath) {
+    public static List<Teacher> ReadData(String filePath) {
 
         FileInputStream fis = null;
         InputStreamReader reade = null;
         BufferedReader reader = null;
 
         try  {
-            fis = new FileInputStream("StudentFile.txt");
+            fis = new FileInputStream(filePath);
             reade = new InputStreamReader(fis, StandardCharsets.UTF_8);
             reader = new BufferedReader(reade);
             String line = null;
@@ -101,37 +102,37 @@ public class DSStudent implements Function{
                 {
                     continue;
                 }
-                Student stu = new Student();
+                Teacher tea = new Teacher();
                 String[] arr = line.split(",");// 1 line chuoi nen la dung String
-                stu.setName(arr[0].trim());
-                stu.setBirth(arr[1].trim());
-                stu.setAddress(arr[2].trim());
-                stu.setGender(Integer.parseInt(arr[3].trim()));
-                stu.setMail(arr[4].trim());
-                stu.setPhoneNumber(Integer.parseInt(arr[5].trim()));
-                stu.setID_STUDENT(arr[6]);
-                stu.setGrade(Integer.parseInt(arr[7].trim()));
-                stu.setStudentClass(arr[8]);
-                studentList.add(stu);
+                tea.setName(arr[0].trim());
+                tea.setBirth(arr[1].trim());
+                tea.setAddress(arr[2].trim());
+                tea.setGender(Integer.parseInt(arr[3].trim()));
+                tea.setMail(arr[4].trim());
+                tea.setPhoneNumber(Integer.parseInt(arr[5].trim()));
+                tea.setID_GV(arr[6]);
+                tea.setID_CLASS(arr[7]);            
+                teacherList.add(tea);
             }
             System.out.println("Read File Successful");
             reader.close();
         } catch (Exception e) {
             System.out.println("An error occurred: " + e.getMessage());
+            
         }
-        return studentList;
+        return teacherList;
     }
 
     public void SaveData(String filepath) {
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filepath))) {
-            for (Student st : studentList) {
+            for (Teacher st : teacherList) {
                 writer.write(st.getName() + "," + st.getBirth() + "," + st.getAddress() + "," + st.isGender() + ","
-                        + st.getMail() + "," + st.getPhoneNumber() + "," + st.getID_STUDENT() + "," + st.getGrade()
-                        + "," + st.getStudentClass());
+                        + st.getMail() + "," + st.getPhoneNumber() + "," + st.getID_GV() + "," + st.getID_CLASS());
+                      
                 writer.newLine();
             }
-            System.out.println("Read File Successful");
+            System.out.println("Save File Successful");
             writer.close();
         } catch (Exception e) {
             System.out.println("An error occurred: " + e.getMessage());
@@ -143,11 +144,11 @@ public class DSStudent implements Function{
         int choice;
         Scanner sc = new Scanner(System.in);
         do {
-            System.out.println("1. Add Student");
-            System.out.println("2. Delete Student");
-            System.out.println("3. Search Student");
-            System.out.println("4. Modify Student");
-            System.out.println("5. Display Students");
+            System.out.println("1. Add Teacher");
+            System.out.println("2. Delete Teacher");
+            System.out.println("3. Search Teacher");
+            System.out.println("4. Modify Teacher");
+            System.out.println("5. Display Teachers");
             System.out.println("6. Load From File");
             System.out.println("7. Save From File");
             System.out.println("0. Exit");
@@ -175,12 +176,12 @@ public class DSStudent implements Function{
                     break;
                 }
                 case 6: {
-                    ReadData("StudentFile.txt");
+                    ReadData("TeacherFile.txt");
                     break;
                 }
 
                 case 7: {
-                    SaveData("StudentFile.txt");
+                    SaveData("TeacherFile.txt");
                     break;
                 }
 
@@ -196,5 +197,3 @@ public class DSStudent implements Function{
         } while (choice != 0);
     }
 }
-
-
