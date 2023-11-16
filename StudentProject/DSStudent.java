@@ -9,16 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-<<<<<<< HEAD
 public class DSStudent implements Function{
     static ArrayList<Student> studentList = new ArrayList<Student>();
 
     public void add() {
-=======
-public class DSStudent implements Function<StudentClass>
-   
-    public void add_student() {
->>>>>>> 5c3a4cb8d1155c0af153c1343d78cf3cc723e673
         Student stu = new Student();
         stu.input();
         studentList.add(stu);
@@ -201,5 +195,6 @@ public class DSStudent implements Function<StudentClass>
             }
         } while (choice != 0);
     }
+}
 
 
