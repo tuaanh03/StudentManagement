@@ -40,7 +40,7 @@ public class KQHT
         KQHT.setname_SJ(arr[1].trim());
         KQHT.setpointGK_SJ(arr[2].trim());
         KQHT.setpointCK_SJ(arr[3].trim());
-        KQHT.add(results);      
+        KQHT.add(subjectList);      
       }
     System.out.println("Read File Successful");
     reader.close();
@@ -50,7 +50,7 @@ public class KQHT
       System.out.println("An error occurred: " + e.getMessage());
       e.printStackTrace();
     }
-     return results;
+     return subjectList;
  }
 
  public void SaveData(String f)
