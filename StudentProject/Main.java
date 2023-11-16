@@ -11,16 +11,7 @@ public class Main {
        // StudentClass CLASS = new StudentClass();
 		// System.out.println("\n");
 		 DSCLASS dsClass = new DSCLASS();
-		 dsClass.is_Classes("StudentManagement\\StudentProject\\StudentClass.txt");
-		 dsClass.show();
-		 System.out.println("\n");
-		 dsClass.add();
-		 System.out.println("\n");
-		 dsClass.delete();
-		 dsClass.search();
-		 dsClass.modify();
-		 System.out.println("\n");
-		 dsClass.show_all();
+		 dsClass.menu();
 
 	}
 

@@ -1,16 +1,15 @@
 package StudentProject;
+// import java.util.ArrayList;
+// import java.util.Scanner;
 
-import java.util.ArrayList;
-import java.util.Scanner;
-
-public class bt extends StudentClass
+public class Boarding extends StudentClass
 {
   private int sum =0;
    
    
-   bt () {}
+   Boarding () {}
 
-   bt (String types , String ID_grade , String ID_class , String ID_teacher)
+   Boarding (String types , String ID_grade , String ID_class , String ID_teacher)
    {
     super (types,ID_grade,ID_class,ID_teacher);
     

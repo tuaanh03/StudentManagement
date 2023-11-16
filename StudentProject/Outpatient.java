@@ -1,16 +1,16 @@
 package StudentProject;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
 
-public class ngt extends StudentClass
+public class Outpatient extends StudentClass
 {
     
    private int sum =0;
    
-   ngt () {}
+   Outpatient () {}
 
-   ngt (String types , String ID_grade , String ID_class , String ID_teacher)
+   Outpatient (String types , String ID_grade , String ID_class , String ID_teacher)
    {
     super (types,ID_grade,ID_class,ID_teacher);
    

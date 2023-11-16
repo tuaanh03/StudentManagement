@@ -9,17 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-<<<<<<< HEAD
 public class DSStudent implements Function
-   ArrayList<Student> studentList = new ArrayList<>();
+{
+   static ArrayList<Student> studentList = new ArrayList<>();
     public void add() 
     {
-=======
-public class DSStudent implements Function{
-    static ArrayList<Student> studentList = new ArrayList<Student>();
-
-    public void add() {
->>>>>>> 49c0c4bc716158b6be46dec991402c5c36669a50
         Student stu = new Student();
         stu.input();
         studentList.add(stu);

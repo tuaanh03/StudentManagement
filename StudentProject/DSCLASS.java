@@ -1,7 +1,6 @@
 package StudentProject;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.InputStreamReader;
@@ -9,37 +8,65 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Iterator;
-import java.util.List;
 public class DSCLASS implements Function
 {            
   static ArrayList<StudentClass> classes = new ArrayList<StudentClass>();
-  // public static ArrayList<StudentClass> is_Classes(String f)
-  //   {
-  //       ArrayList<StudentClass> classes = new ArrayList<StudentClass>();
-  //       try 
-  //       {
-  //             File myObj = new File (f);
-  //             Scanner e = new Scanner(myObj);
-  //           while (e.hasNextLine()) 
-  //           {
-  //               String line = e.nextLine();
-  //               String[] arr = line.split("\\s*,\\s*");
-  //               StudentClass CLASS = new StudentClass();
-  //               CLASS.setID_grade(arr[0].trim());
-  //               CLASS.setID_class(arr[1].trim());
-  //               CLASS.setID_teacher(arr[2].trim());
-  //               CLASS.setTypes(arr[3].trim());
-  //               classes.add(CLASS); 
-  //           }
-  //           e.close();  
-  //       } 
-  //       catch (Exception e) {
-  //           System.out.println("An error occurred: " + e.getMessage());
-  //           e.printStackTrace();
-  //       }
-  //       return classes;
-  //   }
-  public static ArrayList<StudentClass> is_Classes(String f)
+  
+//   public static ArrayList<StudentClass> ReadData(String f)
+//  {
+//   // khoi tao rong
+//   FileInputStream fis = null; // Lớp này được sử dụng để đọc dữ liệu từ một file trong hệ thống tệp tin. 
+//   InputStreamReader reade = null;//Lớp này được sử dụng để đọc dữ liệu từ một luồng byte (byte stream) và chuyển đổi nó thành dữ liệu ký tự (character data). Trong đoạn mã trên, giá trị của reade được gán bằng null.
+//   BufferedReader reader = null;//Lớp này cung cấp các phương thức để đọc dữ liệu từ một luồng ký tự (character stream) với hiệu suất tối ưu hơn. 
+//   try 
+//   {
+//     fis = new FileInputStream("D:\\StudentManagement\\StudentProject\\StudentClass.txt");
+//     reade = new InputStreamReader(fis, StandardCharsets.UTF_8);
+//     reader = new BufferedReader(reade);
+//     String line = null;
+//     while ((line = reader.readLine())  != null) 
+//       {  
+//         if (line.isEmpty())
+//         {
+//             continue;
+//         }
+//         String[] arr = line.split("\\s*,\\s*");
+//         StudentClass CLASS = new StudentClass();
+//         CLASS.setID_grade(arr[0].trim());
+//         CLASS.setID_class(arr[1].trim());
+//         CLASS.setID_teacher(arr[2].trim());
+//         CLASS.setTypes(arr[3].trim());
+//         classes.add(CLASS);      
+//       }
+//     System.out.println("Read File Successful");
+//     reader.close();
+//     }
+//     catch (Exception e)
+//     {
+//       System.out.println("An error occurred: " + e.getMessage());
+//       e.printStackTrace();
+//     }
+//      return classes;
+  //}
+  
+  public void SaveData(String f)
+  {
+    try (BufferedWriter writer = new BufferedWriter(new FileWriter(f)))
+    {
+      for (StudentClass CLASS :classes)
+      {
+        writer.write( CLASS.getID_grade() +","+ CLASS.getID_class() +","+ CLASS.getID_teacher()+","+CLASS.getTypes());
+        writer.newLine();
+      }
+      System.out.println("Read File Successful");
+      writer.close();
+      } catch (Exception e) 
+      {
+        System.out.println("An error occurred: " + e.getMessage());
+      }
+
+  }
+     public static ArrayList<StudentClass> is_classes(String f)
  {
   // khoi tao rong
   FileInputStream fis = null; // Lớp này được sử dụng để đọc dữ liệu từ một file trong hệ thống tệp tin. 
@@ -74,41 +101,7 @@ public class DSCLASS implements Function
       e.printStackTrace();
     }
      return classes;
-}
-  
-  public void SaveData(String f)
-  {
-    try (BufferedWriter writer = new BufferedWriter(new FileWriter(f)))
-    {
-      for (StudentClass CLASS :classes)
-      {
-        writer.write( CLASS.getID_grade() +","+ CLASS.getID_class() +","+ CLASS.getID_teacher()+","+CLASS.getTypes());
-        writer.newLine();
-      }
-      System.out.println("Read File Successful");
-      writer.close();
-      } catch (Exception e) 
-      {
-        System.out.println("An error occurred: " + e.getMessage());
-      }
-
   }
-
-  // public void showfile ()
-  // {
-  //   ArrayList<StudentClass> classes = new ArrayList<StudentClass>();
-  //   try 
-  //   {
-
-  //   System.out.println ("---------------- Upload of class --------------");
-  //   System.out.printf("%-15s%-15s%-15s%-20s\n" , "Grade", "Class", "ID Teacher", " Type of class");
-  //   System.out.println("-----------------------------------------------------------");
-  //   for (StudentClass CLASS : classes) 
-  //   {
-  //     System.out.print("\n");        
-  //     System.out.printf("%-15s%-15s%-15s%-20s", CLASS.getID_grade(), CLASS.getID_class(), CLASS.getID_teacher(),CLASS.getTypes());
-  //   }            
-  // }
 
 
   public void show ()
@@ -142,7 +135,7 @@ public class DSCLASS implements Function
     Scanner r = new Scanner(System.in);
       // hien lai danh sach
     System.out.println ("----------------- List Class------------------");
-    System.out.printf("%-15s%-15s%-15s%-20s\\n", "Grade", "Class", "ID Teacher", "ID Childminder,Types of class");
+    System.out.printf("%-15s%-15s%-15s%-20s\n", "Grade", "Class", "ID Teacher", "ID Childminder,Types of class");
     System.out.println("-----------------------------------------------------------");
     for (StudentClass CLASS : classes) 
     {
@@ -271,21 +264,108 @@ public class DSCLASS implements Function
     {
       if (CLASS.getTypes().equals("Day boarding"))     
       {
-        nt noitru= new nt();
+        Day_boarding noitru= new Day_boarding();
         System.out.printf("%-15s%-15s%-15s%-20s%-20s\n", CLASS.getID_grade(), CLASS.getID_class(), CLASS.getID_teacher(),CLASS.getTypes(),noitru.Price_student());
       } 
       else if (CLASS.getTypes().equals("Boarding"))
       {
-        bt bantru= new bt();
+        Boarding bantru= new Boarding();
         System.out.printf("%-15s%-15s%-15s%-20s%-20s\n", CLASS.getID_grade(), CLASS.getID_class(), CLASS.getID_teacher(),CLASS.getTypes(),bantru.Price_student());
       }
       else if ( CLASS.getTypes().equals("Outpatient"))
       {
-        ngt ngoaitru = new ngt();
+        Outpatient ngoaitru = new Outpatient();
         System.out.printf("%-15s%-15s%-15s%-20s%-20s\n", CLASS.getID_grade(), CLASS.getID_class(), CLASS.getID_teacher(),CLASS.getTypes(),ngoaitru.Price_student());
       }
     } 
   }
+
+  public void menu()
+  { 
+    int choice;
+        Scanner sc = new Scanner(System.in);
+        do 
+        {
+            System.out.println("1. Add Class");
+            System.out.println("2. Delete Class");
+            System.out.println("3. Search Class");
+            System.out.println("4. Modify Class");
+            System.out.println("5. Display Class");
+            System.out.println("6. view fee");
+            //System.out.println("7. Load From File");
+            System.out.println("8. Save From File");
+            System.out.println("0. Exit");
+            System.out.println("Enter your choice: ");
+             choice = sc.nextInt();
+            switch (choice) 
+            {
+              case 1:
+              {
+                add();
+                System.out.println("\n");
+                break; 
+              }
+              case 2:
+              {
+                delete();
+                System.out.println("\n");
+                break;  
+              }
+              case 3: 
+              {
+                search();
+                System.out.println("\n");
+                break;
+              }
+
+              case 4:
+              {
+                modify();
+                System.out.println("\n");
+                break;
+              }
+
+              case 5:
+              {
+                is_classes("StudentManagement\\StudentProject\\StudentClass.txt");
+                show();
+                System.out.println ("\n");
+                break;
+              }
+              case 6 :
+              {
+                show_all();
+                System.out.println("\n");
+                break;
+              }
+              // case 7:
+              // {
+              //   is_classes("StudentManagement\\StudentProject\\StudentClass.txt");
+              //   show();
+              //   System.out.println("\n");
+              //   break;
+              // }
+
+              case 8:
+              {
+                SaveData("StudentManagement\\StudentProject\\StudentClass.txt");
+                break;
+              }
+              case 0:
+              {
+                System.out.println("Thanks for using!");
+                break;
+              }
+            default:
+            {
+                System.out.println("Invalid choice. Please try again.");
+                 System.out.println("\n");
+                break;
+            }
+ 
+            }
+        } while (choice != 0);
+    }
 }
 
 
