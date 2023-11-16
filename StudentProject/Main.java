@@ -11,7 +11,7 @@ public class Main {
 		
         StudentClass CLASS = new StudentClass();
 		
-		 
+		
 		 System.out.println("\n");
          
 		 DSCLASS dsClass = new DSCLASS();
@@ -19,7 +19,7 @@ public class Main {
 		 
 		 System.out.println("\n");
 		 dsClass.add();
-		 System.out.println("\n");
+		 System.out.println("\n");   
 		 dsClass.delete();
 		 dsClass.search();
 		 dsClass.modify();
