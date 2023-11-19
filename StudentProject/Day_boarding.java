@@ -1,14 +1,14 @@
 package StudentProject;
-import java.util.ArrayList;
-import java.util.Scanner;
+// import java.util.ArrayList;
+// import java.util.Scanner;
 
 
-public class nt extends StudentClass
+public class Day_boarding extends StudentClass
 {
     private int sum =0;
-   nt () {}
+   Day_boarding () {}
 
-   nt ( String ID_grade , String ID_class , String ID_teacher,int sum,String types)
+   Day_boarding ( String ID_grade , String ID_class , String ID_teacher,int sum,String types)
    {
     super (ID_grade,ID_class,ID_teacher,types);
     this.sum=sum;
