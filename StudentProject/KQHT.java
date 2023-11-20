@@ -13,62 +13,53 @@ import javax.security.auth.Subject;
 import java.util.Iterator;
 
 public class KQHT
-{
-    
-    static ArrayList<Subject> subjectList = new ArrayList<Subject>();
-    public static ArrayList<Subject> isLearning_results(String f)
- {
-  // khoi tao rong
-  FileInputStream fis = null; // Lớp này được sử dụng để đọc dữ liệu từ một file trong hệ thống tệp tin. 
-  InputStreamReader reade = null;//Lớp này được sử dụng để đọc dữ liệu từ một luồng byte (byte stream) và chuyển đổi nó thành dữ liệu ký tự (character data). Trong đoạn mã trên, giá trị của reade được gán bằng null.
-  BufferedReader reader = null;//Lớp này cung cấp các phương thức để đọc dữ liệu từ một luồng ký tự (character stream) với hiệu suất tối ưu hơn. 
-  try 
+{ private String ID_STUDENT;
+  private ArrayList<Subject> name_SJ;
+  public String getID_STUDENT()
   {
-    fis = new FileInputStream("StudentManagement\\StudentProject\\SubjectFile.txt");
-    reade = new InputStreamReader(fis, StandardCharsets.UTF_8);
-    reader = new BufferedReader(reade);
-    String line = null;
-    while ((line = reader.readLine())  != null) 
-      {  
-        if (line.isEmpty())
-        {
-            continue;
-        }
-        String[] arr = line.split("\\s*,\\s*");
-        StudentClass KQHT = new StudentClass();
-        KQHT.setID_STUDENT(arr[0].trim());
-        KQHT.setname_SJ(arr[1].trim());
-        KQHT.setpointGK_SJ(arr[2].trim());
-        KQHT.setpointCK_SJ(arr[3].trim());
-        KQHT.add(subjectList);      
-      }
-    System.out.println("Read File Successful");
-    reader.close();
-    }
-    catch (Exception e)
-    {
-      System.out.println("An error occurred: " + e.getMessage());
-      e.printStackTrace();
-    }
-     return subjectList;
- }
-
- public void SaveData(String f)
-  {
-    try (BufferedWriter writer = new BufferedWriter(new FileWriter(f)))
-    {
-      for (Subject sb : subjectList)
-      {
-        writer.write( sb.getID_STUDENT() +","+ sb.getname_SJ() +","+ sb.getpointGK_SJ()+","+sb.getpointCK_SJ());
-        writer.newLine();
-      }
-      System.out.println("Read File Successful");
-      writer.close();
-      } catch (Exception e) 
-      {
-        System.out.println("An error occurred: " + e.getMessage());
-      }
-
+    return ID_STUDENT;
   }
-
+  public ArrayList<Subject> getName_SJ()
+  { 
+    return name_SJ;
+  }
+  public void setID_STUDENT(String id)
+  {
+    ID_STUDENT=id;
+  }
+  public void setname_SJ(ArrayList<Subject> a)
+  {
+    name_SJ=a;
+  }
+  public void studyResultByID(String id) //id student truyen vao o main
+  {
+    DSSubject a =new DSSubject();
+        System.out.println("-------Student's ID: "+id+"-------");
+    for (StudentProject.Subject sb:a.ReadData("StudentProject\\SubjectFile.txt")) 
+    {
+      if(sb.getID_STUDENT().equals(id))
+      {
+        System.out.println("Subject's name :" +sb.getname_SJ());
+        System.out.println("Point GK :"+sb.getpointGK_SJ());
+        System.out.println("Point CK :"+sb.getpointCK_SJ());
+        System.out.println("---------------------------");
+      }
+    }
+  }
+  public void studyResultBySubject(String sub) //id student truyen vao o main
+  {
+    DSSubject a =new DSSubject();
+        System.out.println("-------Subject's name: "+sub+"-------");
+    for (StudentProject.Subject sb:a.ReadData("StudentProject\\SubjectFile.txt")) 
+    {
+      if(sb.getname_SJ().equals(sub))
+      {
+        System.out.println("Student's ID :"+sb.getID_STUDENT());
+        System.out.println("Subject's name :" +sb.getname_SJ());
+        System.out.println("Point GK :"+sb.getpointGK_SJ());
+        System.out.println("Point CK :"+sb.getpointCK_SJ());
+        System.out.println("---------------------------");
+      }
+    }
+  }
 }

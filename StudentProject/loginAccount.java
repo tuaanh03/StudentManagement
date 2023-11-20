@@ -2,17 +2,17 @@ package StudentProject;
 
 import java.util.Scanner;
 
-public class UserAccount extends Account {
+public class loginAccount extends Account {
     private String ID_USER;
     private String PASSWORD;
 
 
-    public UserAccount(String iD_USER, String pASSWORD) {
+    public loginAccount(String iD_USER, String pASSWORD) {
         ID_USER = iD_USER;
         PASSWORD = pASSWORD;
     }
 
-    public UserAccount() {
+    public loginAccount() {
         ID_USER = "";
         PASSWORD = "";
     }
@@ -37,7 +37,7 @@ public class UserAccount extends Account {
     public void input()
     {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter ID_USER: ");
+        System.out.println("Enter ID of account: ");
         ID_USER = sc.nextLine();
 
         System.out.println("Enter Password: ");

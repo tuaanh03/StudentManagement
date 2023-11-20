@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class DSStudent implements Function
 {
-   static ArrayList<Student> studentList = new ArrayList<>();
+    public static ArrayList<Student> studentList = new ArrayList<>();
     public void add() 
     {
         Student stu = new Student();
