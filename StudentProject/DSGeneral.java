@@ -100,8 +100,13 @@ public class DSGeneral {
             choice = sc.nextInt();
             switch (choice) {
                 case 1: {
+<<<<<<< HEAD
+                    DSStudent a=new DSStudent();
+                    a.input();
+=======
                     DSStudent stu = new DSStudent();
                     stu.input();
+>>>>>>> 7f9452d5e1e60dfde8e2eb854a650ab2a9d21f3a
                     break;
                 }
                 case 2: {

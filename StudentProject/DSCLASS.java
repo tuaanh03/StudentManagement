@@ -76,7 +76,7 @@ public class DSCLASS implements Function
   BufferedReader reader = null;//Lớp này cung cấp các phương thức để đọc dữ liệu từ một luồng ký tự (character stream) với hiệu suất tối ưu hơn. 
   try 
   {
-    fis = new FileInputStream("D:\\StudentManagement\\StudentProject\\StudentClass.txt");
+    fis = new FileInputStream("D:\\StudentManagement\\StudentClass.txt");
     reade = new InputStreamReader(fis, StandardCharsets.UTF_8);
     reader = new BufferedReader(reade);
     String line = null;
@@ -321,25 +321,39 @@ public class DSCLASS implements Function
   
   public void show_tuition (String ID)
   {
-
-    String e ; 
-    System.out.println("---------------------- Show tuition of student------------------- ");
+    
     for (Student st : studentList)
     {
       if (ID.equals(st.getID_STUDENT()))
       {
-        e=st.getStudentClass();
+        
+         String e=st.getStudentClass();
+        
         for (StudentClass CLASS :classes)
         {
           if (e.equals(CLASS.getID_class()))
           {
-              System.out.println (CLASS.Price_student());
+            if (CLASS.getTypes().equals("Day boarding"))     
+          {
+              Day_boarding noitru= new Day_boarding();
+              System.out.println(" Show tuition of  "+ st.getName() +" has ID is "+ ID +" :"+noitru.Price_student());
+          } 
+           else if (CLASS.getTypes().equals("Boarding"))
+          {
+            Boarding bantru= new Boarding();
+             System.out.println(" Show tuition "+ ID +" :" +bantru.Price_student());
+          }
+          else if ( CLASS.getTypes().equals("Outpatient"))
+          {
+            Outpatient ngoaitru = new Outpatient();
+            System.out.println(" Show tuition "+ ID +" :" +ngoaitru.Price_student());
+          }
           }
         }
       }
-      }
-
     }
+
+  }
     
 
 
@@ -436,9 +450,9 @@ public class DSCLASS implements Function
     {
       DSCLASS a = new DSCLASS();
     //   a. show_tuition("966770042");  
-    // ReadData("StudentManagement\\StudentProject\\StudentClass.txt");
+     Read_isclasses("D:\\StudentManagement\\StudentClass.txt");
      ReadData("StudentFile.txt");
-    a.show_tuition("3122411007");
+     a.show_tuition("3122411007");
      }
 }
 
