@@ -122,6 +122,8 @@ public class DSCLASS implements Function
     int n = r.nextInt();
     for (int i=0;i <n ;i++)
     {
+      System.out.println ("                      Add class number "+(i+1));
+      System.out.println (" --------------------------------------------------------------");
       StudentClass Add_CLASS = new StudentClass();
       Add_CLASS.input();
       classes.add(Add_CLASS);  
@@ -150,7 +152,8 @@ public class DSCLASS implements Function
     int n = r.nextInt();
     for (int i=0;i <n ;i++)
     {
-      System.out.println (" Which method do you want to delete ?  " );
+       System.out.println ("                      Delete class number "+(i+1));
+      System.out.println (" * Which method do you want to delete ?  " );
       System.out.println("1. ID-CLASS");
       System.out.println("2. ID-Teacher");
       System.out.print (" Enter : ");
@@ -164,7 +167,7 @@ public class DSCLASS implements Function
           while (iterator.hasNext())// duyet qua danh sach va xoa phan tu tai vi tri mong muon
           {
             StudentClass studentClass= iterator.next();//được sử dụng để lấy phần tử tiếp theo trong danh sách ArrayList thông qua Iterator.
-            if (find.equals(studentClass.getID_grade()))
+            if (find.equals(studentClass.getID_class()))
             {
                 iterator.remove();
             }
@@ -196,62 +199,67 @@ public class DSCLASS implements Function
     Scanner r = new Scanner(System.in);
     System.out.println ("\n");
     System.out.println (" Which method do you want to seacher?  " );
-    System.out.println("1. ID-CLASS");
-       System.out.println("2. ID-Teacher");
-       System.out.print (" Enter : ");
-       int choice =r.nextInt();
-       r.nextLine();
-       if (choice==1)
+    System.out.println("1. ID CLASS");
+    System.out.println("2. IDTeacher");
+    System.out.print (" Enter : ");
+    int choice =r.nextInt();
+    r.nextLine();
+    if (choice==1)
+    {
+      System.out.println("Enter ID-Class ");
+      String find=r.nextLine();
+      for (StudentClass CLASS:classes)
       {
-        System.out.println("Enter ID-Class ");
-        String find=r.nextLine();
-        for (StudentClass CLASS:classes)
+        if (find.equals(CLASS.getID_class()))
         {
-          if (find.equals(CLASS.getID_class()))
-          {
-              System.out.printf("%-15s%-15s%-15s%-20s\n" , "Grade", "Class", "ID Teacher", " Type of class");
-              System.out.println("-----------------------------------------------------------");
-              System.out.print("\n");        
-              System.out.printf("%-15s%-15s%-15s%-20s", CLASS.getID_grade(), CLASS.getID_class(), CLASS.getID_teacher(),CLASS.getTypes(),CLASS);
+          System.out.printf("%-15s%-15s%-15s%-20s\n" , "Grade", "Class", "ID Teacher", " Type of class");
+          System.out.println("-----------------------------------------------------------");
+          System.out.print("\n");        
+          System.out.printf("%-15s%-15s%-15s%-20s", CLASS.getID_grade(), CLASS.getID_class(), CLASS.getID_teacher(),CLASS.getTypes(),CLASS);
   
-          }
-        }
-      }
-      else if (choice ==2)
-      {
-        System.out.print("Enter ID-Teacher ");
-        String find=r.nextLine();
-        for (StudentClass CLASS:classes)
-        {
-          if (find.equals(CLASS.getID_teacher()))
-          {
-              System.out.printf("%-15s%-15s%-15s%-20s\\n", "Grade", "Class", "ID Teacher", " Type of class");
-              System.out.println("----------------------------------------------------------");
-              System.out.print("\n");        
-              System.out.printf("%-15s%-15s%-15s%-20s", CLASS.getID_grade(), CLASS.getID_class(), CLASS.getID_teacher(),CLASS.getTypes());
-  
-          }
         }
       }
     }
+    else if (choice ==2)
+    {
+      System.out.print("Enter ID-Teacher ");
+      String find=r.nextLine();
+      for (StudentClass CLASS:classes)
+      {
+        if (find.equals(CLASS.getID_teacher()))
+        {
+          System.out.printf("%-15s%-15s%-15s%-20s\\n", "Grade", "Class", "ID Teacher", " Type of class");
+          System.out.println("----------------------------------------------------------");
+          System.out.print("\n");        
+          System.out.printf("%-15s%-15s%-15s%-20s", CLASS.getID_grade(), CLASS.getID_class(), CLASS.getID_teacher(),CLASS.getTypes());
+        }
+      }
+    }
+  }
 
 
-    public void modify()
+  public void modify()
     {
       Scanner r = new Scanner(System.in);
       System.out.println("\n");
       System.out.println ("---------------------------- Modify---------------");
-      System.out.println ("Enter ID-CLASS : ");
+      System.out.print ("Enter ID-CLASS : ");
       String find= r.nextLine();
       for (StudentClass CLASS:classes)
       {
         if (find.equals(CLASS.getID_class()))
         {
           CLASS.input();
+           show();
+        }
+        else 
+        {
+          System.out.println ("The class you just searched for has been previously deleted");
+          break;
         }
       }
 
-      show();
+     
 
     }
 
@@ -330,7 +338,7 @@ public class DSCLASS implements Function
             System.out.println("6. View fee");
             System.out.println("8. Save From File");
             System.out.println("0. Exit");
-            System.out.println("Enter your choice: ");
+            System.out.print("Enter your choice: ");
              choice = sc.nextInt();
             switch (choice) 
             {
@@ -409,7 +417,7 @@ public class DSCLASS implements Function
       DSCLASS a = new DSCLASS("StudentClass.txt");
     //   a. show_tuition("966770042");  
     //  a.show_tuition("3122411007");
-     a.show();
+     a.menu();
 
     }
 }
