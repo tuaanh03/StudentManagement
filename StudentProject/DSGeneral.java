@@ -12,7 +12,7 @@ public class DSGeneral {
 
     public DSGeneral()
     {
-        DSCLASS a=new DSCLASS("StudentClass.txt");
+        DSCLASS f=new DSCLASS("StudentClass.txt");
         DSStudent b=new DSStudent("StudentFile.txt");
         DSSubject c=new DSSubject("SubjectFile.txt");
         QLTeacher d=new QLTeacher("TeacherFile.txt");
