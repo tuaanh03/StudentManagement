@@ -276,48 +276,10 @@ public class DSCLASS implements Function
       }
     } 
   }
-  public static ArrayList<Student> ReadData(String filePath) 
-    {
-
-      FileInputStream fis = null;
-      InputStreamReader reade = null;
-      BufferedReader reader = null;
-
-      try  {
-          fis = new FileInputStream("StudentFile.txt");
-          reade = new InputStreamReader(fis, StandardCharsets.UTF_8);
-          reader = new BufferedReader(reade);
-          String line = null;
-          while ((line = reader.readLine())  != null) {
-              if (line.isEmpty())
-              {
-                  continue;
-              }
-              Student stu = new Student();
-              String[] arr = line.split(",");// 1 line chuoi nen la dung String
-              stu.setName(arr[0].trim());
-              stu.setBirth(arr[1].trim());
-              stu.setAddress(arr[2].trim());
-              stu.setGender(Integer.parseInt(arr[3].trim()));
-              stu.setMail(arr[4].trim());
-              stu.setPhoneNumber(Integer.parseInt(arr[5].trim()));
-              stu.setID_STUDENT(arr[6]);
-              stu.setGrade(Integer.parseInt(arr[7].trim()));
-              stu.setStudentClass(arr[8]);
-              studentList.add(stu);
-          }
-          System.out.println("Read File Successful");
-          reader.close();
-      } catch (Exception e) {
-          System.out.println("An error occurred: " + e.getMessage());
-      }
-      return studentList;
-  }
-  
   public void show_tuition (String ID)
   {
-    
-    for (Student st : studentList)
+    DSStudent a =new DSStudent("StudentFile.txt");
+    for (Student st : a.studentList)
     {
       if (ID.equals(st.getID_STUDENT()))
       {
@@ -442,10 +404,8 @@ public class DSCLASS implements Function
 
     public static void main(String[] args) 
     {
-      DSCLASS a = new DSCLASS();
+      DSCLASS a = new DSCLASS("StudentClass.txt");
     //   a. show_tuition("966770042");  
-     Read_isclasses("D:\\StudentManagement\\StudentClass.txt");
-     ReadData("StudentFile.txt");
      a.show_tuition("3122411007");
      }
 }
