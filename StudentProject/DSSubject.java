@@ -15,7 +15,54 @@ import java.nio.charset.StandardCharsets;
 public class DSSubject implements Function 
 {
 
+    
+    public DSSubject (String filePath)
+    {
+        ArrayList<Subject> subjectList = new ArrayList<Subject>();
+        FileInputStream fis = null;
+        InputStreamReader reade = null;
+        BufferedReader reader = null;
 
+        try  {
+            fis = new FileInputStream("StudentManagement/StudentProject/SubjectFile.txt");
+            reade = new InputStreamReader(fis, StandardCharsets.UTF_8);
+            reader = new BufferedReader(reade);
+            String line = null;
+            while ((line = reader.readLine())  != null) {
+                if (line.isEmpty())
+                {
+                    continue;
+                }
+                Subject sb = new Subject();
+                String[] arr = line.split(",");// 1 line chuoi nen la dung String
+                sb.setID_STUDENT(arr[0].trim());
+                sb.setname_SJ(arr[1].trim());
+                sb.setpointGK_SJ(Double.parseDouble(arr[2].trim()));
+                sb.setpointCK_SJ(Double.parseDouble(arr[3].trim()));
+                subjectList.add(sb);
+            }
+            System.out.println("Read File Successful");
+            reader.close();
+        } catch (Exception e) {
+            System.out.println("An error occurred: " + e.getMessage());
+        }
+    }
+
+
+    public void SaveData(String f) {
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(f))) {
+            for (Subject sb : subjectList) {
+                writer.write(sb.getID_STUDENT() + "," + sb.getname_SJ() + "," + sb.getpointGK_SJ() + "," + sb.getpointCK_SJ());
+                writer.newLine();
+            }
+            System.out.println("Read File Successful");
+            writer.close();
+        } catch (Exception e) {
+            System.out.println("An error occurred: " + e.getMessage());
+        }
+
+    }
    static ArrayList<Subject> subjectList = new ArrayList<Subject>();
     
      public static ArrayList<Subject> ReadData(String f) {
@@ -50,22 +97,6 @@ public class DSSubject implements Function
         return subjectList ;
     }
 
-
-    public void SaveData(String f) {
-
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(f))) {
-            for (Subject sb : subjectList) {
-                writer.write(sb.getID_STUDENT() + "," + sb.getname_SJ() + "," + sb.getpointGK_SJ() + "," + sb.getpointCK_SJ());
-                writer.newLine();
-            }
-            System.out.println("Read File Successful");
-            writer.close();
-        } catch (Exception e) {
-            System.out.println("An error occurred: " + e.getMessage());
-        }
-
-    }
-   
     public void add() {
         Scanner sc = new Scanner(System.in);
         char addSubject;
@@ -283,5 +314,9 @@ public void show ()
                 }
             }
         } while (choice != 0);
+    }
+    public static void main(String[] args) {
+        DSSubject a=new DSSubject("StudentProject\\SubjectFile.txt");
+        a.show();
     }
  }

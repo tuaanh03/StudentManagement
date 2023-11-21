@@ -1,4 +1,5 @@
 package StudentProject;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileInputStream;
@@ -9,14 +10,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class DSStudent implements Function
-{
-    public static ArrayList<Student> studentList = new ArrayList<>();
+public class DSKQHT {
+    public static ArrayList<KQHT> resultList = new ArrayList<>();
     public void add() 
     {
-        Student stu = new Student();
-        stu.input();
-        studentList.add(stu);
+        KQHT result = new KQHT();
+        result.input();
+        resultList.add(result);
     }
 
     public void show() {
@@ -140,59 +140,4 @@ public class DSStudent implements Function
 
     }
 
-    public void input()
-    {
-        ReadData("StudentFile.txt");
-        int choice;
-        Scanner sc = new Scanner(System.in);
-        do 
-        {
-            System.out.println("1. Add Student");
-            System.out.println("2. Delete Student");
-            System.out.println("3. Search Student");
-            System.out.println("4. Modify Student");
-            System.out.println("5. Display Students");
-            System.out.println("6. Save From File");
-            System.out.println("0. Exit");
-            System.out.println("Enter your choice: ");
-            choice = sc.nextInt();
-            switch (choice) {
-                case 1: {
-                    add();
-                    break;
-                }
-                case 2: {
-                    delete();
-                    break;
-                }
-                case 3: {
-                    search();
-                    break;
-                }
-                case 4: {
-                    modify();
-                    break;
-                }
-                case 5: {
-                    show();
-                    break;
-                }
-                case 6: {
-                    SaveData("StudentFile.txt");
-                    break;
-                }
-
-                case 0: {
-                    System.out.println("Thanks for using!");
-                    break;
-                }
-                default: {
-                    System.out.println("Invalid choice. Please try again.");
-                    break;
-                }
-            }
-        } while (choice != 0);
-    }
 }
-
-
