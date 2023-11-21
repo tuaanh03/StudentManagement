@@ -336,7 +336,7 @@ public class DSCLASS implements Function
             System.out.println("4. Modify Class");
             System.out.println("5. Display Class");
             System.out.println("6. View fee");
-            System.out.println("8. Save From File");
+            System.out.println("7. Save From File");
             System.out.println("0. Exit");
             System.out.print("Enter your choice: ");
              choice = sc.nextInt();
@@ -381,17 +381,11 @@ public class DSCLASS implements Function
                 System.out.println("\n");
                 break;
               }
-              // case 7:
-              // {
-              //   Read_isclasses("StudentManagement\\StudentProject\\StudentClass.txt");
-              //   show();
-              //   System.out.println("\n");
-              //   break;
-              // }
-
-              case 8:
+              case 7:
               {
-                
+                SaveData("StudentManagement\\StudentProject\\StudentClass.txt");
+                show();
+                System.out.println("\n");
                 break;
               }
               case 0:

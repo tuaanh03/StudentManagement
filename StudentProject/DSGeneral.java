@@ -103,6 +103,7 @@ public class DSGeneral {
         {
             System.out.println("1. Student management");
             System.out.println("2. Teacher management");
+            System.out.println("3. Class management");
             System.out.println("0. Exit");
             System.out.println("Enter your choice: ");
             choice = sc.nextInt();
@@ -115,6 +116,11 @@ public class DSGeneral {
                 case 2: {
                     QLTeacher tea = new QLTeacher("TeacherFile.txt");
                     tea.input();
+                    break;
+                }
+                case 3:{
+                    DSCLASS a= new DSCLASS("StudentClass.txt");
+                    a.menu();
                     break;
                 }
                 case 0: {
