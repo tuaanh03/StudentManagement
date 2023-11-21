@@ -136,8 +136,7 @@ public class DSGeneral {
     public void login_account()
     {
         loginAccount UA = new loginAccount();
-        Student stu = new Student();
-        Teacher tea = new Teacher();
+     
         UA.input();
         if ((UA.getID_USER().equals(studentUsername)) && (UA.getPASSWORD().equals(studentPassword)))
         {
