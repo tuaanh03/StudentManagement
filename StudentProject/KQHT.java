@@ -8,9 +8,9 @@ import java.util.Scanner;
 
 public class KQHT
 { 
-  private String ID_STUDENT;
-  private ArrayList<Subject> name_SJ;
-  public String getID_STUDENT()
+  static ArrayList<Subject> subjectList = new ArrayList<Subject>();
+    
+  public KQHT (String filePath)
   {
       
       FileInputStream fis = null;
@@ -41,6 +41,7 @@ public class KQHT
           System.out.println("An error occurred: " + e.getMessage());
       }
   }
+ 
 
   public void studyResultByID(String id) //id student truyen vao o main
   {
