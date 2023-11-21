@@ -12,6 +12,10 @@ import java.util.Scanner;
 
 public class DSKQHT {
     public static ArrayList<KQHT> resultList = new ArrayList<>();
+    public DSKQHT()
+    {
+        DSSubject subList=new DSSubject("SubjectFile.txt");
+    }
     public void add() 
     {
         KQHT result = new KQHT();
