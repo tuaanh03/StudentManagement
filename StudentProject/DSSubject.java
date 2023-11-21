@@ -50,7 +50,7 @@ public class DSSubject implements Function
 
 
     public void SaveData(String f) {
-
+        System.out.println();
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(f))) {
             for (Subject sb : subjectList) {
                 writer.write(sb.getID_STUDENT() + "," + sb.getname_SJ() + "," + sb.getpointGK_SJ() + "," + sb.getpointCK_SJ());
