@@ -13,7 +13,8 @@ import javax.security.auth.Subject;
 import java.util.Iterator;
 
 public class KQHT
-{ private String ID_STUDENT;
+{ 
+  private String ID_STUDENT;
   private ArrayList<Subject> name_SJ;
   public String getID_STUDENT()
   {
