@@ -15,17 +15,16 @@ import java.nio.charset.StandardCharsets;
 public class DSSubject implements Function 
 {
 
-
-   static ArrayList<Subject> subjectList = new ArrayList<Subject>();
-    
-     public static ArrayList<Subject> ReadData(String f) {
-
+    public ArrayList<Subject> subjectList=new ArrayList<>();
+    public DSSubject (String filePath)
+    {
+        
         FileInputStream fis = null;
         InputStreamReader reade = null;
         BufferedReader reader = null;
 
         try  {
-            fis = new FileInputStream("StudentManagement/StudentProject/SubjectFile.txt");
+            fis = new FileInputStream(filePath);
             reade = new InputStreamReader(fis, StandardCharsets.UTF_8);
             reader = new BufferedReader(reade);
             String line = null;
@@ -47,7 +46,6 @@ public class DSSubject implements Function
         } catch (Exception e) {
             System.out.println("An error occurred: " + e.getMessage());
         }
-        return subjectList ;
     }
 
 
@@ -65,7 +63,39 @@ public class DSSubject implements Function
         }
 
     }
-   
+    
+    //  public static ArrayList<Subject> ReadData(String f) {
+
+    //     FileInputStream fis = null;
+    //     InputStreamReader reade = null;
+    //     BufferedReader reader = null;
+
+    //     try  {
+    //         fis = new FileInputStream("StudentManagement/StudentProject/SubjectFile.txt");
+    //         reade = new InputStreamReader(fis, StandardCharsets.UTF_8);
+    //         reader = new BufferedReader(reade);
+    //         String line = null;
+    //         while ((line = reader.readLine())  != null) {
+    //             if (line.isEmpty())
+    //             {
+    //                 continue;
+    //             }
+    //             Subject sb = new Subject();
+    //             String[] arr = line.split(",");// 1 line chuoi nen la dung String
+    //             sb.setID_STUDENT(arr[0].trim());
+    //             sb.setname_SJ(arr[1].trim());
+    //             sb.setpointGK_SJ(Double.parseDouble(arr[2].trim()));
+    //             sb.setpointCK_SJ(Double.parseDouble(arr[3].trim()));
+    //             subjectList.add(sb);
+    //         }
+    //         System.out.println("Read File Successful");
+    //         reader.close();
+    //     } catch (Exception e) {
+    //         System.out.println("An error occurred: " + e.getMessage());
+    //     }
+    //     return subjectList ;
+    // }
+
     public void add() {
         Scanner sc = new Scanner(System.in);
         char addSubject;
@@ -124,10 +154,10 @@ public class DSSubject implements Function
     
 
 public void modify() {
-    Scanner scanner = new Scanner(System.in);
+    Scanner sc = new Scanner(System.in);
 
     System.out.println("Enter the ID_STUDENT of the subject to modify:");
-    String ID = scanner.nextLine();
+    String ID = sc.nextLine();
     ArrayList<Subject> subjectModify = new ArrayList<>();
 
     // Iterate through the subjectList to find subjects for the given ID
@@ -144,17 +174,17 @@ public void modify() {
         }
 
         System.out.println("Enter the number corresponding to the subject you want to modify:");
-        int subjectNumber = scanner.nextInt();
+        int subjectNumber = sc.nextInt();
 
         if (subjectNumber >= 1 && subjectNumber <= subjectModify.size()) {
             Subject subjecttoModify = subjectModify.get(subjectNumber - 1);
             System.out.println("Modifying subject: " + subjecttoModify.getname_SJ());
             // Prompt user for new pointGK and pointCK
             System.out.println("Enter new pointGK for the subject:");
-            double newPointGK = scanner.nextDouble();
+            double newPointGK = sc.nextDouble();
 
             System.out.println("Enter new pointCK for the subject:");
-            double newPointCK = scanner.nextDouble();
+            double newPointCK = sc.nextDouble();
 
             // Update the points for the subjecttoModify
             subjecttoModify.setpointGK_SJ(newPointGK);
@@ -262,7 +292,6 @@ public void show ()
                     break;
                 }
                 case 6: {
-                    ReadData("StudentManagement/StudentProject/SubjectFile.txt");
                     System.out.print("\n"); 
                     System.out.println("-----------------------------------------------------------");
                     break;
@@ -283,5 +312,9 @@ public void show ()
                 }
             }
         } while (choice != 0);
+    }
+    public static void main(String[] args) {
+        DSSubject a=new DSSubject("SubjectFile.txt");
+        a.show();
     }
  }

@@ -11,44 +11,41 @@ import java.util.Iterator;
 public class DSCLASS implements Function
 {            
   static ArrayList<StudentClass> classes = new ArrayList<StudentClass>();
-  
-//   public static ArrayList<StudentClass> ReadData(String f)
-//  {
-//   // khoi tao rong
-//   FileInputStream fis = null; // Lớp này được sử dụng để đọc dữ liệu từ một file trong hệ thống tệp tin. 
-//   InputStreamReader reade = null;//Lớp này được sử dụng để đọc dữ liệu từ một luồng byte (byte stream) và chuyển đổi nó thành dữ liệu ký tự (character data). Trong đoạn mã trên, giá trị của reade được gán bằng null.
-//   BufferedReader reader = null;//Lớp này cung cấp các phương thức để đọc dữ liệu từ một luồng ký tự (character stream) với hiệu suất tối ưu hơn. 
-//   try 
-//   {
-//     fis = new FileInputStream("D:\\StudentManagement\\StudentProject\\StudentClass.txt");
-//     reade = new InputStreamReader(fis, StandardCharsets.UTF_8);
-//     reader = new BufferedReader(reade);
-//     String line = null;
-//     while ((line = reader.readLine())  != null) 
-//       {  
-//         if (line.isEmpty())
-//         {
-//             continue;
-//         }
-//         String[] arr = line.split("\\s*,\\s*");
-//         StudentClass CLASS = new StudentClass();
-//         CLASS.setID_grade(arr[0].trim());
-//         CLASS.setID_class(arr[1].trim());
-//         CLASS.setID_teacher(arr[2].trim());
-//         CLASS.setTypes(arr[3].trim());
-//         classes.add(CLASS);      
-//       }
-//     System.out.println("Read File Successful");
-//     reader.close();
-//     }
-//     catch (Exception e)
-//     {
-//       System.out.println("An error occurred: " + e.getMessage());
-//       e.printStackTrace();
-//     }
-//      return classes;
-  //}
-  
+  public DSCLASS (String filePath)
+  {
+    FileInputStream fis = null; // Lớp này được sử dụng để đọc dữ liệu từ một file trong hệ thống tệp tin. 
+  InputStreamReader reade = null;//Lớp này được sử dụng để đọc dữ liệu từ một luồng byte (byte stream) và chuyển đổi nó thành dữ liệu ký tự (character data). Trong đoạn mã trên, giá trị của reade được gán bằng null.
+  BufferedReader reader = null;//Lớp này cung cấp các phương thức để đọc dữ liệu từ một luồng ký tự (character stream) với hiệu suất tối ưu hơn. 
+  try 
+  {
+    fis = new FileInputStream(filePath);
+    reade = new InputStreamReader(fis, StandardCharsets.UTF_8);
+    reader = new BufferedReader(reade);
+    String line = null;
+    while ((line = reader.readLine())  != null) 
+      {  
+        if (line.isEmpty())
+        {
+            continue;
+        }
+        String[] arr = line.split("\\s*,\\s*");
+        StudentClass CLASS = new StudentClass();
+        CLASS.setID_grade(arr[0].trim());
+        CLASS.setID_class(arr[1].trim());
+        CLASS.setID_teacher(arr[2].trim());
+        CLASS.setTypes(arr[3].trim());
+        classes.add(CLASS);
+      }
+    System.out.println("Read File Successful");
+    reader.close();
+    }
+    catch (Exception e)
+    {
+      System.out.println("An error occurred: " + e.getMessage());
+      e.printStackTrace();
+    }
+  }
+
   public void SaveData(String f)
   {
     try (BufferedWriter writer = new BufferedWriter(new FileWriter(f)))
@@ -66,7 +63,7 @@ public class DSCLASS implements Function
       }
 
   }
-     public static ArrayList<StudentClass> is_classes(String f)
+     public static ArrayList<StudentClass> Read_isclasses(String f)
  {
   // khoi tao rong
   FileInputStream fis = null; // Lớp này được sử dụng để đọc dữ liệu từ một file trong hệ thống tệp tin. 
@@ -74,7 +71,7 @@ public class DSCLASS implements Function
   BufferedReader reader = null;//Lớp này cung cấp các phương thức để đọc dữ liệu từ một luồng ký tự (character stream) với hiệu suất tối ưu hơn. 
   try 
   {
-    fis = new FileInputStream("D:\\StudentManagement\\StudentProject\\StudentClass.txt");
+    fis = new FileInputStream("D:\\StudentManagement\\StudentClass.txt");
     reade = new InputStreamReader(fis, StandardCharsets.UTF_8);
     reader = new BufferedReader(reade);
     String line = null;
@@ -137,9 +134,9 @@ public class DSCLASS implements Function
     System.out.println ("----------------- List Class------------------");
     System.out.printf("%-15s%-15s%-15s%-20s\n", "Grade", "Class", "ID Teacher", "ID Childminder,Types of class");
     System.out.println("-----------------------------------------------------------");
-    for (StudentClass CLASS : classes) 
+    for (StudentClass CLASS : classes)
     {
-      System.out.print("\n");        
+      System.out.print("\n");
       System.out.printf("%-15s%-15s%-15s%-20s", CLASS.getID_grade(), CLASS.getID_class(), CLASS.getID_teacher(),CLASS.getTypes());
     }
 
@@ -279,6 +276,81 @@ public class DSCLASS implements Function
       }
     } 
   }
+  public static ArrayList<Student> ReadData(String filePath) 
+    {
+
+      FileInputStream fis = null;
+      InputStreamReader reade = null;
+      BufferedReader reader = null;
+
+      try  {
+          fis = new FileInputStream("StudentFile.txt");
+          reade = new InputStreamReader(fis, StandardCharsets.UTF_8);
+          reader = new BufferedReader(reade);
+          String line = null;
+          while ((line = reader.readLine())  != null) {
+              if (line.isEmpty())
+              {
+                  continue;
+              }
+              Student stu = new Student();
+              String[] arr = line.split(",");// 1 line chuoi nen la dung String
+              stu.setName(arr[0].trim());
+              stu.setBirth(arr[1].trim());
+              stu.setAddress(arr[2].trim());
+              stu.setGender(Integer.parseInt(arr[3].trim()));
+              stu.setMail(arr[4].trim());
+              stu.setPhoneNumber(Integer.parseInt(arr[5].trim()));
+              stu.setID_STUDENT(arr[6]);
+              stu.setGrade(Integer.parseInt(arr[7].trim()));
+              stu.setStudentClass(arr[8]);
+              studentList.add(stu);
+          }
+          System.out.println("Read File Successful");
+          reader.close();
+      } catch (Exception e) {
+          System.out.println("An error occurred: " + e.getMessage());
+      }
+      return studentList;
+  }
+  
+  public void show_tuition (String ID)
+  {
+    
+    for (Student st : studentList)
+    {
+      if (ID.equals(st.getID_STUDENT()))
+      {
+        
+         String e=st.getStudentClass();
+        
+        for (StudentClass CLASS :classes)
+        {
+          if (e.equals(CLASS.getID_class()))
+          {
+            if (CLASS.getTypes().equals("Day boarding"))     
+          {
+              Day_boarding noitru= new Day_boarding();
+              System.out.println(" Show tuition of  "+ st.getName() +" has ID is "+ ID +" :"+noitru.Price_student());
+          } 
+           else if (CLASS.getTypes().equals("Boarding"))
+          {
+            Boarding bantru= new Boarding();
+             System.out.println(" Show tuition of  "+ st.getName() +" has ID is "+ ID +" :"+bantru.Price_student());
+          }
+          else if ( CLASS.getTypes().equals("Outpatient"))
+          {
+            Outpatient ngoaitru = new Outpatient();
+            System.out.println(" Show tuition of  "+ st.getName() +" has ID is "+ ID +" :"+ngoaitru.Price_student());
+          }
+          }
+        }
+      }
+    }
+
+  }
+    
+
 
   public void menu()
   { 
@@ -291,8 +363,7 @@ public class DSCLASS implements Function
             System.out.println("3. Search Class");
             System.out.println("4. Modify Class");
             System.out.println("5. Display Class");
-            System.out.println("6. view fee");
-            //System.out.println("7. Load From File");
+            System.out.println("6. View fee");
             System.out.println("8. Save From File");
             System.out.println("0. Exit");
             System.out.println("Enter your choice: ");
@@ -327,7 +398,7 @@ public class DSCLASS implements Function
 
               case 5:
               {
-                is_classes("StudentManagement\\StudentProject\\StudentClass.txt");
+                Read_isclasses("StudentManagement\\StudentProject\\StudentClass.txt");
                 show();
                 System.out.println ("\n");
                 break;
@@ -340,7 +411,7 @@ public class DSCLASS implements Function
               }
               // case 7:
               // {
-              //   is_classes("StudentManagement\\StudentProject\\StudentClass.txt");
+              //   Read_isclasses("StudentManagement\\StudentProject\\StudentClass.txt");
               //   show();
               //   System.out.println("\n");
               //   break;
@@ -365,7 +436,18 @@ public class DSCLASS implements Function
  
             }
         } while (choice != 0);
+
+  
     }
+
+    public static void main(String[] args) 
+    {
+      DSCLASS a = new DSCLASS();
+    //   a. show_tuition("966770042");  
+     Read_isclasses("D:\\StudentManagement\\StudentClass.txt");
+     ReadData("StudentFile.txt");
+     a.show_tuition("3122411007");
+     }
 }
 
 

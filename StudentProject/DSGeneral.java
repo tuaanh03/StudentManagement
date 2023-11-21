@@ -10,7 +10,14 @@ public class DSGeneral {
     final private String adminUsername="admin123";
     final private String adminPassword="123456789";
 
-    public void user()
+    public DSGeneral()
+    {
+        DSCLASS a=new DSCLASS("StudentClass.txt");
+        DSStudent b=new DSStudent("StudentFile.txt");
+        DSSubject c=new DSSubject("SubjectFile.txt");
+        QLTeacher d=new QLTeacher("TeacherFile.txt");
+    }
+    public void user(String pass)
     {
         int choice;
         Scanner sc = new Scanner(System.in);
@@ -30,6 +37,8 @@ public class DSGeneral {
                     break;
                 }
                 case 3: {
+                    DSCLASS a=new DSCLASS("StudentManagement\\StudentClass.txt");
+                    a.show_tuition(pass);
                     break;
                 }
                 case 0: {
@@ -94,22 +103,18 @@ public class DSGeneral {
         {
             System.out.println("1. Student management");
             System.out.println("2. Teacher management");
-            System.out.println("3. Save all edits");
             System.out.println("0. Exit");
             System.out.println("Enter your choice: ");
             choice = sc.nextInt();
             switch (choice) {
                 case 1: {
-                    DSStudent stu = new DSStudent();
-                    stu.input();
+                    DSStudent a=new DSStudent("StudentFile.txt");
+                    a.input();
                     break;
                 }
                 case 2: {
-                    QLTeacher tea = new QLTeacher();
+                    QLTeacher tea = new QLTeacher("TeacherFile.txt");
                     tea.input();
-                    break;
-                }
-                case 3: {
                     break;
                 }
                 case 0: {

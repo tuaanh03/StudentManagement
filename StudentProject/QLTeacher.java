@@ -12,7 +12,40 @@ import java.util.Scanner;
 
 public class QLTeacher implements Function{
     static List<Teacher> teacherList = new ArrayList<Teacher>();
+public QLTeacher(String filePath)
+{
+        FileInputStream fis = null;
+        InputStreamReader reade = null;
+        BufferedReader reader = null;
 
+        try  {
+            fis = new FileInputStream(filePath);
+            reade = new InputStreamReader(fis, StandardCharsets.UTF_8);
+            reader = new BufferedReader(reade);
+            String line = null;
+            while ((line = reader.readLine())  != null) {
+                if (line.isEmpty())
+                {
+                    continue;
+                }
+                Teacher tea = new Teacher();
+                String[] arr = line.split(",");// 1 line chuoi nen la dung String
+                tea.setName(arr[0].trim());
+                tea.setBirth(arr[1].trim());
+                tea.setAddress(arr[2].trim());
+                tea.setGender(Integer.parseInt(arr[3].trim()));
+                tea.setMail(arr[4].trim());
+                tea.setPhoneNumber(Integer.parseInt(arr[5].trim()));
+                tea.setID_GV(arr[6]);
+                tea.setID_CLASS(arr[7]);
+                teacherList.add(tea);
+            }
+            System.out.println("Read File Successful");
+            reader.close();
+        } catch (Exception e) {
+            System.out.println("An error occurred: " + e.getMessage());
+        }
+}
     public void add() {
         Teacher tea = new Teacher();
         tea.input();
@@ -86,42 +119,6 @@ public class QLTeacher implements Function{
         }
     }
 
-    public static List<Teacher> ReadData(String filePath) {
-
-        FileInputStream fis = null;
-        InputStreamReader reade = null;
-        BufferedReader reader = null;
-
-        try  {
-            fis = new FileInputStream(filePath);
-            reade = new InputStreamReader(fis, StandardCharsets.UTF_8);
-            reader = new BufferedReader(reade);
-            String line = null;
-            while ((line = reader.readLine())  != null) {
-                if (line.isEmpty())
-                {
-                    continue;
-                }
-                Teacher tea = new Teacher();
-                String[] arr = line.split(",");// 1 line chuoi nen la dung String
-                tea.setName(arr[0].trim());
-                tea.setBirth(arr[1].trim());
-                tea.setAddress(arr[2].trim());
-                tea.setGender(Integer.parseInt(arr[3].trim()));
-                tea.setMail(arr[4].trim());
-                tea.setPhoneNumber(Integer.parseInt(arr[5].trim()));
-                tea.setID_GV(arr[6]);
-                tea.setID_CLASS(arr[7]);            
-                teacherList.add(tea);
-            }
-            System.out.println("Read File Successful");
-            reader.close();
-        } catch (Exception e) {
-            System.out.println("An error occurred: " + e.getMessage());
-            
-        }
-        return teacherList;
-    }
 
     public void SaveData(String filepath) {
 
@@ -129,7 +126,6 @@ public class QLTeacher implements Function{
             for (Teacher st : teacherList) {
                 writer.write(st.getName() + "," + st.getBirth() + "," + st.getAddress() + "," + st.isGender() + ","
                         + st.getMail() + "," + st.getPhoneNumber() + "," + st.getID_GV() + "," + st.getID_CLASS());
-                      
                 writer.newLine();
             }
             System.out.println("Save File Successful");
@@ -175,11 +171,6 @@ public class QLTeacher implements Function{
                     show();
                     break;
                 }
-                case 6: {
-                    ReadData("TeacherFile.txt");
-                    break;
-                }
-
                 case 7: {
                     SaveData("TeacherFile.txt");
                     break;

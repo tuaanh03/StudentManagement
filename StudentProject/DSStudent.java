@@ -12,6 +12,41 @@ import java.util.Scanner;
 public class DSStudent implements Function
 {
     public static ArrayList<Student> studentList = new ArrayList<>();
+    public DSStudent(String filePath)
+    {
+        FileInputStream fis = null;
+        InputStreamReader reade = null;
+        BufferedReader reader = null;
+
+        try  {
+            fis = new FileInputStream(filePath);
+            reade = new InputStreamReader(fis, StandardCharsets.UTF_8);
+            reader = new BufferedReader(reade);
+            String line = null;
+            while ((line = reader.readLine())  != null) {
+                if (line.isEmpty())
+                {
+                    continue;
+                }
+                Student stu = new Student();
+                String[] arr = line.split(",");// 1 line chuoi nen la dung String
+                stu.setName(arr[0].trim());
+                stu.setBirth(arr[1].trim());
+                stu.setAddress(arr[2].trim());
+                stu.setGender(Integer.parseInt(arr[3].trim()));
+                stu.setMail(arr[4].trim());
+                stu.setPhoneNumber(Integer.parseInt(arr[5].trim()));
+                stu.setID_STUDENT(arr[6]);
+                stu.setGrade(Integer.parseInt(arr[7].trim()));
+                stu.setStudentClass(arr[8]);
+                studentList.add(stu);
+            }
+            System.out.println("Read File Successful");
+            reader.close();
+        } catch (Exception e) {
+            System.out.println("An error occurred: " + e.getMessage());
+        }
+    }
     public void add() 
     {
         Student stu = new Student();
@@ -88,38 +123,7 @@ public class DSStudent implements Function
 
     public static ArrayList<Student> ReadData(String filePath) {
 
-        FileInputStream fis = null;
-        InputStreamReader reade = null;
-        BufferedReader reader = null;
-
-        try  {
-            fis = new FileInputStream("StudentFile.txt");
-            reade = new InputStreamReader(fis, StandardCharsets.UTF_8);
-            reader = new BufferedReader(reade);
-            String line = null;
-            while ((line = reader.readLine())  != null) {
-                if (line.isEmpty())
-                {
-                    continue;
-                }
-                Student stu = new Student();
-                String[] arr = line.split(",");// 1 line chuoi nen la dung String
-                stu.setName(arr[0].trim());
-                stu.setBirth(arr[1].trim());
-                stu.setAddress(arr[2].trim());
-                stu.setGender(Integer.parseInt(arr[3].trim()));
-                stu.setMail(arr[4].trim());
-                stu.setPhoneNumber(Integer.parseInt(arr[5].trim()));
-                stu.setID_STUDENT(arr[6]);
-                stu.setGrade(Integer.parseInt(arr[7].trim()));
-                stu.setStudentClass(arr[8]);
-                studentList.add(stu);
-            }
-            System.out.println("Read File Successful");
-            reader.close();
-        } catch (Exception e) {
-            System.out.println("An error occurred: " + e.getMessage());
-        }
+        
         return studentList;
     }
 
@@ -142,6 +146,7 @@ public class DSStudent implements Function
 
     public void input()
     {
+        ReadData("StudentFile.txt");
         int choice;
         Scanner sc = new Scanner(System.in);
         do 
@@ -151,8 +156,7 @@ public class DSStudent implements Function
             System.out.println("3. Search Student");
             System.out.println("4. Modify Student");
             System.out.println("5. Display Students");
-            System.out.println("6. Load From File");
-            System.out.println("7. Save From File");
+            System.out.println("6. Save From File");
             System.out.println("0. Exit");
             System.out.println("Enter your choice: ");
             choice = sc.nextInt();
@@ -178,11 +182,6 @@ public class DSStudent implements Function
                     break;
                 }
                 case 6: {
-                    ReadData("StudentFile.txt");
-                    break;
-                }
-
-                case 7: {
                     SaveData("StudentFile.txt");
                     break;
                 }
