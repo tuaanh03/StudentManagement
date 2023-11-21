@@ -8,9 +8,9 @@ import java.util.Scanner;
 
 public class KQHT
 { 
-  
-  static public ArrayList<Subject> subjectList=new ArrayList<>();
-  public KQHT (String filePath)
+  private String ID_STUDENT;
+  private ArrayList<Subject> name_SJ;
+  public String getID_STUDENT()
   {
       
       FileInputStream fis = null;

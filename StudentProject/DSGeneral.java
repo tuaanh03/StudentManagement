@@ -10,14 +10,14 @@ public class DSGeneral {
     final private String adminUsername="admin123";
     final private String adminPassword="123456789";
 
-    public DSGeneral()
-    {
-        DSCLASS f=new DSCLASS("StudentClass.txt");
-        DSStudent b=new DSStudent("StudentFile.txt");
-        DSSubject c=new DSSubject("SubjectFile.txt");
-        QLTeacher d=new QLTeacher("TeacherFile.txt");
-    }
-    public void user(String pass)
+    // public DSGeneral()
+    // {
+    //     DSCLASS a=new DSCLASS("StudentClass.txt");
+    //     DSStudent b=new DSStudent("StudentFile.txt");
+    //     DSSubject c=new DSSubject("SubjectFile.txt");
+    //     QLTeacher d=new QLTeacher("TeacherFile.txt");
+    // }
+    public void user(String id)
     {
         int choice;
         Scanner sc = new Scanner(System.in);
@@ -30,7 +30,7 @@ public class DSGeneral {
             System.out.println("Enter your choice: ");
             choice = sc.nextInt();
             switch (choice) {
-                case 1: {
+                case 1: {               
                     break;
                 }
                 case 2: {
@@ -38,7 +38,7 @@ public class DSGeneral {
                 }
                 case 3: {
                     DSCLASS a=new DSCLASS("StudentManagement\\StudentClass.txt");
-                    a.show_tuition(pass);
+                    a.show_tuition(id);
                     break;
                 }
                 case 0: {
@@ -68,13 +68,17 @@ public class DSGeneral {
             System.out.println("Enter your choice: ");
             choice = sc.nextInt();
             switch (choice) {
-                case 1: {
+                case 1: {                    
+                    DSStudent a = new DSStudent("StudentFile.txt");
+                    a.show();
                     break;
                 }
                 case 2: {
                     break;
                 }
                 case 3: {
+                    DSStudent a = new DSStudent("StudentFile.txt");
+                    a.input();
                     break;
                 }
                 case 4: {
@@ -138,10 +142,11 @@ public class DSGeneral {
     public void login_account()
     {
         loginAccount UA = new loginAccount();
+     
         UA.input();
-        if (((UA.getID_USER().equals(studentUsername)) && (UA.getPASSWORD().equals(studentPassword))) ) 
+        if ((UA.getID_USER().equals(studentUsername)) && (UA.getPASSWORD().equals(studentPassword)))
         {
-            user();
+            user(UA.getID_USER());
         }
         if (UA.getID_USER().equals(teacherUsername) && UA.getPASSWORD().equals(teacherPassword))
         {
@@ -150,6 +155,10 @@ public class DSGeneral {
         if (UA.getID_USER().equals(adminUsername) && UA.getPASSWORD().equals(adminPassword))
         {
             admin();
+        }
+        else
+        {
+            System.out.println("Access denied. Please check your Username and your Password ! ");
         }
 
     }
