@@ -154,10 +154,10 @@ public class DSSubject implements Function
     
 
 public void modify() {
-    Scanner scanner = new Scanner(System.in);
+    Scanner sc = new Scanner(System.in);
 
     System.out.println("Enter the ID_STUDENT of the subject to modify:");
-    String ID = scanner.nextLine();
+    String ID = sc.nextLine();
     ArrayList<Subject> subjectModify = new ArrayList<>();
 
     // Iterate through the subjectList to find subjects for the given ID
@@ -174,17 +174,17 @@ public void modify() {
         }
 
         System.out.println("Enter the number corresponding to the subject you want to modify:");
-        int subjectNumber = scanner.nextInt();
+        int subjectNumber = sc.nextInt();
 
         if (subjectNumber >= 1 && subjectNumber <= subjectModify.size()) {
             Subject subjecttoModify = subjectModify.get(subjectNumber - 1);
             System.out.println("Modifying subject: " + subjecttoModify.getname_SJ());
             // Prompt user for new pointGK and pointCK
             System.out.println("Enter new pointGK for the subject:");
-            double newPointGK = scanner.nextDouble();
+            double newPointGK = sc.nextDouble();
 
             System.out.println("Enter new pointCK for the subject:");
-            double newPointCK = scanner.nextDouble();
+            double newPointCK = sc.nextDouble();
 
             // Update the points for the subjecttoModify
             subjecttoModify.setpointGK_SJ(newPointGK);

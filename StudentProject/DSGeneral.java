@@ -10,7 +10,7 @@ public class DSGeneral {
     final private String adminUsername="admin123";
     final private String adminPassword="123456789";
 
-    public void user()
+    public void user(String pass)
     {
         int choice;
         Scanner sc = new Scanner(System.in);
@@ -30,6 +30,8 @@ public class DSGeneral {
                     break;
                 }
                 case 3: {
+                    DSCLASS a=new DSCLASS("StudentManagement\\StudentClass.txt");
+                    a.show_tuition(pass);
                     break;
                 }
                 case 0: {
@@ -94,27 +96,18 @@ public class DSGeneral {
         {
             System.out.println("1. Student management");
             System.out.println("2. Teacher management");
-            System.out.println("3. Save all edits");
             System.out.println("0. Exit");
             System.out.println("Enter your choice: ");
             choice = sc.nextInt();
             switch (choice) {
                 case 1: {
-<<<<<<< HEAD
                     DSStudent a=new DSStudent();
                     a.input();
-=======
-                    DSStudent stu = new DSStudent();
-                    stu.input();
->>>>>>> 7f9452d5e1e60dfde8e2eb854a650ab2a9d21f3a
                     break;
                 }
                 case 2: {
                     QLTeacher tea = new QLTeacher();
                     tea.input();
-                    break;
-                }
-                case 3: {
                     break;
                 }
                 case 0: {
