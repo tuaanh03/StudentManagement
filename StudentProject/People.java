@@ -78,7 +78,7 @@ abstract public class People {
         System.out.println("Enter address: ");
         address = sc.nextLine();
 
-        System.out.println("Enter gender: (true/false)" );
+        System.out.println("Enter gender: (1 : Male/2 : Female)" );
         gender = sc.nextInt();
         
         sc.nextLine();
@@ -91,24 +91,8 @@ abstract public class People {
         PhoneNumber = sc.nextLong();
     }
 
-    public void output()
-    {
-        
-        System.out.println("Name: " + getName());
-        System.out.println("Birth: " + getBirth());
-        System.out.println("Address: " + getAddress());
-        
-        if (isGender() == 1)
-        {
-            System.out.println("Male");
-        }
-        else
-        {
-            System.out.println("Female");
-        }
-
-        System.out.println("Mail: " + getMail());
-        System.out.println("Phone Number: " + getPhoneNumber());
-        
-    }
+    public void output() {
+    System.out.printf("Name: %s | Birth: %s | Address: %s | Gender: %s | Mail: %s | Phone Number: %d%n",
+            getName(), getBirth(), getAddress(), (isGender() == 1) ? "Male" : "Female", getMail(), getPhoneNumber());
+}
 }

@@ -15,39 +15,40 @@ import java.nio.charset.StandardCharsets;
 public class DSSubject implements Function 
 {
 
-    public ArrayList<Subject> subjectList=new ArrayList<>();
-    public DSSubject (String filePath)
-    {
-        
-        FileInputStream fis = null;
-        InputStreamReader reade = null;
-        BufferedReader reader = null;
 
-        try  {
-            fis = new FileInputStream(filePath);
-            reade = new InputStreamReader(fis, StandardCharsets.UTF_8);
-            reader = new BufferedReader(reade);
-            String line = null;
-            while ((line = reader.readLine())  != null) {
-                if (line.isEmpty())
-                {
-                    continue;
-                }
-                Subject sb = new Subject();
-                String[] arr = line.split(",");// 1 line chuoi nen la dung String
-                sb.setID_STUDENT(arr[0].trim());
-                sb.setname_SJ(arr[1].trim());
-                sb.setpointGK_SJ(Double.parseDouble(arr[2].trim()));
-                sb.setpointCK_SJ(Double.parseDouble(arr[3].trim()));
-                subjectList.add(sb);
-            }
-            System.out.println("Read File Successful");
-            reader.close();
-        } catch (Exception e) {
-            System.out.println("An error occurred: " + e.getMessage());
-        }
-    }
+   static ArrayList<Subject> subjectList = new ArrayList<Subject>();
+    
+   public DSSubject (String filePath)
+   {
+       
+       FileInputStream fis = null;
+       InputStreamReader reade = null;
+       BufferedReader reader = null;
 
+       try  {
+           fis = new FileInputStream(filePath);
+           reade = new InputStreamReader(fis, StandardCharsets.UTF_8);
+           reader = new BufferedReader(reade);
+           String line = null;
+           while ((line = reader.readLine())  != null) {
+               if (line.isEmpty())
+               {
+                   continue;
+               }
+               Subject sb = new Subject();
+               String[] arr = line.split(",");// 1 line chuoi nen la dung String
+               sb.setID_STUDENT(arr[0].trim());
+               sb.setname_SJ(arr[1].trim());
+               sb.setpointGK_SJ(Double.parseDouble(arr[2].trim()));
+               sb.setpointCK_SJ(Double.parseDouble(arr[3].trim()));
+               subjectList.add(sb);
+           }
+           System.out.println("Read File Successful");
+           reader.close();
+       } catch (Exception e) {
+           System.out.println("An error occurred: " + e.getMessage());
+       }
+   }
 
     public void SaveData(String f) {
 
@@ -63,39 +64,7 @@ public class DSSubject implements Function
         }
 
     }
-    
-    //  public static ArrayList<Subject> ReadData(String f) {
-
-    //     FileInputStream fis = null;
-    //     InputStreamReader reade = null;
-    //     BufferedReader reader = null;
-
-    //     try  {
-    //         fis = new FileInputStream("StudentManagement/StudentProject/SubjectFile.txt");
-    //         reade = new InputStreamReader(fis, StandardCharsets.UTF_8);
-    //         reader = new BufferedReader(reade);
-    //         String line = null;
-    //         while ((line = reader.readLine())  != null) {
-    //             if (line.isEmpty())
-    //             {
-    //                 continue;
-    //             }
-    //             Subject sb = new Subject();
-    //             String[] arr = line.split(",");// 1 line chuoi nen la dung String
-    //             sb.setID_STUDENT(arr[0].trim());
-    //             sb.setname_SJ(arr[1].trim());
-    //             sb.setpointGK_SJ(Double.parseDouble(arr[2].trim()));
-    //             sb.setpointCK_SJ(Double.parseDouble(arr[3].trim()));
-    //             subjectList.add(sb);
-    //         }
-    //         System.out.println("Read File Successful");
-    //         reader.close();
-    //     } catch (Exception e) {
-    //         System.out.println("An error occurred: " + e.getMessage());
-    //     }
-    //     return subjectList ;
-    // }
-
+   
     public void add() {
         Scanner sc = new Scanner(System.in);
         char addSubject;
@@ -154,10 +123,10 @@ public class DSSubject implements Function
     
 
 public void modify() {
-    Scanner sc = new Scanner(System.in);
+    Scanner scanner = new Scanner(System.in);
 
     System.out.println("Enter the ID_STUDENT of the subject to modify:");
-    String ID = sc.nextLine();
+    String ID = scanner.nextLine();
     ArrayList<Subject> subjectModify = new ArrayList<>();
 
     // Iterate through the subjectList to find subjects for the given ID
@@ -174,17 +143,17 @@ public void modify() {
         }
 
         System.out.println("Enter the number corresponding to the subject you want to modify:");
-        int subjectNumber = sc.nextInt();
+        int subjectNumber = scanner.nextInt();
 
         if (subjectNumber >= 1 && subjectNumber <= subjectModify.size()) {
             Subject subjecttoModify = subjectModify.get(subjectNumber - 1);
             System.out.println("Modifying subject: " + subjecttoModify.getname_SJ());
             // Prompt user for new pointGK and pointCK
             System.out.println("Enter new pointGK for the subject:");
-            double newPointGK = sc.nextDouble();
+            double newPointGK = scanner.nextDouble();
 
             System.out.println("Enter new pointCK for the subject:");
-            double newPointCK = sc.nextDouble();
+            double newPointCK = scanner.nextDouble();
 
             // Update the points for the subjecttoModify
             subjecttoModify.setpointGK_SJ(newPointGK);
@@ -219,7 +188,8 @@ public void show ()
   public void search() {
     Scanner sc= new Scanner(System.in);
     System.out.print("Enter the subject which you want search : ");
-    String subject="";
+    String subject = "";
+    subject = sc.nextLine();
     double average=0;
     for (Subject sb : subjectList) {
         if(sb.getname_SJ().equals(subject))
@@ -240,12 +210,6 @@ public void show ()
         }
 }
 
-
-
-
-
-
-
     public double calculateAverage(Subject subject) {
         return (subject.getpointGK_SJ() + (subject.getpointCK_SJ() * 2)) / 3.0;
     }
@@ -261,8 +225,7 @@ public void show ()
             System.out.println("3. Search Student have Subject Max");
             System.out.println("4. Modify Point");
             System.out.println("5. Show Subject");
-            System.out.println("6. Read From File");
-            System.out.println("7. Save From File");
+            System.out.println("6. Save From File");
             System.out.println("0. Exit");
             System.out.println("Enter your choice: ");
             choice = sc.nextInt();
@@ -291,13 +254,8 @@ public void show ()
                     show();
                     break;
                 }
+                
                 case 6: {
-                    System.out.print("\n"); 
-                    System.out.println("-----------------------------------------------------------");
-                    break;
-                }
-
-                case 7: {
                     SaveData("StudentManagement/StudentProject/SubjectFile.txt");
                     break;
                 }
@@ -312,9 +270,5 @@ public void show ()
                 }
             }
         } while (choice != 0);
-    }
-    public static void main(String[] args) {
-        DSSubject a=new DSSubject("SubjectFile.txt");
-        a.show();
     }
  }

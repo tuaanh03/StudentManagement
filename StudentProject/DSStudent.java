@@ -41,7 +41,6 @@ public class DSStudent implements Function
                 stu.setStudentClass(arr[8]);
                 studentList.add(stu);
             }
-            System.out.println("Read File Successful");
             reader.close();
         } catch (Exception e) {
             System.out.println("An error occurred: " + e.getMessage());
