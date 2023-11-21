@@ -10,6 +10,13 @@ public class DSGeneral {
     final private String adminUsername="admin123";
     final private String adminPassword="123456789";
 
+    public DSGeneral()
+    {
+        DSCLASS a=new DSCLASS("StudentClass.txt");
+        DSStudent b=new DSStudent("StudentFile.txt");
+        DSSubject c=new DSSubject("SubjectFile.txt");
+        QLTeacher d=new QLTeacher("TeacherFile.txt");
+    }
     public void user(String pass)
     {
         int choice;
@@ -101,12 +108,12 @@ public class DSGeneral {
             choice = sc.nextInt();
             switch (choice) {
                 case 1: {
-                    DSStudent a=new DSStudent();
+                    DSStudent a=new DSStudent("StudentFile.txt");
                     a.input();
                     break;
                 }
                 case 2: {
-                    QLTeacher tea = new QLTeacher();
+                    QLTeacher tea = new QLTeacher("TeacherFile.txt");
                     tea.input();
                     break;
                 }
