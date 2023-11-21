@@ -11,6 +11,8 @@ import java.util.Iterator;
 public class DSCLASS implements Function
 {            
   static ArrayList<StudentClass> classes = new ArrayList<StudentClass>();
+   static ArrayList<Student> studentList = new ArrayList<Student>();
+   
   
 //   public static ArrayList<StudentClass> ReadData(String f)
 //  {
@@ -66,7 +68,7 @@ public class DSCLASS implements Function
       }
 
   }
-     public static ArrayList<StudentClass> is_classes(String f)
+     public static ArrayList<StudentClass> Read_isclasses(String f)
  {
   // khoi tao rong
   FileInputStream fis = null; // Lớp này được sử dụng để đọc dữ liệu từ một file trong hệ thống tệp tin. 
@@ -279,93 +281,165 @@ public class DSCLASS implements Function
       }
     } 
   }
+  public static ArrayList<Student> ReadData(String filePath) 
+    {
+
+      FileInputStream fis = null;
+      InputStreamReader reade = null;
+      BufferedReader reader = null;
+
+      try  {
+          fis = new FileInputStream("StudentFile.txt");
+          reade = new InputStreamReader(fis, StandardCharsets.UTF_8);
+          reader = new BufferedReader(reade);
+          String line = null;
+          while ((line = reader.readLine())  != null) {
+              if (line.isEmpty())
+              {
+                  continue;
+              }
+              Student stu = new Student();
+              String[] arr = line.split(",");// 1 line chuoi nen la dung String
+              stu.setName(arr[0].trim());
+              stu.setBirth(arr[1].trim());
+              stu.setAddress(arr[2].trim());
+              stu.setGender(Integer.parseInt(arr[3].trim()));
+              stu.setMail(arr[4].trim());
+              stu.setPhoneNumber(Integer.parseInt(arr[5].trim()));
+              stu.setID_STUDENT(arr[6]);
+              stu.setGrade(Integer.parseInt(arr[7].trim()));
+              stu.setStudentClass(arr[8]);
+              studentList.add(stu);
+          }
+          System.out.println("Read File Successful");
+          reader.close();
+      } catch (Exception e) {
+          System.out.println("An error occurred: " + e.getMessage());
+      }
+      return studentList;
+  }
+  
+  public void show_tuition (String ID)
+  {
+
+    String e ; 
+    System.out.println("---------------------- Show tuition of student------------------- ");
+    for (Student st : studentList)
+    {
+      if (ID.equals(st.getID_STUDENT()))
+      {
+        e=st.getStudentClass();
+        for (StudentClass CLASS :classes)
+        {
+          if (e.equals(CLASS.getID_class()))
+          {
+              System.out.println (CLASS.Price_student());
+          }
+        }
+      }
+      }
+
+    }
+    
+
 
   public void menu()
   { 
     int choice;
         Scanner sc = new Scanner(System.in);
-        do 
-        {
-            System.out.println("1. Add Class");
-            System.out.println("2. Delete Class");
-            System.out.println("3. Search Class");
-            System.out.println("4. Modify Class");
-            System.out.println("5. Display Class");
-            System.out.println("6. view fee");
-            //System.out.println("7. Load From File");
-            System.out.println("8. Save From File");
-            System.out.println("0. Exit");
-            System.out.println("Enter your choice: ");
-             choice = sc.nextInt();
-            switch (choice) 
-            {
-              case 1:
-              {
-                add();
-                System.out.println("\n");
-                break; 
-              }
-              case 2:
-              {
-                delete();
-                System.out.println("\n");
-                break;  
-              }
-              case 3: 
-              {
-                search();
-                System.out.println("\n");
-                break;
-              }
+        // do 
+        // {
+        //     System.out.println("1. Add Class");
+        //     System.out.println("2. Delete Class");
+        //     System.out.println("3. Search Class");
+        //     System.out.println("4. Modify Class");
+        //     System.out.println("5. Display Class");
+        //     System.out.println("6. view fee");
+        //     //System.out.println("7. Load From File");
+        //     System.out.println("8. Save From File");
+        //     System.out.println("0. Exit");
+        //     System.out.println("Enter your choice: ");
+        //      choice = sc.nextInt();
+        //     switch (choice) 
+        //     {
+        //       case 1:
+        //       {
+        //         add();
+        //         System.out.println("\n");
+        //         break; 
+        //       }
+        //       case 2:
+        //       {
+        //         delete();
+        //         System.out.println("\n");
+        //         break;  
+        //       }
+        //       case 3: 
+        //       {
+        //         search();
+        //         System.out.println("\n");
+        //         break;
+        //       }
 
-              case 4:
-              {
-                modify();
-                System.out.println("\n");
-                break;
-              }
+        //       case 4:
+        //       {
+        //         modify();
+        //         System.out.println("\n");
+        //         break;
+        //       }
 
-              case 5:
-              {
-                is_classes("StudentManagement\\StudentProject\\StudentClass.txt");
-                show();
-                System.out.println ("\n");
-                break;
-              }
-              case 6 :
-              {
-                show_all();
-                System.out.println("\n");
-                break;
-              }
-              // case 7:
-              // {
-              //   is_classes("StudentManagement\\StudentProject\\StudentClass.txt");
-              //   show();
-              //   System.out.println("\n");
-              //   break;
-              // }
+        //       case 5:
+        //       {
+        //         Read_isclasses("StudentManagement\\StudentProject\\StudentClass.txt");
+        //         show();
+        //         System.out.println ("\n");
+        //         break;
+        //       }
+        //       case 6 :
+        //       {
+        //         show_all();
+        //         System.out.println("\n");
+        //         break;
+        //       }
+        //       // case 7:
+        //       // {
+        //       //   Read_isclasses("StudentManagement\\StudentProject\\StudentClass.txt");
+        //       //   show();
+        //       //   System.out.println("\n");
+        //       //   break;
+        //       // }
 
-              case 8:
-              {
-                SaveData("StudentManagement\\StudentProject\\StudentClass.txt");
-                break;
-              }
-              case 0:
-              {
-                System.out.println("Thanks for using!");
-                break;
-              }
-            default:
-            {
-                System.out.println("Invalid choice. Please try again.");
-                 System.out.println("\n");
-                break;
-            }
+        //       case 8:
+        //       {
+        //         SaveData("StudentManagement\\StudentProject\\StudentClass.txt");
+        //         break;
+        //       }
+        //       case 0:
+        //       {
+        //         System.out.println("Thanks for using!");
+        //         break;
+        //       }
+        //     default:
+        //     {
+        //         System.out.println("Invalid choice. Please try again.");
+        //          System.out.println("\n");
+        //         break;
+        //     }
  
-            }
-        } while (choice != 0);
+        //     }
+        // } while (choice != 0);
+
+  
     }
+
+    public static void main(String[] args) 
+    {
+      DSCLASS a = new DSCLASS();
+    //   a. show_tuition("966770042");  
+    // ReadData("StudentManagement\\StudentProject\\StudentClass.txt");
+     ReadData("StudentFile.txt");
+    a.show_tuition("3122411007");
+     }
 }
 
 
