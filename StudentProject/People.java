@@ -85,7 +85,7 @@ abstract public class People {
 
         System.out.println("Enter mail: ");
         mail = sc.nextLine();
-        sc.nextLine();
+        
 
         System.out.println("Enter phone number: ");
         PhoneNumber = sc.nextLong();
@@ -106,8 +106,6 @@ abstract public class People {
         {
             System.out.println("Female");
         }
-
-        
 
         System.out.println("Mail: " + getMail());
         System.out.println("Phone Number: " + getPhoneNumber());
