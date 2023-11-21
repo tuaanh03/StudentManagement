@@ -44,8 +44,6 @@ public class Subject {
     public String getStudentWithHighestAverage() {
         return studentWithHighestAverage;
     }
-
-
     public void setID_STUDENT(String ID_STUDENT){
         this.ID_STUDENT = ID_STUDENT;
     }

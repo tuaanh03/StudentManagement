@@ -53,7 +53,7 @@ public class DSGeneral {
             System.out.println("1. View student list");
             System.out.println("2. View study results list");
             System.out.println("3. Edit student list");
-            System.out.println("4. Edit study results lis");
+            System.out.println("4. Edit study results list");
             System.out.println("5. Save all edits");
             System.out.println("0. Exit");
             System.out.println("Enter your choice: ");
@@ -100,11 +100,18 @@ public class DSGeneral {
             choice = sc.nextInt();
             switch (choice) {
                 case 1: {
+<<<<<<< HEAD
                     DSStudent a=new DSStudent();
                     a.input();
+=======
+                    DSStudent stu = new DSStudent();
+                    stu.input();
+>>>>>>> 7f9452d5e1e60dfde8e2eb854a650ab2a9d21f3a
                     break;
                 }
                 case 2: {
+                    QLTeacher tea = new QLTeacher();
+                    tea.input();
                     break;
                 }
                 case 3: {
@@ -128,14 +135,15 @@ public class DSGeneral {
         UA.input();
         if (((UA.getID_USER().equals(studentUsername)) && (UA.getPASSWORD().equals(studentPassword))) ) 
         {
-
+            user();
         }
         if (UA.getID_USER().equals(teacherUsername) && UA.getPASSWORD().equals(teacherPassword))
         {
+            teacher();
         }
         if (UA.getID_USER().equals(adminUsername) && UA.getPASSWORD().equals(adminPassword))
         {
-
+            admin();
         }
 
     }

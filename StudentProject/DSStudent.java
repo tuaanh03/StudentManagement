@@ -132,7 +132,7 @@ public class DSStudent implements Function
                         + "," + st.getStudentClass());
                 writer.newLine();
             }
-            System.out.println("Read File Successful");
+            System.out.println("Save File Successful");
             writer.close();
         } catch (Exception e) {
             System.out.println("An error occurred: " + e.getMessage());
