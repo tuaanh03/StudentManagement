@@ -143,6 +143,18 @@ public class DSStudent implements Function
 
     }
 
+    public int loginStudent(String username, String password)
+    { 
+        for (Student stu : studentList)
+        {
+            if (username.equals(stu.getMail()) && password.equals(stu.getID_STUDENT()))
+            {
+                return 1;
+            }
+        }
+        return 0;
+    }
+
     public void input()
     {
         ReadData("StudentFile.txt");
@@ -196,6 +208,11 @@ public class DSStudent implements Function
             }
         } while (choice != 0);
     }
+
+
+   
 }
+
+
 
 

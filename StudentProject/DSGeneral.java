@@ -1,7 +1,7 @@
 package StudentProject;
 
 import java.util.Scanner;
-
+import java.util.ArrayList;
 public class DSGeneral {
     final private String studentUsername = "student123";
     final private String studentPassword = "123456789";
@@ -9,6 +9,10 @@ public class DSGeneral {
     final private String teacherPassword = "123456789";
     final private String adminUsername="admin123";
     final private String adminPassword="123456789";
+
+    ArrayList<Student> newArr = new ArrayList<>();
+
+     
 
     // public DSGeneral()
     // {
@@ -141,14 +145,21 @@ public class DSGeneral {
     }
     public void login_account()
     {
+        DSStudent stu = new DSStudent("StudentFile.txt");
+        QLTeacher tea = new QLTeacher("TeacherFile.txt");
         loginAccount UA = new loginAccount();
-     
+
         UA.input();
-        if ((UA.getID_USER().equals(studentUsername)) && (UA.getPASSWORD().equals(studentPassword)))
+
+        String username = UA.getID_USER();
+        String password = UA.getPASSWORD();
+
+        if (stu.loginStudent(username,password) == 1)
         {
             user(UA.getID_USER());
         }
-        if (UA.getID_USER().equals(teacherUsername) && UA.getPASSWORD().equals(teacherPassword))
+      
+        if (tea.loginTeacher(username, password) == 1)
         {
             teacher();
         }
@@ -159,7 +170,8 @@ public class DSGeneral {
         else
         {
             System.out.println("Access denied. Please check your Username and your Password ! ");
-        }
+        }   
+       
 
     }
 

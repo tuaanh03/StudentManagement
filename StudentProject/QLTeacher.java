@@ -135,6 +135,18 @@ public QLTeacher(String filePath)
 
     }
 
+    public int loginTeacher(String username, String password)
+    {
+        for (Teacher tea : teacherList)
+        {
+            if (username.equals(tea.getMail()) && password.equals(tea.getID_GV()))
+            {
+                return 1;
+            }
+        }
+        return 0;
+    }
+
     public void input() {
         int choice;
         Scanner sc = new Scanner(System.in);
