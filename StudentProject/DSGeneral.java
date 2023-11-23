@@ -1,7 +1,7 @@
 package StudentProject;
 
 import java.util.Scanner;
-
+import java.util.ArrayList;
 public class DSGeneral {
     final private String studentUsername = "student123";
     final private String studentPassword = "123456789";
@@ -10,14 +10,18 @@ public class DSGeneral {
     final private String adminUsername="admin123";
     final private String adminPassword="123456789";
 
-    public DSGeneral()
-    {
-        DSCLASS f=new DSCLASS("StudentClass.txt");
-        DSStudent b=new DSStudent("StudentFile.txt");
-        DSSubject c=new DSSubject("SubjectFile.txt");
-        QLTeacher d=new QLTeacher("TeacherFile.txt");
-    }
-    public void user(String pass)
+    ArrayList<Student> newArr = new ArrayList<>();
+
+     
+
+    // public DSGeneral()
+    // {
+    //     DSCLASS a=new DSCLASS("StudentClass.txt");
+    //     DSStudent b=new DSStudent("StudentFile.txt");
+    //     DSSubject c=new DSSubject("SubjectFile.txt");
+    //     QLTeacher d=new QLTeacher("TeacherFile.txt");
+    // }
+    public void user(String id)
     {
         int choice;
         Scanner sc = new Scanner(System.in);
@@ -30,7 +34,7 @@ public class DSGeneral {
             System.out.println("Enter your choice: ");
             choice = sc.nextInt();
             switch (choice) {
-                case 1: {
+                case 1: {               
                     break;
                 }
                 case 2: {
@@ -38,7 +42,7 @@ public class DSGeneral {
                 }
                 case 3: {
                     DSCLASS a=new DSCLASS("StudentManagement\\StudentClass.txt");
-                    a.show_tuition(pass);
+                    a.show_tuition(id);
                     break;
                 }
                 case 0: {
@@ -68,13 +72,17 @@ public class DSGeneral {
             System.out.println("Enter your choice: ");
             choice = sc.nextInt();
             switch (choice) {
-                case 1: {
+                case 1: {                    
+                    DSStudent a = new DSStudent("StudentFile.txt");
+                    a.show();
                     break;
                 }
                 case 2: {
                     break;
                 }
                 case 3: {
+                    DSStudent a = new DSStudent("StudentFile.txt");
+                    a.input();
                     break;
                 }
                 case 4: {
@@ -103,6 +111,7 @@ public class DSGeneral {
         {
             System.out.println("1. Student management");
             System.out.println("2. Teacher management");
+            System.out.println("3. Class management");
             System.out.println("0. Exit");
             System.out.println("Enter your choice: ");
             choice = sc.nextInt();
@@ -115,6 +124,11 @@ public class DSGeneral {
                 case 2: {
                     QLTeacher tea = new QLTeacher("TeacherFile.txt");
                     tea.input();
+                    break;
+                }
+                case 3:{
+                    DSCLASS a= new DSCLASS("StudentClass.txt");
+                    a.menu();
                     break;
                 }
                 case 0: {
@@ -131,13 +145,21 @@ public class DSGeneral {
     }
     public void login_account()
     {
+        DSStudent stu = new DSStudent("StudentFile.txt");
+        QLTeacher tea = new QLTeacher("TeacherFile.txt");
         loginAccount UA = new loginAccount();
+
         UA.input();
-        if (((UA.getID_USER().equals(studentUsername)) && (UA.getPASSWORD().equals(studentPassword))) ) 
+
+        String username = UA.getID_USER();
+        String password = UA.getPASSWORD();
+
+        if (stu.loginStudent(username,password) == 1)
         {
-            user();
+            user(UA.getID_USER());
         }
-        if (UA.getID_USER().equals(teacherUsername) && UA.getPASSWORD().equals(teacherPassword))
+      
+        if (tea.loginTeacher(username, password) == 1)
         {
             teacher();
         }
@@ -145,6 +167,11 @@ public class DSGeneral {
         {
             admin();
         }
+        else
+        {
+            System.out.println("Access denied. Please check your Username and your Password ! ");
+        }   
+       
 
     }
 

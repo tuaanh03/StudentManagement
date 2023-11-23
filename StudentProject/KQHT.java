@@ -3,13 +3,22 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class KQHT
 { 
-  
-  static public ArrayList<Subject> subjectList=new ArrayList<>();
+  // private double maxAVG;
+  // private double getMaxAVG()
+  // {
+  //   return maxAVG;
+  // }
+  // public void setMaxAVG(double max)
+  // {
+  //   maxAVG=max;
+  // }
+  static ArrayList<Subject> subjectList = new ArrayList<Subject>();
   public KQHT (String filePath)
   {
       
@@ -42,17 +51,39 @@ public class KQHT
       }
   }
 
+  // public void pointAVG(String id)
+  // {
+  //   for (Subject sb : subjectList) {
+  //     if(id.equals(sb.getID_STUDENT()))
+  //     {
+  //       sb.setAVG((sb.getpointGK_SJ()+2*sb.getpointCK_SJ())/3);
+        
+  //     }
+  //   }
+  // }
+  // public double pointMax()
+  // {
+  //   double max;
+  //   for (int i = 0; i < subjectList.size() - 1; i++) {
+  //     Subject sb = subjectList.get(i);
+  //     Subject nextSb = subjectList.get(i + 1);
+  //     if (sb.getAVG() >= nextSb.getAVG()) {
+  //       max=sb.getAVG();
+  //     }
+  // }
+  // return max;
+  // }
   public void studyResultByID(String id) //id student truyen vao o main
   {
-    System.out.println("                                      Show result of the sudent has ID is : "+id );
+    System.out.println("                                 Show result of the sudent has ID is : "+id );
     System.out.println("------------------------------------------------------------------------------------------------------------");
-       System.out.printf("%-20s%-15s%-15s\n" , "Name Subject" ,"Point GK", "Point CK");
-    for (Subject sb : subjectList)   
-    {
-       if (id.equals(sb.getID_STUDENT()))
-       {
-          System.out.printf("%-20s%-15s%-15s\n",sb.getname_SJ(),sb.getpointGK_SJ(),sb.getpointCK_SJ());
-       }
+       System.out.printf("%-20s%-15s%-15s%-15s\n" , "Name Subject" ,"Point GK", "Point CK","Point Average");
+       for (Subject sb : subjectList) {
+        if (id.equals(sb.getID_STUDENT())) {
+            double a = sb.pointAVG();
+            sb.setAVG(a);
+            System.out.printf("%-20s%-15s%-15s%.2f\n", sb.getname_SJ(), sb.getpointGK_SJ(), sb.getpointCK_SJ(), sb.getAVG());
+        }
     }
 
     System.out.println();
@@ -67,33 +98,25 @@ public class KQHT
       System.out.println(" Enter subject : ");
       subject = r.nextLine();
       if (subject.equals("toan")|| subject.equals("ly")|| subject.equals("hoa"))
-      {
-        break;
+      { 
+        System.out.println("                                Name subject : "+subject.toUpperCase()+"                        ");
+        System.out.println("----------------------------------------------------------------------------------------------------------------");
+        System.out.printf("%-20s%-15s%-15s%-15s\n" , "ID Student" ,"Point GK", "Point CK","Point average ");
+        for (Subject sb :subjectList)
+       {
+        if (subject.equals(sb.getname_SJ()))
+          {
+            double a = sb.pointAVG();
+            sb.setAVG(a);
+            System.out.printf("%-20s%-15s%-15s%.2f\n",sb.getID_STUDENT(),sb.getpointGK_SJ(),sb.getpointCK_SJ(),sb.getAVG());
+          }break;
+      }
       }
       else
       {
         System.out.println("Invalid type. Please enter a valid name subject .");
       }
     }
-    System.out.println("                                      Name subject : "+subject.toUpperCase()+"                        ");
-    System.out.println("----------------------------------------------------------------------------------------------------------------");
-       System.out.printf("%-20s%-15s%-15s\n" , "ID Student" ,"Point GK", "Point CK");
-    for (Subject sb :subjectList)
-    {
-      if (subject.equals(sb.getname_SJ()))
-      {
-      System.out.printf("%-20s%-15s%-15s\n",sb.getID_STUDENT(),sb.getpointGK_SJ(),sb.getpointCK_SJ());
-      }
-    }
-
-
-
-  }
-  public static void main(String[] args)
-   {
-    KQHT a =new KQHT("SubjectFile.txt");
-    a.studyResultByID("3122411007");
-    //a.show();;
-    a.studyResultBySubject();
+   
   }
 }

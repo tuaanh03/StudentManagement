@@ -6,15 +6,15 @@ public class Subject {
     private double pointGK_SJ;
     private double pointCK_SJ;
     private String ID_STUDENT;
-    private double highestAverage;
-    private String studentWithHighestAverage;
+    private double AVG;
 
     // Constructor
-    public Subject(String ID_STUDENT, String name_SJ, double pointGK_SJ, double pointCK_SJ) {
+    public Subject(String ID_STUDENT, String name_SJ, double pointGK_SJ, double pointCK_SJ, double avg) {
         this.ID_STUDENT = ID_STUDENT;
         this.name_SJ = name_SJ;
         this.pointGK_SJ = pointGK_SJ;
         this.pointCK_SJ = pointCK_SJ;
+        this.AVG=avg;
     }
 
     // Default constructor
@@ -23,6 +23,7 @@ public class Subject {
         pointCK_SJ  = 0;
         pointGK_SJ  = 0;
         ID_STUDENT  = "";
+        AVG=0;
     }
     
 
@@ -38,11 +39,13 @@ public class Subject {
     public double getpointCK_SJ(){
         return pointCK_SJ;
     }
-    public double gethighestAverage() {
-        return highestAverage;
+    public double getAVG()
+    {
+        return AVG;
     }
-    public String getStudentWithHighestAverage() {
-        return studentWithHighestAverage;
+    public void setAVG(double avg)
+    {
+        AVG=avg;
     }
     public void setID_STUDENT(String ID_STUDENT){
         this.ID_STUDENT = ID_STUDENT;
@@ -56,16 +59,6 @@ public class Subject {
     public void setpointCK_SJ(double pointCK_SJ){
         this.pointCK_SJ = pointCK_SJ;
     }
-    public void sethighestAverage(double highestAverage) {
-        this.highestAverage = highestAverage;
-    }
-    public void setStudentWithHighestAverage(String studentWithHighestAverage) {
-        this.studentWithHighestAverage = studentWithHighestAverage;
-    }
-
-
-
-   
     public void input() {
         Scanner sc = new Scanner(System.in);
 
@@ -89,9 +82,8 @@ public class Subject {
         System.out.println("Point GK: " + getpointGK_SJ());
         System.out.println("Point CK: " + getpointCK_SJ());
     }
-
-    public double getHighestAverage() {
-        return 0;
+    public double pointAVG()
+    {
+       return (getpointGK_SJ()+2*getpointCK_SJ())/3;
     }
-
 }

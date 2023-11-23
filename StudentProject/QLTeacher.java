@@ -40,7 +40,6 @@ public QLTeacher(String filePath)
                 tea.setID_CLASS(arr[7]);
                 teacherList.add(tea);
             }
-            System.out.println("Read File Successful");
             reader.close();
         } catch (Exception e) {
             System.out.println("An error occurred: " + e.getMessage());
@@ -62,7 +61,7 @@ public QLTeacher(String filePath)
     public void delete() {
         Scanner sc = new Scanner(System.in);
         int check = 0;
-        System.out.println("Enter name or ID Student you want to delete");
+        System.out.println("Enter name or ID Teacher you want to delete");
         String find = sc.nextLine();
         List<Teacher> teachersToDelete = new ArrayList<Teacher>();
 
@@ -75,47 +74,47 @@ public QLTeacher(String filePath)
 
         if (check == 1) {
             teacherList.removeAll(teachersToDelete);
-            System.out.println("Student(s) deleted successfully.");
+            System.out.println("Teacher(s) deleted successfully.");
         } else {
-            System.out.println("Student not found.");
+            System.out.println("Teacher not found.");
         }
     }
 
     public void search() {
         int check = 0;
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter name or ID of student: ");
+        System.out.println("Enter name or ID of teacher: ");
         String find = sc.nextLine();
 
         for (Teacher st : teacherList) {
             if (find.equals(st.getName()) || find.equals(st.getID_GV())) {
                 check = 1;
-                System.out.println("Student found successfully!");
+                System.out.println("Teacher found successfully!");
                 st.output();
             }
         }
 
         if (check == 0) {
-            System.out.println("Student not found.");
+            System.out.println("Teacher not found.");
         }
     }
 
     public void modify() {
         int check = 0;
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter name or ID of student: ");
+        System.out.println("Enter name or ID of teacher: ");
         String find = sc.nextLine();
 
         for (Teacher st : teacherList) {
             if (find.equals(st.getName()) || find.equals(st.getID_GV())) {
                 check = 1;
-                System.out.println("Looking for student successfully!");
+                System.out.println("Looking for teacher successfully!");
                 st.input();
             }
         }
 
         if (check == 0) {
-            System.out.println("Student not found.");
+            System.out.println("Teacher not found.");
         }
     }
 
@@ -134,6 +133,18 @@ public QLTeacher(String filePath)
             System.out.println("An error occurred: " + e.getMessage());
         }
 
+    }
+
+    public int loginTeacher(String username, String password)
+    {
+        for (Teacher tea : teacherList)
+        {
+            if (username.equals(tea.getMail()) && password.equals(tea.getID_GV()))
+            {
+                return 1;
+            }
+        }
+        return 0;
     }
 
     public void input() {

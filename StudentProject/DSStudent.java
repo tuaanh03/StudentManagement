@@ -41,7 +41,6 @@ public class DSStudent implements Function
                 stu.setStudentClass(arr[8]);
                 studentList.add(stu);
             }
-            System.out.println("Read File Successful");
             reader.close();
         } catch (Exception e) {
             System.out.println("An error occurred: " + e.getMessage());
@@ -144,6 +143,18 @@ public class DSStudent implements Function
 
     }
 
+    public int loginStudent(String username, String password)
+    { 
+        for (Student stu : studentList)
+        {
+            if (username.equals(stu.getMail()) && password.equals(stu.getID_STUDENT()))
+            {
+                return 1;
+            }
+        }
+        return 0;
+    }
+
     public void input()
     {
         ReadData("StudentFile.txt");
@@ -197,6 +208,11 @@ public class DSStudent implements Function
             }
         } while (choice != 0);
     }
+
+
+   
 }
+
+
 
 
