@@ -4,17 +4,17 @@ import java.util.Scanner;
 
 public class loginAccount extends Account {
     private String ID_USER;
-    private String PASSWORD;
+    private long PASSWORD;
 
 
-    public loginAccount(String iD_USER, String pASSWORD) {
+    public loginAccount(String iD_USER, long pASSWORD) {
         ID_USER = iD_USER;
         PASSWORD = pASSWORD;
     }
 
     public loginAccount() {
         ID_USER = "";
-        PASSWORD = "";
+        PASSWORD = 0;
     }
 
     public String getID_USER() {
@@ -25,11 +25,11 @@ public class loginAccount extends Account {
         ID_USER = iD_USER;
     }
 
-    public String getPASSWORD() {
+    public long getPASSWORD() {
         return PASSWORD;
     }
     
-    public void setPASSWORD(String pASSWORD) {
+    public void setPASSWORD(long pASSWORD) {
         PASSWORD = pASSWORD;
     }
 
@@ -41,7 +41,7 @@ public class loginAccount extends Account {
         ID_USER = sc.nextLine();
 
         System.out.println("Enter Password: ");
-        PASSWORD = sc.nextLine();
+        PASSWORD = sc.nextLong();
     }
     
    
