@@ -135,11 +135,11 @@ public QLTeacher(String filePath)
 
     }
 
-    public int loginTeacher(String username, String password)
+    public int loginTeacher(String username, long password)
     {
         for (Teacher tea : teacherList)
         {
-            if (username.equals(tea.getMail()) && password.equals(tea.getID_GV()))
+            if (username.equals(tea.getID_GV()) && password == tea.getPhoneNumber())
             {
                 return 1;
             }

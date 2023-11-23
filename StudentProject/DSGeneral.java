@@ -8,7 +8,7 @@ public class DSGeneral {
     final private String teacherUsername = "teacher123";
     final private String teacherPassword = "123456789";
     final private String adminUsername="admin123";
-    final private String adminPassword="123456789";
+    final private long adminPassword = 123456789;
 
     ArrayList<Student> newArr = new ArrayList<>();
 
@@ -152,7 +152,7 @@ public class DSGeneral {
         UA.input();
 
         String username = UA.getID_USER();
-        String password = UA.getPASSWORD();
+        long password = UA.getPASSWORD();
 
         if (stu.loginStudent(username,password) == 1)
         {
@@ -163,15 +163,11 @@ public class DSGeneral {
         {
             teacher();
         }
-        if (UA.getID_USER().equals(adminUsername) && UA.getPASSWORD().equals(adminPassword))
+        if (UA.getID_USER().equals(adminUsername) && UA.getPASSWORD() == adminPassword)
         {
             admin();
         }
-        else
-        {
-            System.out.println("Access denied. Please check your Username and your Password ! ");
-        }   
-       
+        
 
     }
 

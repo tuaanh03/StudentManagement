@@ -54,6 +54,8 @@ public class DSStudent implements Function
     }
 
     public void show() {
+        loginAccount UA = new loginAccount();
+        
         for (Student stu : studentList) {
             stu.output();
             System.out.println("-----------***----------");
@@ -143,11 +145,11 @@ public class DSStudent implements Function
 
     }
 
-    public int loginStudent(String username, String password)
+    public int loginStudent(String username, long password)
     { 
         for (Student stu : studentList)
         {
-            if (username.equals(stu.getMail()) && password.equals(stu.getID_STUDENT()))
+            if (username.equals(stu.getID_STUDENT()) && password == stu.getPhoneNumber())
             {
                 return 1;
             }
