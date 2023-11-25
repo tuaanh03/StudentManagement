@@ -30,13 +30,13 @@ public class Subject {
     public String getID_STUDENT(){
         return ID_STUDENT;
     }
-    public String getname_SJ(){
+    public String getName_SJ(){
         return name_SJ;
     }
-    public double getpointGK_SJ(){
+    public double getPointGK_SJ(){
         return pointGK_SJ;
     }
-    public double getpointCK_SJ(){
+    public double getPointCK_SJ(){
         return pointCK_SJ;
     }
     public double getAVG()
@@ -73,17 +73,18 @@ public class Subject {
 
         System.out.print("Enter Point CK : ");
         pointCK_SJ = sc.nextDouble();
+        sc.close();
     }
     
 
     public void output(){
         System.out.println("ID STUDENT: " + getID_STUDENT());
-        System.out.println("Name Subject: " + getname_SJ());
-        System.out.println("Point GK: " + getpointGK_SJ());
-        System.out.println("Point CK: " + getpointCK_SJ());
+        System.out.println("Name Subject: " + getName_SJ());
+        System.out.println("Point GK: " + getPointGK_SJ());
+        System.out.println("Point CK: " + getPointCK_SJ());
     }
     public double pointAVG()
     {
-       return (getpointGK_SJ()+2*getpointCK_SJ())/3;
+        return (getPointGK_SJ()+2*getPointCK_SJ())/3;
     }
 }

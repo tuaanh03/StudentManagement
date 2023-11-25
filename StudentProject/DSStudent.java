@@ -12,6 +12,7 @@ import java.util.Scanner;
 public class DSStudent implements Function
 {
     public static ArrayList<Student> studentList = new ArrayList<>();
+    public DSStudent(){}
     public DSStudent(String filePath)
     {
         FileInputStream fis = null;
@@ -46,7 +47,42 @@ public class DSStudent implements Function
             System.out.println("An error occurred: " + e.getMessage());
         }
     }
-    public void add() 
+    public ArrayList<Student> is_stuList(String filePath)
+    {
+        FileInputStream fis = null;
+        InputStreamReader reade = null;
+        BufferedReader reader = null;
+
+        try  {
+            fis = new FileInputStream(filePath);
+            reade = new InputStreamReader(fis, StandardCharsets.UTF_8);
+            reader = new BufferedReader(reade);
+            String line = null;
+            while ((line = reader.readLine())  != null) {
+                if (line.isEmpty())
+                {
+                    continue;
+                }
+                Student stu = new Student();
+                String[] arr = line.split(",");// 1 line chuoi nen la dung String
+                stu.setName(arr[0].trim());
+                stu.setBirth(arr[1].trim());
+                stu.setAddress(arr[2].trim());
+                stu.setGender(Integer.parseInt(arr[3].trim()));
+                stu.setMail(arr[4].trim());
+                stu.setPhoneNumber(Integer.parseInt(arr[5].trim()));
+                stu.setID_STUDENT(arr[6]);
+                stu.setGrade(arr[7].trim());
+                stu.setStudentClass(arr[8]);
+                studentList.add(stu);
+            }
+            reader.close();
+        } catch (Exception e) {
+            System.out.println("An error occurred: " + e.getMessage());
+        }
+        return studentList;
+    }
+    public void add()
     {
         Student stu = new Student();
         stu.input();
@@ -55,7 +91,6 @@ public class DSStudent implements Function
 
     public void show() {
         loginAccount UA = new loginAccount();
-        
         for (Student stu : studentList) {
             stu.output();
             System.out.println("-----------***----------");
@@ -121,6 +156,9 @@ public class DSStudent implements Function
             System.out.println("Student not found.");
         }
     }
+    public static ArrayList<Student> ReadData(String filePath) {
+        return studentList;
+    }
 
     public void SaveData(String filepath) {
 
@@ -140,7 +178,7 @@ public class DSStudent implements Function
     }
 
     public int loginStudent(String username, long password)
-    { 
+    {
         for (Student stu : studentList)
         {
             if (username.equals(stu.getID_STUDENT()) && password == stu.getPhoneNumber())
@@ -156,7 +194,7 @@ public class DSStudent implements Function
         
         int choice;
         Scanner sc = new Scanner(System.in);
-        do 
+        do
         {
             System.out.println("1. Add Student");
             System.out.println("2. Delete Student");
@@ -204,9 +242,6 @@ public class DSStudent implements Function
             }
         } while (choice != 0);
     }
-
-
-   
 }
 
 
