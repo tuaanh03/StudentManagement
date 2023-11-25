@@ -72,12 +72,14 @@ public class DSGeneral {
             System.out.println("Enter your choice: ");
             choice = sc.nextInt();
             switch (choice) {
-                case 1: {                    
+                case 1: {
                     DSStudent a = new DSStudent("StudentFile.txt");
                     a.show();
                     break;
                 }
                 case 2: {
+                    DSSubject a=new DSSubject("SubjectFile.txt");
+                    a.show();
                     break;
                 }
                 case 3: {
