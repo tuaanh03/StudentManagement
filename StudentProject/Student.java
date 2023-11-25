@@ -5,12 +5,12 @@ import java.util.*;
 
 public class Student extends People implements Serializable{
     private String ID_STUDENT;
-    private int Grade;
+    private String Grade;
     private String StudentClass;
 
     
     public Student(String name, String birth, String address, int gender, String mail, int phoneNumber,
-            String iD_STUDENT, int grade, String studentClass) {
+            String iD_STUDENT, String grade, String studentClass) {
         super(name, birth, address, gender, mail, phoneNumber);
         ID_STUDENT = iD_STUDENT;
         Grade = grade;
@@ -21,7 +21,7 @@ public class Student extends People implements Serializable{
     {
         super();
         ID_STUDENT = "";
-        Grade = 0;
+        Grade = "";
         StudentClass = "";
     }
     
@@ -38,11 +38,11 @@ public class Student extends People implements Serializable{
         ID_STUDENT = iD_STUDENT;
     }
 
-    public int getGrade() {
+    public String getGrade() {
         return Grade;
     }
 
-    public void setGrade(int grade) {
+    public void setGrade(String grade) {
         Grade = grade;
     }
 
@@ -64,7 +64,7 @@ public class Student extends People implements Serializable{
         
 
         System.out.println("Enter Student'Grade: ");
-        Grade = sc.nextInt();
+        Grade = sc.nextLine();
         sc.nextLine();
 
         System.out.println("Enter Student'Class: ");

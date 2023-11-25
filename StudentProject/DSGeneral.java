@@ -1,32 +1,49 @@
 package StudentProject;
 
 import java.util.Scanner;
+import java.io.IOException;
 import java.util.ArrayList;
+
 public class DSGeneral {
-    final private String studentUsername = "student123";
-    final private String studentPassword = "123456789";
-    final private String teacherUsername = "teacher123";
-    final private String teacherPassword = "123456789";
-    final private String adminUsername="admin123";
+    // final private String studentUsername = "student123";
+    // final private String studentPassword = "123456789";
+    // final private String teacherUsername = "teacher123";
+    // final private String teacherPassword = "123456789";
+    final private String adminUsername = "admin123";
     final private long adminPassword = 123456789;
+
+    // gọi các class đã khởi tạo ra để sử dụng chung. Tác dụng để tránh việc đọc
+    // file lại lần thứ 2
+    DSStudent stu = new DSStudent("StudentFile.txt");
+    QLTeacher tea = new QLTeacher("TeacherFile.txt");
+    DSCLASS a = new DSCLASS("StudentClass.txt");
 
     ArrayList<Student> newArr = new ArrayList<>();
 
-     
+    public void clrscr() {
+        try {
+            if (System.getProperty("os.name").contains("Windows"))
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            else
+                Runtime.getRuntime().exec("clear");
+        } catch (IOException | InterruptedException ex) {
+        }
+    }
 
     // public DSGeneral()
     // {
-    //     DSCLASS a=new DSCLASS("StudentClass.txt");
-    //     DSStudent b=new DSStudent("StudentFile.txt");
-    //     DSSubject c=new DSSubject("SubjectFile.txt");
-    //     QLTeacher d=new QLTeacher("TeacherFile.txt");
+    // DSCLASS a=new DSCLASS("StudentClass.txt");
+    // DSStudent b=new DSStudent("StudentFile.txt");
+    // DSSubject c=new DSSubject("SubjectFile.txt");
+    // QLTeacher d=new QLTeacher("TeacherFile.txt");
     // }
-    public void user(String id)
-    {
+
+    
+
+    public void user(String id) {
         int choice;
         Scanner sc = new Scanner(System.in);
-        do
-        {
+        do {
             System.out.println("1. View study results");
             System.out.println("2. See the school year's payroll");
             System.out.println("3. View tuition");
@@ -34,14 +51,13 @@ public class DSGeneral {
             System.out.println("Enter your choice: ");
             choice = sc.nextInt();
             switch (choice) {
-                case 1: {               
+                case 1: {
                     break;
                 }
                 case 2: {
                     break;
                 }
                 case 3: {
-                    DSCLASS a=new DSCLASS("StudentManagement\\StudentClass.txt");
                     a.show_tuition(id);
                     break;
                 }
@@ -57,12 +73,11 @@ public class DSGeneral {
         } while (choice != 0);
         sc.close();
     }
-    public void teacher()
-    {
+
+    public void teacher() {
         int choice;
         Scanner sc = new Scanner(System.in);
-        do 
-        {
+        do {
             System.out.println("1. View student list");
             System.out.println("2. View study results list");
             System.out.println("3. Edit student list");
@@ -72,17 +87,15 @@ public class DSGeneral {
             System.out.println("Enter your choice: ");
             choice = sc.nextInt();
             switch (choice) {
-                case 1: {                    
-                    DSStudent a = new DSStudent("StudentFile.txt");
-                    a.show();
+                case 1: {               
+                    stu.show();
                     break;
                 }
                 case 2: {
                     break;
                 }
                 case 3: {
-                    DSStudent a = new DSStudent("StudentFile.txt");
-                    a.input();
+                    stu.input();
                     break;
                 }
                 case 4: {
@@ -103,12 +116,11 @@ public class DSGeneral {
         } while (choice != 0);
         sc.close();
     }
-    public void admin()
-    {
+
+    public void admin() {
         int choice;
         Scanner sc = new Scanner(System.in);
-        do 
-        {
+        do {
             System.out.println("1. Student management");
             System.out.println("2. Teacher management");
             System.out.println("3. Class management");
@@ -117,17 +129,14 @@ public class DSGeneral {
             choice = sc.nextInt();
             switch (choice) {
                 case 1: {
-                    DSStudent a=new DSStudent("StudentFile.txt");
-                    a.input();
+                    stu.input();
                     break;
                 }
                 case 2: {
-                    QLTeacher tea = new QLTeacher("TeacherFile.txt");
                     tea.input();
                     break;
                 }
-                case 3:{
-                    DSCLASS a= new DSCLASS("StudentClass.txt");
+                case 3: {
                     a.menu();
                     break;
                 }
@@ -143,10 +152,9 @@ public class DSGeneral {
         } while (choice != 0);
         sc.close();
     }
-    public void login_account()
-    {
-        DSStudent stu = new DSStudent("StudentFile.txt");
-        QLTeacher tea = new QLTeacher("TeacherFile.txt");
+
+    public void login_account() {
+
         loginAccount UA = new loginAccount();
 
         UA.input();
@@ -154,20 +162,19 @@ public class DSGeneral {
         String username = UA.getID_USER();
         long password = UA.getPASSWORD();
 
-        if (stu.loginStudent(username,password) == 1)
-        {
+        if (stu.loginStudent(username, password) == 1) {
+            clrscr();
             user(UA.getID_USER());
         }
-      
-        if (tea.loginTeacher(username, password) == 1)
-        {
+
+        if (tea.loginTeacher(username, password) == 1) {
+            clrscr();
             teacher();
         }
-        if (UA.getID_USER().equals(adminUsername) && UA.getPASSWORD() == adminPassword)
-        {
+        if (UA.getID_USER().equals(adminUsername) && UA.getPASSWORD() == adminPassword) {
+            clrscr();
             admin();
         }
-        
 
     }
 

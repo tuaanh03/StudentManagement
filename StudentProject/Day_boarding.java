@@ -26,8 +26,8 @@ public class Day_boarding extends StudentClass
 
    @Override public int Price_student ()
    {
-      sum = (3*price_item)+(3*price_place_rest)+pirce_tuition;
-    return sum;
+        sum = (3*price_item)+(3*price_place_rest)+pirce_tuition;
+        return sum;
 
    } 
 }

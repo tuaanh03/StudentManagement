@@ -10,6 +10,7 @@ import java.util.Scanner;
 import java.util.Iterator;
 public class DSCLASS implements Function
 {            
+  DSStudent a =new DSStudent("StudentFile.txt");
   static ArrayList<StudentClass> classes = new ArrayList<StudentClass>();
   public DSCLASS (String filePath)
   {
@@ -37,7 +38,6 @@ public class DSCLASS implements Function
         CLASS.setTypes(arr[3].trim());
         classes.add(CLASS);
       }
-    System.out.println("Read File Successful");
     reader.close();
     }
     catch (Exception e)
@@ -286,9 +286,10 @@ public class DSCLASS implements Function
       }
     } 
   }
+
   public void show_tuition (String ID)
   {
-    DSStudent a =new DSStudent("StudentFile.txt");
+   
     for (Student st : a.studentList)
     {
       if (ID.equals(st.getID_STUDENT()))
@@ -321,8 +322,6 @@ public class DSCLASS implements Function
     }
 
   }
-    
-
 
   public void menu()
   { 
@@ -406,12 +405,12 @@ public class DSCLASS implements Function
   
     }
 
-    public static void main(String[] args) 
-    {
-      DSCLASS a = new DSCLASS("StudentClass.txt");
-    //   a. show_tuition("966770042");  
-    //  a.show_tuition("3122411007");
-     a.menu();
+    // public static void main(String[] args) 
+    // {
+    //   DSCLASS a = new DSCLASS("StudentClass.txt");
+    // //   a. show_tuition("966770042");  
+    // //  a.show_tuition("3122411007");
+    //  a.menu();
 
-    }
+    // }
 }

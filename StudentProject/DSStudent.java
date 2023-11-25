@@ -37,7 +37,7 @@ public class DSStudent implements Function
                 stu.setMail(arr[4].trim());
                 stu.setPhoneNumber(Integer.parseInt(arr[5].trim()));
                 stu.setID_STUDENT(arr[6]);
-                stu.setGrade(Integer.parseInt(arr[7].trim()));
+                stu.setGrade(arr[7].trim());
                 stu.setStudentClass(arr[8]);
                 studentList.add(stu);
             }
@@ -122,12 +122,6 @@ public class DSStudent implements Function
         }
     }
 
-    public static ArrayList<Student> ReadData(String filePath) {
-
-        
-        return studentList;
-    }
-
     public void SaveData(String filepath) {
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filepath))) {
@@ -159,7 +153,7 @@ public class DSStudent implements Function
 
     public void input()
     {
-        ReadData("StudentFile.txt");
+        
         int choice;
         Scanner sc = new Scanner(System.in);
         do 
