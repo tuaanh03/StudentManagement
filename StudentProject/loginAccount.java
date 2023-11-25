@@ -28,12 +28,10 @@ public class loginAccount extends Account {
     public long getPASSWORD() {
         return PASSWORD;
     }
-    
     public void setPASSWORD(long pASSWORD) {
         PASSWORD = pASSWORD;
     }
-
-    @Override   
+    @Override
     public void input()
     {
         Scanner sc = new Scanner(System.in);
@@ -42,7 +40,6 @@ public class loginAccount extends Account {
 
         System.out.println("Enter Password: ");
         PASSWORD = sc.nextLong();
+        sc.close();
     }
-    
-   
 }
