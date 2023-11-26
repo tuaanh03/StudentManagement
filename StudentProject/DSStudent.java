@@ -78,7 +78,7 @@ public class DSStudent implements Function
             }
             reader.close();
         } catch (Exception e) {
-            System.out.println("An error occurred: " + e.getMessage());
+            // System.out.println("An error occurred: " + e.getMessage());
         }
         return studentList;
     }

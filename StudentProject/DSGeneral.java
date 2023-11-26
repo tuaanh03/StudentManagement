@@ -9,29 +9,27 @@ public class DSGeneral {
 
     DSStudent stu = new DSStudent("StudentFile.txt");
     QLTeacher tea = new QLTeacher("TeacherFile.txt");
-    DSCLASS a = new DSCLASS("StudentClass.txt");
+    DSSubject sub = new DSSubject("SubjectFile.txt");
+    // DSCLASS a = new DSCLASS("StudentClass.txt");
+    KQHT kq = new KQHT();
 
     public void user(String id) {
         int choice;
         Scanner sc = new Scanner(System.in);
         do {
-            System.out.println("1. View study results");
-            System.out.println("2. See the school year's payroll");
-            System.out.println("3. View tuition");
+            System.out.println("1. View study results");          
+            System.out.println("2. View tuition");
             System.out.println("0. Exit");
             System.out.println("Enter your choice: ");
             choice = sc.nextInt();
             switch (choice) {
                 case 1: {
-                    // Add logic for viewing study results
+                    kq.studyResultByID(id);
                     break;
-                }
+                }             
                 case 2: {
-                    // Add logic for viewing school year's payroll
-                    break;
-                }
-                case 3: {
-                    a.show_tuition(id);
+                    DSCLASS a = new DSCLASS("StudentClass.txt");
+                    a.show_tuition(id);                                
                     break;
                 }
                 case 0: {
@@ -55,21 +53,18 @@ public class DSGeneral {
             System.out.println("2. View study results list");
             System.out.println("3. Edit student list");
             System.out.println("4. Edit study results list");
-            System.out.println("5. Save all edits");
             System.out.println("0. Exit");
             System.out.println("Enter your choice: ");
             
             choice = sc.nextInt();
 
             switch (choice) {
-                case 1: {
-                    DSStudent studentList = new DSStudent("StudentFile.txt");
-                    studentList.show();
+                case 1: {                   
+                    stu.show();
                     break;
                 }
-                case 2: {
-                    DSSubject subjectList = new DSSubject("SubjectFile.txt");
-                    subjectList.show();
+                case 2: {                    
+                    kq.menu();
                     break;
                 }
                 case 3: {
@@ -77,13 +72,10 @@ public class DSGeneral {
                     break;
                 }
                 case 4: {
-                    // Add logic for editing study results list
+                    sub.show();
                     break;
                 }
-                case 5: {
-                    // Add logic for saving all edits
-                    break;
-                }
+               
                 case 0: {
                     System.out.println("Thanks for using!");
                     break;
@@ -117,7 +109,7 @@ public class DSGeneral {
                     break;
                 }
                 case 3: {
-                    a.menu();
+                    kq.menu();
                     break;
                 }
                 case 0: {

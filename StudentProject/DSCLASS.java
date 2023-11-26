@@ -277,7 +277,7 @@ public class DSCLASS implements Function
   public void show_tuition (String ID)
   {
     DSStudent a =new DSStudent();
-    for (Student st : a.is_stuList("StudentFile.txt"))
+    for (Student st : a.is_stuList("StudentClass.txt"))
     {
       if (ID.equals(st.getID_STUDENT()))
       {
@@ -304,6 +304,7 @@ public class DSCLASS implements Function
           }
         }
       }
+      break;
     }
   }
   public void menu()
@@ -384,9 +385,5 @@ public class DSCLASS implements Function
         } while (choice != 0);
     }
 
-    public static void main(String[] args)
-    {
-      DSCLASS a = new DSCLASS("StudentClass.txt");
-      a.menu();
-    }
+
 }
