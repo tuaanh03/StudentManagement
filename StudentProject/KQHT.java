@@ -40,34 +40,18 @@ public class KQHT {
 
   public void studyResultBySubject() // sb student truyen vao o main
   {
-    Scanner r = new Scanner(System.in);
-    String subject;
-
-    while (true) {
-      System.out.println(" ------------------Find point results by subject-----------------");
-      System.out.println(" Enter subject : ");
-      subject = r.nextLine();
-      if (subject.equals("math") || subject.equals("physics") || subject.equals("chemistry")) {
-        System.out.println(
-            "                                Name subject : " + subject.toUpperCase() + "                        ");
-        System.out.println(
-            "----------------------------------------------------------------------------------------------------------------");
-        System.out.printf("%-20s%-15s%-15s%-15s\n", "ID Student", "Point GK", "Point CK", "Point average ");
-        DSSubject sub = new DSSubject();
-        for (Subject sb : sub.is_SubList("SubjectFile.txt")) {
-          if (subject.equals(sb.getName_SJ())) {
-            double a = sb.pointAVG();
-            sb.setAVG(a);
-            System.out.printf("%-20s%-15s%-15s%.2f\n", sb.getID_STUDENT(), sb.getPointGK_SJ(), sb.getPointCK_SJ(),
-                sb.getAVG());
-          }
-          break;
-        }
-
-      } else {
-        System.out.println("Invalid type. Please enter a valid name subject .");
+    Scanner sc=new Scanner(System.in);
+    System.out.println("Enter Subject you want find :");
+    String name=sc.nextLine();
+    DSSubject sb=new DSSubject();
+    System.out.printf("%-20s%-15s%-15s%-15s%-15s\n", "ID Student", "Name subject", "Point GK", "Point CK","Point average ");
+    for (Subject sub : sb.is_SubList("SubjectFile.txt")) {
+      if(name.equals(sub.getName_SJ()))
+      {
+        double a = sub.pointAVG();
+        sub.setAVG(a);
+        System.out.printf("%-20s%-15s%-15s%-15s%.2f\n", sub.getID_STUDENT(), sub.getName_SJ(), sub.getPointGK_SJ(),sub.getPointCK_SJ(), sub.getAVG());
       }
-      r.close();
     }
   }
 
@@ -76,8 +60,7 @@ public class KQHT {
     System.out.print("Enter class you want view result study :");
     String in = sc.nextLine();
     // DSCLASS Class=new DSCLASS();
-    System.out.printf("%-20s%-15s%-15s%-15s%-15s\n", "ID Student", "Name subject", "Point GK", "Point CK",
-        "Point average ");
+    System.out.printf("%-20s%-15s%-15s%-15s%-15s\n", "ID Student", "Name subject", "Point GK", "Point CK","Point average ");
     DSStudent student = new DSStudent();
     DSSubject sub = new DSSubject();
     for (Student stu : student.is_stuList("StudentFile.txt")) {
@@ -91,7 +74,6 @@ public class KQHT {
                 sb.getPointCK_SJ(), sb.getAVG());
           }
         }
-       
       }
       break;
     }
