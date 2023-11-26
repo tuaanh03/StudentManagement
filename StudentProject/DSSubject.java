@@ -46,34 +46,9 @@ public class DSSubject implements Function
             System.out.println("An error occurred: " + e.getMessage());
         }
     }
-public ArrayList<Subject> is_SubList(String filePath)
+public ArrayList<Subject> is_SubList()
 {
-FileInputStream fis = null;
-        InputStreamReader reade = null;
-        BufferedReader reader = null;
-        try  {
-            fis = new FileInputStream(filePath);
-            reade = new InputStreamReader(fis, StandardCharsets.UTF_8);
-            reader = new BufferedReader(reade);
-            String line = null;
-            while ((line = reader.readLine())  != null) {
-                if (line.isEmpty())
-                {
-                    continue;
-                }
-                Subject sb = new Subject();
-                String[] arr = line.split(",");// 1 line chuoi nen la dung String
-                sb.setID_STUDENT(arr[0].trim());
-                sb.setname_SJ(arr[1].trim());
-                sb.setpointGK_SJ(Double.parseDouble(arr[2].trim()));
-                sb.setpointCK_SJ(Double.parseDouble(arr[3].trim()));
-                subjectList.add(sb);
-            }
-            reader.close();
-        } catch (Exception e) {
-            System.out.println("An error occurred: " + e.getMessage());
-        }
-        return subjectList;
+    return subjectList;
 }
     public void SaveData(String f) {
 

@@ -11,14 +11,14 @@ public class KQHT {
     double sum = 0;
     int count = 0;
     DSStudent student = new DSStudent();
-    for (Student stu : student.is_stuList("StudentFile.txt")) {
+    for (Student stu : student.is_stuList()) {
       if (id.equals(stu.getID_STUDENT())) {
         System.out.println("Student's name : " + stu.getName());
         System.out.println("Student's ID : " + stu.getID_STUDENT());
         System.out.println("------------------------------------------------------------------");
         System.out.printf("%-20s%-15s%-15s%-15s\n", "Name Subject", "Point GK", "Point CK", "Point Average");
         DSSubject sub = new DSSubject();
-        for (Subject sb : sub.is_SubList("SubjectFile.txt")) {
+        for (Subject sb : sub.is_SubList()) {
           if (id.equals(sb.getID_STUDENT())) {
             double a = sb.pointAVG();
             sb.setAVG(a);
@@ -28,14 +28,11 @@ public class KQHT {
             count += 1;
 
           }
-
         }
         System.out.println("------------------------------------------------------------------");
         System.out.printf("Final Result : %.2f\n", (double) (sum / count));
-        
       }
-      break;
-    }
+    break;}
   }
 
   public void studyResultBySubject() // sb student truyen vao o main
@@ -45,7 +42,7 @@ public class KQHT {
     String name=sc.nextLine();
     DSSubject sb=new DSSubject();
     System.out.printf("%-20s%-15s%-15s%-15s%-15s\n", "ID Student", "Name subject", "Point GK", "Point CK","Point average ");
-    for (Subject sub : sb.is_SubList("SubjectFile.txt")) {
+    for (Subject sub : sb.is_SubList()) {
       if(name.equals(sub.getName_SJ()))
       {
         double a = sub.pointAVG();
@@ -59,14 +56,13 @@ public class KQHT {
     Scanner sc = new Scanner(System.in);
     System.out.print("Enter class you want view result study :");
     String in = sc.nextLine();
-    // DSCLASS Class=new DSCLASS();
     System.out.printf("%-20s%-15s%-15s%-15s%-15s\n", "ID Student", "Name subject", "Point GK", "Point CK","Point average ");
     DSStudent student = new DSStudent();
     DSSubject sub = new DSSubject();
-    for (Student stu : student.is_stuList("StudentFile.txt")) {
+    for (Student stu : student.is_stuList()) {
       if (in.equals(stu.getStudentClass())) {
         String id = stu.getID_STUDENT();
-        for (Subject sb : sub.is_SubList("SubjectFile.txt")) {
+        for (Subject sb : sub.is_SubList()) {
           if (id.equals(sb.getID_STUDENT())) {
             double a = sb.pointAVG();
             sb.setAVG(a);

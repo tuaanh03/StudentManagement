@@ -48,36 +48,6 @@ public class DSCLASS implements Function
   }
   public ArrayList<StudentClass> is_classList(String filePath)
   {
-    FileInputStream fis = null;
-    InputStreamReader reade = null;
-    BufferedReader reader = null;
-  try
-  {
-    fis = new FileInputStream(filePath);
-    reade = new InputStreamReader(fis, StandardCharsets.UTF_8);
-    reader = new BufferedReader(reade);
-    String line = null;
-    while ((line = reader.readLine())  != null)
-      {
-        if (line.isEmpty())
-        {
-          continue;
-        }
-        String[] arr = line.split("\\s*,\\s*");
-        StudentClass CLASS = new StudentClass();
-        CLASS.setID_grade(arr[0].trim());
-        CLASS.setID_class(arr[1].trim());
-        CLASS.setID_teacher(arr[2].trim());
-        CLASS.setTypes(arr[3].trim());
-        classes.add(CLASS);
-      }
-    reader.close();
-    }
-    catch (Exception e)
-    {
-      System.out.println("An error occurred: " + e.getMessage());
-      e.printStackTrace();
-    }
     return classes;
   }
   public void SaveData(String f)
@@ -274,10 +244,9 @@ public class DSCLASS implements Function
     }
   }
 
-  public void show_tuition (String ID)
+  public void show_tuition (String ID, ArrayList<Student> a)
   {
-    DSStudent a =new DSStudent();
-    for (Student st : a.is_stuList("StudentClass.txt"))
+    for (Student st : a)
     {
       if (ID.equals(st.getID_STUDENT()))
       {

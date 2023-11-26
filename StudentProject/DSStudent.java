@@ -47,39 +47,8 @@ public class DSStudent implements Function
             System.out.println("An error occurred: " + e.getMessage());
         }
     }
-    public ArrayList<Student> is_stuList(String filePath)
+    public ArrayList<Student> is_stuList()
     {
-        FileInputStream fis = null;
-        InputStreamReader reade = null;
-        BufferedReader reader = null;
-
-        try  {
-            fis = new FileInputStream(filePath);
-            reade = new InputStreamReader(fis, StandardCharsets.UTF_8);
-            reader = new BufferedReader(reade);
-            String line = null;
-            while ((line = reader.readLine())  != null) {
-                if (line.isEmpty())
-                {
-                    continue;
-                }
-                Student stu = new Student();
-                String[] arr = line.split(",");// 1 line chuoi nen la dung String
-                stu.setName(arr[0].trim());
-                stu.setBirth(arr[1].trim());
-                stu.setAddress(arr[2].trim());
-                stu.setGender(Integer.parseInt(arr[3].trim()));
-                stu.setMail(arr[4].trim());
-                stu.setPhoneNumber(Integer.parseInt(arr[5].trim()));
-                stu.setID_STUDENT(arr[6]);
-                stu.setGrade(arr[7].trim());
-                stu.setStudentClass(arr[8]);
-                studentList.add(stu);
-            }
-            reader.close();
-        } catch (Exception e) {
-            // System.out.println("An error occurred: " + e.getMessage());
-        }
         return studentList;
     }
     public void add()

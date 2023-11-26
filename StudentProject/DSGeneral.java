@@ -10,14 +10,14 @@ public class DSGeneral {
     DSStudent stu = new DSStudent("StudentFile.txt");
     QLTeacher tea = new QLTeacher("TeacherFile.txt");
     DSSubject sub = new DSSubject("SubjectFile.txt");
-    // DSCLASS a = new DSCLASS("StudentClass.txt");
+    DSCLASS a = new DSCLASS("StudentClass.txt");
     KQHT kq = new KQHT();
 
     public void user(String id) {
         int choice;
         Scanner sc = new Scanner(System.in);
         do {
-            System.out.println("1. View study results");          
+            System.out.println("1. View study results");
             System.out.println("2. View tuition");
             System.out.println("0. Exit");
             System.out.println("Enter your choice: ");
@@ -26,10 +26,9 @@ public class DSGeneral {
                 case 1: {
                     kq.studyResultByID(id);
                     break;
-                }             
+                }
                 case 2: {
-                    DSCLASS a = new DSCLASS("StudentClass.txt");
-                    a.show_tuition(id);                                
+                    a.show_tuition(id, stu.is_stuList());
                     break;
                 }
                 case 0: {
@@ -59,11 +58,11 @@ public class DSGeneral {
             choice = sc.nextInt();
 
             switch (choice) {
-                case 1: {                   
+                case 1: {
                     stu.show();
                     break;
                 }
-                case 2: {                    
+                case 2: {
                     kq.menu();
                     break;
                 }
@@ -75,7 +74,6 @@ public class DSGeneral {
                     sub.show();
                     break;
                 }
-               
                 case 0: {
                     System.out.println("Thanks for using!");
                     break;
