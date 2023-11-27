@@ -1,4 +1,4 @@
 Ngo Tuan Anh,3/11/2004,dasdsadsa,1,dsada@dasdasd,966770042,3122411007,grade10,10a1
-Ngoc Nhien,25/01/2004,dsadsadsa,2,nhien123@gmail.com,966770042,3122411140,grade10,10a2
+Ngoc Nhien,25/01/2004,dsadsadsa,2,nhien123@gmail.com,966770042,3122411140,grade10,10a1
 Hong Tham,None,dsdasdsasd,2,tham123@dasdasdsa,966770042,3122411106,grade10,10a6
 Thuy Quyen,None,dasdasdsa,2,quyen72@dasdsa,966770042,3122411172,grade10,10a5
