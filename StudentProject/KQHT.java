@@ -1,9 +1,20 @@
 package StudentProject;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class KQHT {
   public KQHT() {
+  }
+
+  public static void clrscr() {
+    try {
+      if (System.getProperty("os.name").contains("Windows"))
+        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+      else
+        Runtime.getRuntime().exec("clear");
+    } catch (IOException | InterruptedException ex) {
+    }
   }
 
   public void studyResultByID(String id) // id student truyen vao o main
@@ -18,6 +29,7 @@ public class KQHT {
         System.out.println("------------------------------------------------------------------");
         System.out.printf("%-20s%-15s%-15s%-15s\n", "Name Subject", "Point GK", "Point CK", "Point Average");
         DSSubject sub = new DSSubject();
+        // DSStudent st = new DSStudent();
         for (Subject sb : sub.is_SubList()) {
           if (id.equals(sb.getID_STUDENT())) {
             double a = sb.pointAVG();
@@ -32,22 +44,24 @@ public class KQHT {
         System.out.println("------------------------------------------------------------------");
         System.out.printf("Final Result : %.2f\n", (double) (sum / count));
       }
-    break;}
+      break;
+    }
   }
 
   public void studyResultBySubject() // sb student truyen vao o main
   {
-    Scanner sc=new Scanner(System.in);
+    Scanner sc = new Scanner(System.in);
     System.out.println("Enter Subject you want find :");
-    String name=sc.nextLine();
-    DSSubject sb=new DSSubject();
-    System.out.printf("%-20s%-15s%-15s%-15s%-15s\n", "ID Student", "Name subject", "Point GK", "Point CK","Point average ");
+    String name = sc.nextLine();
+    DSSubject sb = new DSSubject();
+    System.out.printf("%-20s%-15s%-15s%-15s%-15s\n", "ID Student", "Name subject", "Point GK", "Point CK",
+        "Point average ");
     for (Subject sub : sb.is_SubList()) {
-      if(name.equals(sub.getName_SJ()))
-      {
+      if (name.equals(sub.getName_SJ())) {
         double a = sub.pointAVG();
         sub.setAVG(a);
-        System.out.printf("%-20s%-15s%-15s%-15s%.2f\n", sub.getID_STUDENT(), sub.getName_SJ(), sub.getPointGK_SJ(),sub.getPointCK_SJ(), sub.getAVG());
+        System.out.printf("%-20s%-15s%-15s%-15s%.2f\n", sub.getID_STUDENT(), sub.getName_SJ(), sub.getPointGK_SJ(),
+            sub.getPointCK_SJ(), sub.getAVG());
       }
     }
   }
@@ -56,7 +70,8 @@ public class KQHT {
     Scanner sc = new Scanner(System.in);
     System.out.print("Enter class you want view result study :");
     String in = sc.nextLine();
-    System.out.printf("%-20s%-15s%-15s%-15s%-15s\n", "ID Student", "Name subject", "Point GK", "Point CK","Point average ");
+    System.out.printf("%-20s%-15s%-15s%-15s%-15s\n", "ID Student", "Name subject", "Point GK", "Point CK",
+        "Point average ");
     DSStudent student = new DSStudent();
     DSSubject sub = new DSSubject();
     for (Student stu : student.is_stuList()) {
@@ -88,17 +103,20 @@ public class KQHT {
       sc.nextLine();
       switch (choice) {
         case 1: {
+          clrscr();
           System.out.print("Enter Student's ID : ");
           String id = sc.nextLine();
           studyResultByID(id);
           break;
         }
         case 2: {
+          clrscr();
           studyResultBySubject();
           System.out.print("\n");
           break;
         }
         case 3: {
+          clrscr();
           studyResultByClass();
           System.out.print("\n");
           break;
@@ -113,6 +131,6 @@ public class KQHT {
         }
       }
     } while (choice != 0);
- 
+
   }
 }
