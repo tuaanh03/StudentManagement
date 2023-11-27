@@ -31,8 +31,7 @@ public class KQHT {
         System.out.println("------------------------------------------------------------------");
         System.out.printf("Final Result : %.2f\n", (double) (sum / count));
       }
-      else{ System.out.print("khong tim thay hoc sinh");}
-    break;}
+      }
   }
 
   public void studyResultBySubject() // sb student truyen vao o main
