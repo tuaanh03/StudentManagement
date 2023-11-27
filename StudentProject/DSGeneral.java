@@ -24,7 +24,7 @@ public class DSGeneral {
             choice = sc.nextInt();
             switch (choice) {
                 case 1: {
-                    kq.studyResultByID(id,stu.is_stuList(),sub.is_SubList());
+                    kq.studyResultByID(id);
                     break;
                 }
                 case 2: {
@@ -44,7 +44,7 @@ public class DSGeneral {
         sc.close();
     }
 
-    public void teacher(String id) {
+    public void teacher() {
         int choice;
         Scanner sc = new Scanner(System.in);
         do {
@@ -61,7 +61,7 @@ public class DSGeneral {
                     break;
                 }
                 case 2: {
-                    kq.studyResultByClass(id,stu.is_stuList(), sub.is_SubList());
+                    kq.menu();
                     break;
                 }
                 case 3: {
@@ -105,47 +105,9 @@ public class DSGeneral {
                     break;
                 }
                 case 3: {
-                        int choose;
-                        do {
-                        System.out.println("1. View result by ID");
-                        System.out.println("2. View result by subject");
-                        System.out.println("3. View result by Class");
-                        System.out.println("0. Exit");
-                        System.out.println("Enter your choice: ");
-                        choose = sc.nextInt();
-                        sc.nextLine();
-                        switch (choose) {
-                            case 1: {
-                            System.out.print("Enter Student's ID : ");
-                            String id = sc.nextLine();
-                            kq.studyResultByID(id,stu.is_stuList(),sub.is_SubList());
-                            break;
-                            }
-                            case 2: {
-                            kq.studyResultBySubject();
-                            System.out.print("\n");
-                            break;
-                            }
-                            case 3: {
-                            String cls;
-                            System.out.print("Enter class's ID: ");
-                            cls=sc.nextLine();
-                            kq.studyResultByClass(cls,stu.is_stuList(),sub.is_SubList());
-                            System.out.print("\n");
-                            break;
-                            }
-                            case 0: {
-                            System.out.println("Thanks for using!");
-                            break;
-                            }
-                            default: {
-                            System.out.println("Invalid choice. Please try again.");
-                            break;
-                            }
-                        }
-                        } while (choose != 0);
-                    }
+                        kq.menu();
                     break;
+}
                 case 0: {
                     System.out.println("Thanks for using!");
                     break;
@@ -170,7 +132,8 @@ public class DSGeneral {
         }
 
         if (tea.loginTeacher(username, password) == 1) {
-            teacher(username);
+            
+            teacher();
         }
         if (UA.getID_USER().equals(adminUsername) && UA.getPASSWORD() == adminPassword) {
             admin();

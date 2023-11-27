@@ -7,17 +7,19 @@ public class KQHT {
   public KQHT() {
   }
 
-  public void studyResultByID(String id, ArrayList<Student> st, ArrayList<Subject> sub) // id student truyen vao o main
+  public void studyResultByID(String id) // id student truyen vao o main
   {
     double sum = 0;
     int count = 0;
-    for (Student stu : st) {
+    DSStudent st=new DSStudent();
+    for (Student stu : st.is_stuList()) {
       if (id.equals(stu.getID_STUDENT())) {
         System.out.println("Student's name : " + stu.getName());
         System.out.println("Student's ID : " + stu.getID_STUDENT());
         System.out.println("------------------------------------------------------------------");
         System.out.printf("%-20s%-15s%-15s%-15s\n", "Name Subject", "Point GK", "Point CK", "Point Average");
-        for (Subject sb : sub) {
+        DSSubject sub=new DSSubject();
+        for (Subject sb : sub.is_SubList()) {
           if (id.equals(sb.getID_STUDENT())) {
             double a = sb.pointAVG();
             sb.setAVG(a);
@@ -31,7 +33,7 @@ public class KQHT {
         System.out.println("------------------------------------------------------------------");
         System.out.printf("Final Result : %.2f\n", (double) (sum / count));
       }
-      }
+    }
   }
 
   public void studyResultBySubject() // sb student truyen vao o main
@@ -51,12 +53,17 @@ public class KQHT {
     }
   }
 
-  public void studyResultByClass(String in,ArrayList<Student> st, ArrayList<Subject> sub) {
+  public void studyResultByClass() {
+    Scanner sc = new Scanner(System.in);
+    System.out.print("Enter class you want view result study :");
+    String in = sc.nextLine();
     System.out.printf("%-20s%-15s%-15s%-15s%-15s\n", "ID Student", "Name subject", "Point GK", "Point CK","Point average ");
-    for (Student stu : st) {
+    DSStudent st=new DSStudent();
+    for (Student stu : st.is_stuList()) {
       if (in.equals(stu.getStudentClass())) {
         String id = stu.getID_STUDENT();
-        for (Subject sb : sub) {
+        DSSubject sub=new DSSubject();
+        for (Subject sb : sub.is_SubList()) {
           if (id.equals(sb.getID_STUDENT())) {
             double a = sb.pointAVG();
             sb.setAVG(a);
@@ -65,7 +72,47 @@ public class KQHT {
           }
         }
       }
-      break;
     }
+  }
+
+  public void menu() {
+    int choice;
+    Scanner sc = new Scanner(System.in);
+    do {
+      System.out.println("1. View result by ID");
+      System.out.println("2. View result by subject");
+      System.out.println("3. View result by Class");
+      System.out.println("0. Exit");
+      System.out.println("Enter your choice: ");
+      choice = sc.nextInt();
+      sc.nextLine();
+      switch (choice) {
+        case 1: {
+          System.out.print("Enter Student's ID : ");
+          String id = sc.nextLine();
+          studyResultByID(id);
+          break;
+        }
+        case 2: {
+          studyResultBySubject();
+          System.out.print("\n");
+          break;
+        }
+        case 3: {
+          studyResultByClass();
+          System.out.print("\n");
+          break;
+        }
+        case 0: {
+          System.out.println("Thanks for using!");
+          break;
+        }
+        default: {
+          System.out.println("Invalid choice. Please try again.");
+          break;
+        }
+      }
+    } while (choice != 0);
+ 
   }
 }
