@@ -24,7 +24,7 @@ public class DSGeneral {
             choice = sc.nextInt();
             switch (choice) {
                 case 1: {
-                    kq.studyResultByID(id);
+                    kq.studyResultByID(id,stu.is_stuList(),sub.is_SubList());
                     break;
                 }
                 case 2: {
@@ -44,7 +44,7 @@ public class DSGeneral {
         sc.close();
     }
 
-    public void teacher() {
+    public void teacher(String id) {
         int choice;
         Scanner sc = new Scanner(System.in);
         do {
@@ -54,16 +54,14 @@ public class DSGeneral {
             System.out.println("4. Edit study results list");
             System.out.println("0. Exit");
             System.out.println("Enter your choice: ");
-            
             choice = sc.nextInt();
-
             switch (choice) {
                 case 1: {
                     stu.show();
                     break;
                 }
                 case 2: {
-                    kq.menu();
+                    kq.studyResultByClass(id,stu.is_stuList(), sub.is_SubList());
                     break;
                 }
                 case 3: {
@@ -107,9 +105,47 @@ public class DSGeneral {
                     break;
                 }
                 case 3: {
-                    kq.menu();
+                        int choose;
+                        do {
+                        System.out.println("1. View result by ID");
+                        System.out.println("2. View result by subject");
+                        System.out.println("3. View result by Class");
+                        System.out.println("0. Exit");
+                        System.out.println("Enter your choice: ");
+                        choose = sc.nextInt();
+                        sc.nextLine();
+                        switch (choose) {
+                            case 1: {
+                            System.out.print("Enter Student's ID : ");
+                            String id = sc.nextLine();
+                            kq.studyResultByID(id,stu.is_stuList(),sub.is_SubList());
+                            break;
+                            }
+                            case 2: {
+                            kq.studyResultBySubject();
+                            System.out.print("\n");
+                            break;
+                            }
+                            case 3: {
+                            String cls;
+                            System.out.print("Enter class's ID: ");
+                            cls=sc.nextLine();
+                            kq.studyResultByClass(cls,stu.is_stuList(),sub.is_SubList());
+                            System.out.print("\n");
+                            break;
+                            }
+                            case 0: {
+                            System.out.println("Thanks for using!");
+                            break;
+                            }
+                            default: {
+                            System.out.println("Invalid choice. Please try again.");
+                            break;
+                            }
+                        }
+                        } while (choose != 0);
+                    }
                     break;
-                }
                 case 0: {
                     System.out.println("Thanks for using!");
                     break;
@@ -124,24 +160,19 @@ public class DSGeneral {
     }
 
     public void login_account() {
-        
         loginAccount UA = new loginAccount();
         UA.input();
-        
         String username = UA.getID_USER();
         long password = UA.getPASSWORD();
 
         if (stu.loginStudent(username, password) == 1) {
-            
             user(UA.getID_USER());
         }
 
         if (tea.loginTeacher(username, password) == 1) {
-            
-            teacher();
+            teacher(username);
         }
         if (UA.getID_USER().equals(adminUsername) && UA.getPASSWORD() == adminPassword) {
-            
             admin();
         }
     }

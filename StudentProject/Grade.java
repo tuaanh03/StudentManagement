@@ -59,17 +59,4 @@ public class Grade {
             return ID_CLASS;
         }
     }
-    // public static void main(String[] args) {
-    //     Grade khoi10=new Grade("khoi10");
-    //     ID_CLASSES a=khoi10.new ID_CLASSES("10A1");
-    //     ID_CLASSES b=khoi10.new ID_CLASSES("10A2");
-    //     khoi10.addClass(a);
-    //     khoi10.addClass(b);
-    //     khoi10.output();
-    //     Grade khoi11=new Grade("khoi11");
-    //     ID_CLASSES c=khoi11.new ID_CLASSES("11A1");
-    //     ID_CLASSES d=khoi11.new ID_CLASSES("11A2");
-    //     khoi11.addClass(c);
-    //     khoi11.addClass(d);
-    //     khoi11.output();}
 }

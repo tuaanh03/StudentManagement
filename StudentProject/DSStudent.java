@@ -125,10 +125,6 @@ public class DSStudent implements Function
             System.out.println("Student not found.");
         }
     }
-    public static ArrayList<Student> ReadData(String filePath) {
-        return studentList;
-    }
-
     public void SaveData(String filepath) {
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filepath))) {
