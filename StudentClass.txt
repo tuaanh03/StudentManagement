@@ -1,6 +1,6 @@
-grade10,10a7,01CN10,Day boarding
+grade10,10a1,01CN10,Day boarding
 grade10,10a2,02CN10,Boarding
-grade11,11a1,13CN11,Outpatient
+grade11,11a1,03CN11,Outpatient
 grade11,11a2,04CN11,Day boarding
 grade12,12a1,05CN11,Day boarding
 grade12,12a2,06CN12,Outpatient

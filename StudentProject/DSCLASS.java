@@ -132,14 +132,14 @@ public class DSCLASS implements Function
     System.out.print(" If the information of class was not suitable, you can delete it. Enter number class need delete  : ");
     int n = r.nextInt();
     for (int i = 0; i < n; i++) {
-      System.out.println("+------------------------------------------+");
-      System.out.println("|       Delete class number "    +(i + 1)+  "|\n");
-      System.out.println("|     Which method do you want to delete?  |");
-      System.out.println("|----------------------------------------  |");
-      System.out.println("|   1. ID-CLASS                            |");
-      System.out.println("|   2. ID-Teacher                          |");
-      System.out.println("|   3. Types's class                       |");
-      System.out.println("+-------------------------------------------+");
+      System.out.println("+--------------------------------------------+");
+      System.out.println("  |       Delete class number "    +(i + 1)+  "|\n");
+      System.out.println("|     Which method do you want to delete?    |");
+      System.out.println("|----------------------------------------    |");
+      System.out.println("|   1. ID-CLASS                              |");
+      System.out.println("|   2. ID-Teacher                            |");
+      System.out.println("|   3. Types's class                         |");
+      System.out.println("+--------------------------------------------+");
       System.out.print(" Enter: ");
       int choice = r.nextInt();
 
@@ -217,14 +217,14 @@ public class DSCLASS implements Function
        
       else if (choice == 3)
       {
-        System.out.println("+--------------------------------------+");
+        System.out.println("+---------------------------------------+");
         System.out.println("|   Which types's class do you want     |");
         System.out.println("|           to delete ?                 |");
         System.out.println("|---------------------------------------|");
         System.out.println("|   1. Day boarding                     |");
         System.out.println("|   2. Boarding                         |");
         System.out.println("|   3. Outpatient                       |");
-        System.out.println("+--------------------------------------+");
+        System.out.println("+---------------------------------------+");
         System.out.print(" Enter number types's class want to delete : ");
         
         int find =r.nextInt();
@@ -280,7 +280,7 @@ public class DSCLASS implements Function
     System.out.println("|   1. ID CLASS                     |");
     System.out.println("|   2. ID Teacher                   |");
     System.out.println("|   3. Types's class                |");
-    System.out.println("|-----------------------------------|");
+    System.out.println("+-----------------------------------+");
     System.out.print(" Enter: ");
     int choice = r.nextInt();
     r.nextLine();
@@ -304,7 +304,7 @@ public class DSCLASS implements Function
         {
           if (find.equals(CLASS.getID_class())) 
           {
-           System.out.println("+------------+---------------+---------------+--------------------+");
+           System.out.println("   +------------+---------------+---------------+--------------------+");
               System.out.printf("| %-10s | %-13s | %-13s | %-18s |\n", "Grade", "Class", "ID Teacher", "Type of Class");
               System.out.println("+------------+---------------+---------------+--------------------+");
               System.out.printf("| %-10s | %-13s | %-13s | %-18s |\n", CLASS.getID_grade(), CLASS.getID_class(), CLASS.getID_teacher(), CLASS.getTypes());
@@ -352,14 +352,14 @@ public class DSCLASS implements Function
     }
     else if (choice==3)
     {
-      System.out.println("+------------------------------------+");
+      System.out.println("+-------------------------------------+");
       System.out.println("|      Which types's class do you     |");
       System.out.println("|          want to search ?           |");
       System.out.println("|------------------------------------ |");
       System.out.println("|   1. Day boarding                   |");
       System.out.println("|   2. Boarding                       |");
       System.out.println("|   3. Outpatient                     |");
-      System.out.println("+------------------------------------+");
+      System.out.println("+-------------------------------------+");
       System.out.print(" Enter number types's class want to search : ");
         int find =r.nextInt();
         
@@ -433,7 +433,7 @@ public void modify()
   {
     
     if (find.equals(CLASS.getID_class()))
-    {
+  {
       int choice = r.nextInt();
       do
       {
@@ -445,7 +445,7 @@ public void modify()
       System.out.println("|   2. ID Teacher                   |");
       System.out.println("|   3. Types's class                |");
       System.out.println("|   0. exit                         |");
-      System.out.println("|-----------------------------------|");
+      System.out.println("+-----------------------------------+");
       System.out.print(" Enter: ");
       
       
@@ -541,11 +541,11 @@ public void modify()
        
       }
     
-    }while(!choice=0)
+    }while(choice!=0);
   }
 }
   
- 
+} 
 
 
 
