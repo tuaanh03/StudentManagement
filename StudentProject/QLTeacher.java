@@ -37,8 +37,8 @@ public QLTeacher(String filePath)
                 tea.setGender(Integer.parseInt(arr[3].trim()));
                 tea.setMail(arr[4].trim());
                 tea.setPhoneNumber(Integer.parseInt(arr[5].trim()));
-                tea.setID_GV(arr[6]);
-                tea.setID_CLASS(arr[7]);
+                tea.setID_GV(arr[6].trim());
+                tea.setID_CLASS(arr[7].trim());
                 teacherList.add(tea);
             }
             reader.close();
