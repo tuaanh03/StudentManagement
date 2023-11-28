@@ -208,7 +208,7 @@ System.out.println();
             System.out.println("3. Modify Point");
             System.out.println("4. Show Subject");
             System.out.println("5. Save From File");
-            System.out.println("6. Search"); // new function
+            System.out.println("6. Search"); 
             System.out.println("0. Exit");
             System.out.println("Enter your choice: ");
             choice = sc.nextInt();

@@ -3,6 +3,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -54,6 +55,18 @@ public class DSStudent implements Function
     {
         return studentList;
     }
+
+    public static void clrscr()
+	{
+		try {
+            if (System.getProperty("os.name").contains("Windows"))
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            else
+                Runtime.getRuntime().exec("clear");
+        } catch (IOException | InterruptedException ex) {
+        }
+	}
+
     public void add()
     {
         Student stu = new Student();
@@ -71,7 +84,7 @@ public class DSStudent implements Function
         loginAccount UA = new loginAccount();
         for (Student stu : studentList) {
             stu.output();
-            System.out.println("-----------***----------");
+            System.out.println("------------------------------------------------------------------**********-----------------------------------------------------------------");
         }
     }
 
@@ -169,7 +182,7 @@ public class DSStudent implements Function
         int choice;
         Scanner sc = new Scanner(System.in);
         do
-        {
+        {   
             System.out.println("1. Add Student");
             System.out.println("2. Delete Student");
             System.out.println("3. Search Student");
@@ -180,23 +193,29 @@ public class DSStudent implements Function
             System.out.println("Enter your choice: ");
             choice = sc.nextInt();
             switch (choice) {
-                case 1: {
+                case 1: {   
+                    clrscr(); 
+                    System.out.println("\t\tFill information of student");           
                     add();
                     break;
                 }
                 case 2: {
+                    clrscr();
                     delete();
                     break;
                 }
                 case 3: {
+                    clrscr();
                     search();
                     break;
                 }
                 case 4: {
+                    clrscr();
                     modify();
                     break;
                 }
                 case 5: {
+                    clrscr();
                     show();
                     break;
                 }
