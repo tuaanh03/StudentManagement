@@ -1,4 +1,10 @@
 Ngo Tuan Anh,3/11/2004,dasdsadsa,1,dsada@dasdasd,966770042,3122411007,grade10,10a1
+<<<<<<< HEAD
 Ngoc Nhien,25/01/2004,dsadsadsa,2,nhien123@gmail.com,966770042,3122411140,grade10,10a1
 Hong Tham,None,dsdasdsasd,2,tham123@dasdasdsa,966770042,3122411106,grade10,10a6
 Thuy Quyen,9/2/2004,dasdasdsa,2,quyen72@dasdsa,383862745,3122411172,grade10,10a5ss
+=======
+Ngoc Nhien,None,dsadsadsa,2,nhien123@gmail.com,966770042,3122411140,grade10,10a2
+Hong Tham,None,dsdasdsasd,2,dasd@dasdasdsa,966770042,None,grade10,10a6
+Thuy Quyen,None,dasdasdsa,2,dasdsa@dasdsa,966770042,None,grade10,10a5
+>>>>>>> 1812441de6a6a7687948a062eab6fa021da093b2

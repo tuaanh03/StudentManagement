@@ -59,14 +59,19 @@ public class Student extends People implements Serializable{
         Scanner sc = new Scanner(System.in);
         super.input();
 
-        System.out.println("Enter ID_Student: ");
-        ID_STUDENT = sc.nextLine();
-        
+       
+        do {
+            System.out.println("Enter ID'Student (10 digits): ");
+            ID_STUDENT = sc.nextLine();
+            
+            if (ID_STUDENT.length() != 10) {
+                System.out.println("Error: ID'Student must be exactly 10 digits. Please try again.");
+            }
+        } while (ID_STUDENT.length() != 10);
 
         System.out.println("Enter Student'Grade: ");
         Grade = sc.nextLine();
        
-
         System.out.println("Enter Student'Class: ");
         StudentClass = sc.nextLine();
         
@@ -78,8 +83,6 @@ public class Student extends People implements Serializable{
         System.out.println("ID Student: " + getID_STUDENT());
         System.out.println("Grade: " + getGrade());
         System.out.println("Class: " + getStudentClass());
-        
     }
-
 }
 

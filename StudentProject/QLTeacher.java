@@ -10,23 +10,25 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class QLTeacher implements Function{
+public class QLTeacher implements Function {
     static ArrayList<Teacher> teacherList = new ArrayList<Teacher>();
-    public QLTeacher(){}
-public QLTeacher(String filePath)
-{
+    static ArrayList<String> uniqueID = new ArrayList<>();
+
+    public QLTeacher() {
+    }
+
+    public QLTeacher(String filePath) {
         FileInputStream fis = null;
         InputStreamReader reade = null;
         BufferedReader reader = null;
 
-        try  {
+        try {
             fis = new FileInputStream(filePath);
             reade = new InputStreamReader(fis, StandardCharsets.UTF_8);
             reader = new BufferedReader(reade);
             String line = null;
-            while ((line = reader.readLine())  != null) {
-                if (line.isEmpty())
-                {
+            while ((line = reader.readLine()) != null) {
+                if (line.isEmpty()) {
                     continue;
                 }
                 Teacher tea = new Teacher();
@@ -40,18 +42,28 @@ public QLTeacher(String filePath)
                 tea.setID_GV(arr[6].trim());
                 tea.setID_CLASS(arr[7].trim());
                 teacherList.add(tea);
+                uniqueID.add(tea.getID_GV());
             }
             reader.close();
         } catch (Exception e) {
             System.out.println("An error occurred: " + e.getMessage());
         }
-}
-    public ArrayList<Teacher> is_TeacherList()
-        {return teacherList;}
+    }
+
+    public ArrayList<Teacher> is_TeacherList() {
+        return teacherList;
+    }
+
     public void add() {
         Teacher tea = new Teacher();
         tea.input();
+        if (uniqueID.contains(tea.getID_GV()))
+        {
+            System.out.println("Error: Teacher with ID " + tea.getID_GV() + " already exists.");
+            return;
+        }
         teacherList.add(tea);
+        uniqueID.add(tea.getID_GV());
     }
 
     public void show() {
@@ -68,7 +80,7 @@ public QLTeacher(String filePath)
         String find = sc.nextLine();
         List<Teacher> teachersToDelete = new ArrayList<Teacher>();
 
-        for ( Teacher tea : teacherList) {
+        for (Teacher tea : teacherList) {
             if (find.equals(tea.getID_GV()) || find.equals(tea.getName())) {
                 teachersToDelete.add(tea);
                 check = 1;
@@ -121,7 +133,6 @@ public QLTeacher(String filePath)
         }
     }
 
-
     public void SaveData(String filepath) {
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filepath))) {
@@ -138,12 +149,9 @@ public QLTeacher(String filePath)
 
     }
 
-    public int loginTeacher(String username, long password)
-    {
-        for (Teacher tea : teacherList)
-        {
-            if (username.equals(tea.getID_GV()) && password == tea.getPhoneNumber())
-            {
+    public int loginTeacher(String username, long password) {
+        for (Teacher tea : teacherList) {
+            if (username.equals(tea.getID_GV()) && password == tea.getPhoneNumber()) {
                 return 1;
             }
         }

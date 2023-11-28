@@ -44,11 +44,11 @@ public class DSSubject implements Function {
             System.out.println("An error occurred: " + e.getMessage());
         }
     }
-
-    public ArrayList<Subject> is_SubList() {
-        return subjectList;
-    }
-
+             
+public ArrayList<Subject> is_SubList()
+{
+    return subjectList;
+}
     public void SaveData(String f) {
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(f))) {
@@ -66,6 +66,7 @@ public class DSSubject implements Function {
     }
     public void add() {
         Scanner sc = new Scanner(System.in);
+<<<<<<< HEAD
     
         System.out.println("Adding a new subject:");
         System.out.println("--------------------------------------------------------------");
@@ -78,6 +79,21 @@ public class DSSubject implements Function {
             System.out.println("Subject added successfully.");
         } else {
             System.out.println("Subject with ID " + newSubject.getID_STUDENT() + " already exists. Skipping addition.");
+=======
+        char addSubject;
+        do {
+            Subject sb = new Subject();
+            sb.input();
+            subjectList.add(sb);
+            System.out.println("Do you want to add another subject? (y/n): ");
+            addSubject = sc.next().charAt(0); // lấy kí tự đầu tiên khi nguoi dung nhập yes/no
+        } while (addSubject == 'y' || addSubject == 'Y');
+
+        System.out.println("List of added subjects:");
+        for (Subject sub : subjectList)
+        {
+            System.out.println(sub);
+>>>>>>> 1812441de6a6a7687948a062eab6fa021da093b2
         }
     }
     
@@ -100,18 +116,23 @@ public class DSSubject implements Function {
         String ID = sc.nextLine();
         List<Subject> subjectDelete = new ArrayList<>();
         for (Subject sb : subjectList) {
-            if (sb.getID_STUDENT().equals(ID)) {
+            if (sb.getID_STUDENT().equals(ID)) 
+            {
+                                  // add thằng thuộc tính muns xóa vào dsach list
                 subjectDelete.add(sb);
             }
         }
         if (!subjectDelete.isEmpty()) {
             System.out.println("Subjects with ID_STUDENT " + ID + ":");
-            for (int i = 0; i < subjectDelete.size(); i++) {
+            for (int i = 0; i < subjectDelete.size(); i++) 
+            {
+                                                                     
                 System.out.println((i + 1) + ". " + subjectDelete.get(i).getName_SJ());
             }
             System.out.println("Enter the number of the subject to delete:");
             int choice = sc.nextInt();
-            if (choice >= 1 && choice <= subjectDelete.size()) {
+            if (choice >= 1 && choice <= subjectDelete.size())
+            {
                 Subject Remove = subjectDelete.get(choice - 1);
                 subjectList.remove(Remove);
                 System.out.println("Subject with ID_STUDENT " + ID + " deleted successfully!");
@@ -168,6 +189,7 @@ public class DSSubject implements Function {
     }
 
     public void show() {
+<<<<<<< HEAD
         System.out.println("+-----------------+-----------------+-----------------+-----------------+");
         System.out.printf("| %-15s | %-15s | %-15s | %-15s |\n", "ID_STUDENT", "Name_SJ", "PointGK", "PointCK");
         System.out.println("+-----------------+-----------------+-----------------+-----------------+");
@@ -176,6 +198,17 @@ public class DSSubject implements Function {
                     sb.getPointCK_SJ());
         }
         System.out.println("+-----------------+-----------------+-----------------+-----------------+");
+=======
+        System.out.println("+----------------------------------------+");
+        System.out.printf("| %-15s | %-15s | %-15s | %-20s |\n", "ID_STUDENT", "Name_SJ", "PointGK", "PointCK");
+        System.out.println("|----------------------------------------|");
+        for (Subject sb : subjectList) {
+            System.out.printf("| %-15s | %-15s | %-15s | %-20s |\n", sb.getID_STUDENT(), sb.getName_SJ(), sb.getPointGK_SJ(),
+                    sb.getPointCK_SJ());
+        }
+        System.out.println("|----------------------------------------|");
+        System.out.println();
+>>>>>>> 1812441de6a6a7687948a062eab6fa021da093b2
     }
 
     public void search() {
@@ -187,6 +220,7 @@ public class DSSubject implements Function {
 
         System.out.println("Subject: " + subject);
 
+<<<<<<< HEAD
         System.out.printf("| %-15s | %-15s | %-15s | %-15s |\n", "ID_STUDENT", "Name_SJ", "PointGK", "PointCK");
         System.out.println("+-----------------+-----------------+-----------------+-----------------+");
         for (Subject sb : subjectList) {
@@ -195,6 +229,20 @@ public class DSSubject implements Function {
             }
         }
         System.out.println("+-----------------+-----------------+-----------------+-----------------+");
+=======
+        System.out.println("+----------------------------------------+");
+        System.out.printf("| %-15s | %-15s | %-15s | %-20s |\n", "ID_STUDENT", "Name_SJ", "PointGK", "PointCK");
+        System.out.println("|----------------------------------------|");
+
+        for (Subject sb : subjectList) {
+        if (subject.equals(sb.getName_SJ())) {
+        System.out.printf("| %-15s | %-15s | %-15s | %-20s |\n", sb.getID_STUDENT(), sb.getName_SJ(), sb.getPointGK_SJ(), sb.getPointCK_SJ());
+    }
+}
+
+System.out.println("|----------------------------------------|");
+System.out.println();
+>>>>>>> 1812441de6a6a7687948a062eab6fa021da093b2
 
     }
 
@@ -207,7 +255,7 @@ public class DSSubject implements Function {
             System.out.println("3. Modify Point");
             System.out.println("4. Show Subject");
             System.out.println("5. Save From File");
-            System.out.println("6. Search"); // new function
+            System.out.println("6. Search"); 
             System.out.println("0. Exit");
             System.out.println("Enter your choice: ");
             choice = sc.nextInt();

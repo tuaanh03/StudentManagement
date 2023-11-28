@@ -261,15 +261,18 @@ int choice;
       sc.nextLine();
       switch (choice) {
         case 1: {
+          clrscr();
           IDResultForTeacher(idTeacher);
           break;
         }
         case 2: {
+          clrscr();
           AllResultForTeacher(idTeacher);
           break;
         }
         case 3:
         {
+          clrscr();
           maxPointInClassOfTeacher(idTeacher);
           break;
         }
