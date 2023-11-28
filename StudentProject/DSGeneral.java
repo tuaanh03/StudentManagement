@@ -58,7 +58,7 @@ public class DSGeneral {
         sc.close();
     }
 
-    public void teacher() {
+    public void teacher(String id) {
         int choice;
         Scanner sc = new Scanner(System.in);
         do {
@@ -76,8 +76,7 @@ public class DSGeneral {
                     break;
                 }
                 case 2: {
-                    clrscr();
-                    kq.menu();
+                    kq.menuForTeacher(id);
                     break;
                 }
                 case 3: {
@@ -160,7 +159,7 @@ public class DSGeneral {
             } 
             else if (tea.loginTeacher(username, password) == 1) {
                 clrscr();
-                teacher();
+                teacher(username);
                 check = 1;
             } 
             else if (UA.getID_USER().equals(adminUsername) && UA.getPASSWORD() == adminPassword) {
