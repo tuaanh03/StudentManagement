@@ -11,6 +11,8 @@ import java.util.Scanner;
 
 public class DSStudent implements Function
 {
+    // private Set<String> uniqueID = new HashSet<>();
+    public static ArrayList<String> uniqueID = new ArrayList<>();
     public static ArrayList<Student> studentList = new ArrayList<>();
     public DSStudent(){}
     public DSStudent(String filePath)
@@ -41,6 +43,7 @@ public class DSStudent implements Function
                 stu.setGrade(arr[7].trim());
                 stu.setStudentClass(arr[8].trim());
                 studentList.add(stu);
+                uniqueID.add(stu.getID_STUDENT());
             }
             reader.close();
         } catch (Exception e) {
@@ -55,7 +58,13 @@ public class DSStudent implements Function
     {
         Student stu = new Student();
         stu.input();
+        if (uniqueID.contains(stu.getID_STUDENT()))
+        {
+            System.out.println("Error: Student with ID " + stu.getID_STUDENT() + " already exists.");
+            return;
+        }
         studentList.add(stu);
+        uniqueID.add(stu.getID_STUDENT());
     }
 
     public void show() {
