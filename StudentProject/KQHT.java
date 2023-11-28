@@ -1,7 +1,8 @@
 package StudentProject;
 
-import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.IOException;
 
 public class KQHT {
   public KQHT() {
@@ -19,17 +20,17 @@ public class KQHT {
 
   public void studyResultByID(String id) // id student truyen vao o main
   {
+    int check = 0;
     double sum = 0;
     int count = 0;
-    DSStudent student = new DSStudent();
-    for (Student stu : student.is_stuList()) {
+    DSStudent st = new DSStudent();
+    for (Student stu : st.is_stuList()) {
       if (id.equals(stu.getID_STUDENT())) {
         System.out.println("Student's name : " + stu.getName());
         System.out.println("Student's ID : " + stu.getID_STUDENT());
         System.out.println("------------------------------------------------------------------");
         System.out.printf("%-20s%-15s%-15s%-15s\n", "Name Subject", "Point GK", "Point CK", "Point Average");
         DSSubject sub = new DSSubject();
-        // DSStudent st = new DSStudent();
         for (Subject sb : sub.is_SubList()) {
           if (id.equals(sb.getID_STUDENT())) {
             double a = sb.pointAVG();
@@ -41,10 +42,15 @@ public class KQHT {
 
           }
         }
+        check = 1;
         System.out.println("------------------------------------------------------------------");
-        System.out.printf("Final Result : %.2f\n", (double) (sum / count));
+        System.out.printf("Final Result : %.2f\n", (double) (sum / count));  
       }
-      break;
+
+    }
+    if (check == 0)
+    {
+        System.out.println("ID'student doesn't exist !");
     }
   }
 
@@ -72,11 +78,11 @@ public class KQHT {
     String in = sc.nextLine();
     System.out.printf("%-20s%-15s%-15s%-15s%-15s\n", "ID Student", "Name subject", "Point GK", "Point CK",
         "Point average ");
-    DSStudent student = new DSStudent();
-    DSSubject sub = new DSSubject();
-    for (Student stu : student.is_stuList()) {
+    DSStudent st = new DSStudent();
+    for (Student stu : st.is_stuList()) {
       if (in.equals(stu.getStudentClass())) {
         String id = stu.getID_STUDENT();
+        DSSubject sub = new DSSubject();
         for (Subject sb : sub.is_SubList()) {
           if (id.equals(sb.getID_STUDENT())) {
             double a = sb.pointAVG();
@@ -86,7 +92,6 @@ public class KQHT {
           }
         }
       }
-      break;
     }
   }
 

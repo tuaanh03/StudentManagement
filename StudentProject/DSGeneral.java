@@ -68,9 +68,7 @@ public class DSGeneral {
             System.out.println("4. Edit study results list");
             System.out.println("0. Exit");
             System.out.println("Enter your choice: ");
-            
             choice = sc.nextInt();
-
             switch (choice) {
                 case 1: {
                     clrscr();
@@ -125,9 +123,9 @@ public class DSGeneral {
                     break;
                 }
                 case 3: {
-                    kq.menu();
+                        kq.menu();
                     break;
-                }
+}
                 case 0: {
                     System.out.println("Thanks for using!");
                     break;
