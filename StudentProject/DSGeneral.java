@@ -61,31 +61,31 @@ public class DSGeneral {
         int choice;
         Scanner sc = new Scanner(System.in);
         do {
-            clrscr();
-            // System.out.println("1. View student list");
-            System.out.println("1. View study results list");
-            System.out.println("2. Edit student list");
-            System.out.println("3. Edit study results list");
+            // clrscr();
+            System.out.println("1. View student list");
+            System.out.println("2. View study results list");
+            System.out.println("3. Edit student list");
+            System.out.println("4. Edit study results list");
             System.out.println("0. Exit");
             System.out.println("Enter your choice: ");
             choice = sc.nextInt();
             switch (choice) {
-                // case 1: {
-                // clrscr();
-                // stu.show();
-                // break;
-                // }
                 case 1: {
+                clrscr();
+                stu.ShowStudentForTeacher(id);
+                break;
+                }
+                case 2: {
                     clrscr();
                     kq.menuForTeacher(id);
                     break;
                 }
-                case 2: {
+                case 3: {
                     clrscr();
                     stu.input();
                     break;
                 }
-                case 3: {
+                case 4: {
                     clrscr();
                     sub.output();
                     break;

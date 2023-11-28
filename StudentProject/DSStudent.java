@@ -81,11 +81,43 @@ public class DSStudent implements Function
     }
 
     public void show() {
-        loginAccount UA = new loginAccount();
         for (Student stu : studentList) {
             stu.output();
             System.out.println("------------------------------------------------------------------**********-----------------------------------------------------------------");
         }
+    }
+
+    public void showbyid(String id) {
+        for (Student stu : studentList) {
+            if (id.equals(stu.getID_STUDENT()))
+            {
+                stu.output();
+                System.out.println("------------------------------------------------------------------**********-----------------------------------------------------------------");
+            }
+        }
+    }
+
+    public void ShowStudentForTeacher(String id)
+    {
+      ArrayList<String> a= new ArrayList<>();
+      QLTeacher tea = new QLTeacher();
+      for (Teacher t : tea.is_TeacherList()) {
+        if(id.equals(t.getID_GV()))
+        {
+          String cls=t.getID_CLASS();
+          System.out.println("Your class : "+ cls);
+          DSStudent stu=new DSStudent();
+          for (Student st : stu.is_stuList()) {
+            if(cls.equals(st.getStudentClass()))
+            {
+                a.add(st.getID_STUDENT());
+            }
+          }
+        }
+      }
+      for (String in : a) {
+        showbyid(in);
+      }
     }
 
     public void delete() {
