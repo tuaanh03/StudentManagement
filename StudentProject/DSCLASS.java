@@ -576,23 +576,25 @@ public void modify()
         String e = st.getStudentClass();
         for (StudentClass CLASS : classes) {
           if (e.equals(CLASS.getID_class())) {
-            if (CLASS.getTypes().equals("Day boarding")) {
+            if (CLASS.getTypes().equals("Day boarding")) 
+            {
               Day_boarding noitru = new Day_boarding();
-              System.out.println(
-                  " Show tuition of " + st.getName() + " has ID " + ID + " is: " + noitru.Price_student() + " VND");
-            } else if (CLASS.getTypes().equals("Boarding")) {
+              System.out.println(" Show tuition of " + st.getName() + " has ID " + ID + " is: " + noitru.Price_student() + " VND");
+            } 
+            else if (CLASS.getTypes().equals("Boarding")) 
+            {
               Boarding bantru = new Boarding();
-              System.out
-                  .println(" Show tuition of " + st.getName() + " has ID " + ID + " is:" + bantru.Price_student());
-            } else if (CLASS.getTypes().equals("Outpatient")) {
+              System.out.println(" Show tuition of " + st.getName() + " has ID " + ID + " is:" + bantru.Price_student());
+            } 
+            else if (CLASS.getTypes().equals("Outpatient")) 
+            {
               Outpatient ngoaitru = new Outpatient();
-              System.out
-                  .println(" Show tuition of  " + st.getName() + " has ID " + ID + " is:" + ngoaitru.Price_student());
+              System.out.println(" Show tuition of  " + st.getName() + " has ID " + ID + " is:" + ngoaitru.Price_student());
             }
           }
         }
-      }
-      break;
+        break;
+      }  
     }
   }
 
@@ -665,8 +667,5 @@ public void modify()
       }
     } while (choice != 0);
   }
-  public static void main(String[] args) {
-    DSCLASS a = new DSCLASS("StudentClass.txt");
-    a.menu();
-  }
+  
 }
