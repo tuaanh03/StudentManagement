@@ -20,7 +20,9 @@ public class Main {
 	{
 		DSGeneral a= new DSGeneral();
 		clrscr();
-		a.login_account();
+		 a.login_account();
+		// DSCLASS b = new DSCLASS();
+		// b.delete();
 	}
 
 }

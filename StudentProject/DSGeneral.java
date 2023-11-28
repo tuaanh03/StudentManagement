@@ -1,5 +1,6 @@
 package StudentProject;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class DSGeneral {
@@ -13,21 +14,36 @@ public class DSGeneral {
     DSCLASS a = new DSCLASS("StudentClass.txt");
     KQHT kq = new KQHT();
 
+    public static void clrscr()
+	{
+		try {
+            if (System.getProperty("os.name").contains("Windows"))
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            else
+                Runtime.getRuntime().exec("clear");
+        } catch (IOException | InterruptedException ex) {
+        }
+	}
+
     public void user(String id) {
         int choice;
         Scanner sc = new Scanner(System.in);
         do {
-            System.out.println("1. View study results");
-            System.out.println("2. View tuition");
-            System.out.println("0. Exit");
-            System.out.println("Enter your choice: ");
+            System.out.println("+-------------------------+");
+            System.out.printf("| %-2s. %-19s|%n", "1", "View study results");
+            System.out.printf("| %-2s. %-19s|%n", "2", "View tuition");
+            System.out.printf("| %-2s. %-19s|%n", "0", "Exit");
+            System.out.println("+-------------------------+");
+            System.out.print("Enter your choice: ");
             choice = sc.nextInt();
             switch (choice) {
                 case 1: {
+                    clrscr();
                     kq.studyResultByID(id);
                     break;
                 }
                 case 2: {
+                    clrscr();
                     a.show_tuition(id, stu.is_stuList());
                     break;
                 }
@@ -44,34 +60,36 @@ public class DSGeneral {
         sc.close();
     }
 
-    public void teacher() {
+    public void teacher(String id) {
         int choice;
         Scanner sc = new Scanner(System.in);
         do {
-            System.out.println("1. View student list");
-            System.out.println("2. View study results list");
-            System.out.println("3. Edit student list");
-            System.out.println("4. Edit study results list");
-            System.out.println("0. Exit");
-            System.out.println("Enter your choice: ");
-            
+            System.out.printf("| %-2s. %-24s|%n", "1", "View student list");
+            System.out.printf("| %-2s. %-24s|%n", "2", "View study results list");
+            System.out.printf("| %-2s. %-24s|%n", "3", "Edit student list");
+            System.out.printf("| %-2s. %-24s|%n", "4", "Edit study results list");
+            System.out.printf("| %-2s. %-24s|%n", "0", "Exit");
+            System.out.println("+-------------------------------+");
+            System.out.print("Enter your choice: ");
             choice = sc.nextInt();
-
             switch (choice) {
                 case 1: {
+                    clrscr();
                     stu.show();
                     break;
                 }
                 case 2: {
-                    kq.menu();
+                    kq.menuForTeacher(id);
                     break;
                 }
                 case 3: {
+                    clrscr();
                     stu.input();
                     break;
                 }
                 case 4: {
-                    sub.show();
+                    clrscr();
+                    sub.output();
                     break;
                 }
                 case 0: {
@@ -91,11 +109,13 @@ public class DSGeneral {
         int choice;
         Scanner sc = new Scanner(System.in);
         do {
-            System.out.println("1. Student management");
-            System.out.println("2. Teacher management");
-            System.out.println("3. Class management");
-            System.out.println("0. Exit");
-            System.out.println("Enter your choice: ");
+            System.out.println("+------------------------+");
+            System.out.printf("| %-2s. %-17s|%n", "1", "Student management");
+            System.out.printf("| %-2s. %-17s|%n", "2", "Teacher management");
+            System.out.printf("| %-2s. %-17s|%n", "3", "Class management");
+            System.out.printf("| %-2s. %-17s|%n", "0", "Exit");
+            System.out.println("+------------------------+");
+            System.out.print("Enter your choice: ");
             choice = sc.nextInt();
             switch (choice) {
                 case 1: {
@@ -107,9 +127,9 @@ public class DSGeneral {
                     break;
                 }
                 case 3: {
-                    kq.menu();
+                        kq.menu();
                     break;
-                }
+}
                 case 0: {
                     System.out.println("Thanks for using!");
                     break;
@@ -124,25 +144,46 @@ public class DSGeneral {
     }
 
     public void login_account() {
-        
-        loginAccount UA = new loginAccount();
-        UA.input();
-        
-        String username = UA.getID_USER();
-        long password = UA.getPASSWORD();
-
-        if (stu.loginStudent(username, password) == 1) {
-            
-            user(UA.getID_USER());
-        }
-
-        if (tea.loginTeacher(username, password) == 1) {
-            
-            teacher();
-        }
-        if (UA.getID_USER().equals(adminUsername) && UA.getPASSWORD() == adminPassword) {
-            
-            admin();
-        }
+        int check = 0;
+        int loginAttempts = 0; 
+        final int maximumlogin = 3; 
+    
+        Scanner sc = new Scanner(System.in);
+        System.out.println("\t\t\tWelcome to Student Manage System");
+        do {
+            loginAccount UA = new loginAccount();
+            UA.input();
+    
+            String username = UA.getID_USER();
+            long password = UA.getPASSWORD();
+    
+            if (stu.loginStudent(username, password) == 1) {
+                clrscr();
+                user(UA.getID_USER());
+                check = 1;
+            } 
+            else if (tea.loginTeacher(username, password) == 1) {
+                clrscr();
+                teacher(username);
+                check = 1;
+            } 
+            else if (UA.getID_USER().equals(adminUsername) && UA.getPASSWORD() == adminPassword) {
+                clrscr();
+                admin();
+                check = 1;
+            } 
+            else {
+                System.out.println("Invalid login credentials. Please try again.");
+    
+                loginAttempts++;
+    
+                if (loginAttempts == maximumlogin) {
+                    System.out.println("Maximum login attempts reached. Exiting program.");
+                    System.exit(0);
+                }
+            }
+        } while (check == 0);
+    
+    
     }
 }

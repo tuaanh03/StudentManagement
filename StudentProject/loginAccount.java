@@ -35,10 +35,10 @@ public class loginAccount extends Account {
     public void input()
     {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter ID of account: ");
+        System.out.print("Enter ID of Student or ID of Teacher: ");
         ID_USER = sc.nextLine();
 
-        System.out.println("Enter Password: ");
+        System.out.print("Enter Password: ");
         PASSWORD = sc.nextLong();
        
     }

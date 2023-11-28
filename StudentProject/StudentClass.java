@@ -66,38 +66,82 @@ import java.io.File;
    
 
     
-    void input ()
-    {
+    void input() {
         Scanner sc = new Scanner(System.in);
         
-        System.out.print(" * Grade : ");
-         ID_grade=sc.nextLine(); 
-
-        System.out.print(" * Class : ");
-         ID_class=sc.nextLine();
-
-         System.out.print(" * ID teacher : ");
-        ID_teacher=sc.nextLine();
-    
-         System.out.println ("     -----------There are 3 types of class ----------- ");
-         System.out.println (" * Day boarding  ");
-         System.out.println (" * Boarding ");
-         System.out.println (" * Outpatient ");
+        // Grade
+        while (true) {
+            System.out.print(" * Grade: ");
+            ID_grade = sc.nextLine();
             
-            while (true)
-         {   
-            System.out.print(" enter name :");   
-            types=sc.nextLine();
+            if (ID_grade.equals("grade10") || ID_grade.equals("grade11") || ID_grade.equals("grade12")) {
+                break;
+            } else {
+                System.out.println("Invalid grade. Please enter a valid grade (grade10, grade11, or grade12).");
+            }
+        }
         
-            if (types.equals("Day boarding") || types.equals("Boarding")||types.equals("Outpatient"))
-            {
-                  break;
+        // Class
+        while (true) {
+            System.out.print(" * Class: ");
+            ID_class = sc.nextLine(); 
+            
+            DSCLASS cl = new DSCLASS();
+            boolean check = false;
+            
+            for (StudentClass CLASS : cl.is_classList()) {
+                if (ID_class.equals(CLASS.getID_class())) {
+                    check = true;
+                    break;
+                }
             }
-            else 
+            
+            if (check) {
+                System.out.println("This class already exists!");
+                System.out.println("Invalid class ID. Please enter a valid class ID.");
+            }else 
             {
-                System.out.println("Invalid type. Please enter a valid type.");
+                break;
             }
-         }
+        }
+        
+        // ID teacher
+        while (true) {
+            System.out.print(" * ID-Teacher: ");
+            ID_teacher = sc.nextLine(); 
+            
+            DSCLASS cl = new DSCLASS();
+            int check = 0;
+            
+            for (StudentClass CLASS : cl.is_classList()) {
+                if (ID_teacher.equals(CLASS.getID_teacher())) {
+                    check = 1;
+                }
+            }
+            
+            if (check == 1) {
+                System.out.println("This teacher has already been assigned a class.");
+                System.out.println("Invalid teacher ID. Please enter a valid teacher ID.");
+            } else {
+                break;
+            }
+        }
+        
+        System.out.println("-----------There are 3 types of classes-----------");
+        System.out.println(" * Day boarding");
+        System.out.println(" * Boarding");
+        System.out.println(" * Outpatient");
+        
+        while (true) {
+            System.out.print("Enter class type: ");   
+            types = sc.nextLine();
+        
+            if (types.equals("Day boarding") || types.equals("Boarding") || types.equals("Outpatient")) {
+                break;
+            } else {
+                System.out.println("Invalid class type. Please enter a valid class type(Day boarding , Boarding ,Outpatient).");
+            }
+        }
     }
     
     public int Price_student() 

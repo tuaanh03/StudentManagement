@@ -1,8 +1,6 @@
 package StudentProject;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 //import java.io.File;
@@ -12,25 +10,25 @@ import java.io.FileWriter;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 
-public class DSSubject implements Function 
-{
+public class DSSubject implements Function {
 
-    public DSSubject(){}
+    public DSSubject() {
+    }
+
     static ArrayList<Subject> subjectList = new ArrayList<Subject>();
-    public DSSubject (String filePath)
-    {
+
+    public DSSubject(String filePath) {
         FileInputStream fis = null;
         InputStreamReader reade = null;
         BufferedReader reader = null;
 
-        try  {
+        try {
             fis = new FileInputStream(filePath);
             reade = new InputStreamReader(fis, StandardCharsets.UTF_8);
             reader = new BufferedReader(reade);
             String line = null;
-            while ((line = reader.readLine())  != null) {
-                if (line.isEmpty())
-                {
+            while ((line = reader.readLine()) != null) {
+                if (line.isEmpty()) {
                     continue;
                 }
                 Subject sb = new Subject();
@@ -55,7 +53,8 @@ public ArrayList<Subject> is_SubList()
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(f))) {
             for (Subject sb : subjectList) {
-                writer.write(sb.getID_STUDENT() + "," + sb.getName_SJ() + "," + sb.getPointGK_SJ() + "," + sb.getPointCK_SJ());
+                writer.write(sb.getID_STUDENT() + "," + sb.getName_SJ() + "," + sb.getPointGK_SJ() + ","
+                        + sb.getPointCK_SJ());
                 writer.newLine();
             }
             System.out.println("Read File Successful");
@@ -65,7 +64,7 @@ public ArrayList<Subject> is_SubList()
         }
 
     }
-   
+
     public void add() {
         Scanner sc = new Scanner(System.in);
         char addSubject;
@@ -74,9 +73,9 @@ public ArrayList<Subject> is_SubList()
             sb.input();
             subjectList.add(sb);
             System.out.println("Do you want to add another subject? (y/n): ");
-            addSubject = sc.next().charAt(0); //lấy kí tự đầu tiên khi nguoi dung nhập yes/no
+            addSubject = sc.next().charAt(0); // lấy kí tự đầu tiên khi nguoi dung nhập yes/no
         } while (addSubject == 'y' || addSubject == 'Y');
-    
+
         System.out.println("List of added subjects:");
         for (Subject sub : subjectList)
         {
@@ -86,6 +85,7 @@ public ArrayList<Subject> is_SubList()
         show();
         sc.close();
     }
+
     public void delete() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter the ID_STUDENT of the subject to delete:");
@@ -120,72 +120,95 @@ public ArrayList<Subject> is_SubList()
             System.out.println("No subjects found with ID_STUDENT " + ID);
         }
     }
-public void modify() {
-    Scanner sc = new Scanner(System.in);
-    System.out.println("Enter the ID_STUDENT of the subject to modify:");
-    String ID = sc.nextLine();
-    ArrayList<Subject> subjectModify = new ArrayList<>();
-    for (Subject sb : subjectList) {
-        if (sb.getID_STUDENT().equals(ID)) {
-            subjectModify.add(sb);
+
+    public void modify() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the ID_STUDENT of the subject to modify:");
+        String ID = sc.nextLine();
+        ArrayList<Subject> subjectModify = new ArrayList<>();
+        for (Subject sb : subjectList) {
+            if (sb.getID_STUDENT().equals(ID)) {
+                subjectModify.add(sb);
+            }
         }
-    }
-    if (!subjectModify.isEmpty()) {
-        System.out.println("Subjects found for student with ID_STUDENT " + ID + ":");
-        for (int i = 0; i < subjectModify.size(); i++) {
-            System.out.println((i + 1) + ". " + subjectModify.get(i).getName_SJ());
-        }
-        System.out.println("Enter the number corresponding to the subject you want to modify:");
-        int subjectNumber = sc.nextInt();
-        if (subjectNumber >= 1 && subjectNumber <= subjectModify.size()) {
-            Subject subjectToModify = subjectModify.get(subjectNumber - 1);
-            System.out.println("Modifying subject: " + subjectToModify.getName_SJ());
-            // Prompt user for new pointGK and pointCK
-            System.out.println("Enter new pointGK for the subject:");
-            double newPointGK = sc.nextDouble();
+        if (!subjectModify.isEmpty()) {
+            System.out.println("Subjects found for student with ID_STUDENT " + ID + ":");
+            for (int i = 0; i < subjectModify.size(); i++) {
+                System.out.println((i + 1) + ". " + subjectModify.get(i).getName_SJ());
+            }
+            System.out.println("Enter the number corresponding to the subject you want to modify:");
+            int subjectNumber = sc.nextInt();
+            if (subjectNumber >= 1 && subjectNumber <= subjectModify.size()) {
+                Subject subjectToModify = subjectModify.get(subjectNumber - 1);
+                System.out.println("Modifying subject: " + subjectToModify.getName_SJ());
+                // Prompt user for new pointGK and pointCK
+                System.out.println("Enter new pointGK for the subject:");
+                double newPointGK = sc.nextDouble();
 
-            System.out.println("Enter new pointCK for the subject:");
-            double newPointCK = sc.nextDouble();
+                System.out.println("Enter new pointCK for the subject:");
+                double newPointCK = sc.nextDouble();
 
-            // Update the points for the subjecttoModify
-            subjectToModify.setpointGK_SJ(newPointGK);
-            subjectToModify.setpointCK_SJ(newPointCK);
+                // Update the points for the subjecttoModify
+                subjectToModify.setpointGK_SJ(newPointGK);
+                subjectToModify.setpointCK_SJ(newPointCK);
 
-            System.out.println("Subject with ID_STUDENT " + ID + " modified successfully!");
-            sc.close();
+                System.out.println("Subject with ID_STUDENT " + ID + " modified successfully!");
+
+            } else {
+                System.out.println("Invalid subject number entered.");
+            }
         } else {
-            System.out.println("Invalid subject number entered.");
+            System.out.println("No subjects found for student with ID_STUDENT " + ID);
         }
-    } else {
-        System.out.println("No subjects found for student with ID_STUDENT " + ID);
+        show();
     }
-    show();
+
+    public void show() {
+        System.out.println("+----------------------------------------+");
+        System.out.printf("| %-15s | %-15s | %-15s | %-20s |\n", "ID_STUDENT", "Name_SJ", "PointGK", "PointCK");
+        System.out.println("|----------------------------------------|");
+        for (Subject sb : subjectList) {
+            System.out.printf("| %-15s | %-15s | %-15s | %-20s |\n", sb.getID_STUDENT(), sb.getName_SJ(), sb.getPointGK_SJ(),
+                    sb.getPointCK_SJ());
+        }
+        System.out.println("|----------------------------------------|");
+        System.out.println();
+    }
+
+    public void search() {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Search students' point by subject: ");
+        String subject = sc.nextLine();
+
+        System.out.println("Subject: " + subject);
+
+        System.out.println("+----------------------------------------+");
+        System.out.printf("| %-15s | %-15s | %-15s | %-20s |\n", "ID_STUDENT", "Name_SJ", "PointGK", "PointCK");
+        System.out.println("|----------------------------------------|");
+
+        for (Subject sb : subjectList) {
+        if (subject.equals(sb.getName_SJ())) {
+        System.out.printf("| %-15s | %-15s | %-15s | %-20s |\n", sb.getID_STUDENT(), sb.getName_SJ(), sb.getPointGK_SJ(), sb.getPointCK_SJ());
+    }
 }
 
+System.out.println("|----------------------------------------|");
+System.out.println();
 
+    }
 
-public void show ()
-    {
-    System.out.printf("%-15s%-15s%-15s%-20s\n" , "ID_STUDENT", "Name_SJ", "PointGK", "PointCK");
-    System.out.println("-----------------------------------------------------------");
-    for (Subject sb : subjectList)
-    {
-    System.out.printf("%-15s%-15s%-15s%-20s", sb.getID_STUDENT(),sb.getName_SJ() ,sb.getPointGK_SJ(), sb.getPointCK_SJ());
-    }
-    System.out.print("\n");
-    System.out.println("-----------------------------------------------------------");
-    }
-    public void search() {}
-    public void output(){
+    public void output() {
         int choice;
         Scanner sc = new Scanner(System.in);
-        do
-        {
+        do {
             System.out.println("1. Add Subject");
             System.out.println("2. Delete Subject");
             System.out.println("3. Modify Point");
             System.out.println("4. Show Subject");
             System.out.println("5. Save From File");
+            System.out.println("6. Search"); // new function
             System.out.println("0. Exit");
             System.out.println("Enter your choice: ");
             choice = sc.nextInt();
@@ -210,7 +233,13 @@ public void show ()
                     break;
                 }
                 case 5: {
-                    SaveData("StudentManagement/StudentProject/SubjectFile.txt");
+                    SaveData("SubjectFile.txt");
+                    break;
+                }
+
+                case 6: {
+                    search();
+                    System.out.print("\n");
                     break;
                 }
 
@@ -224,6 +253,6 @@ public void show ()
                 }
             }
         } while (choice != 0);
-        sc.close();
+
     }
 }

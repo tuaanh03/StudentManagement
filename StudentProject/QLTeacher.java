@@ -11,7 +11,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class QLTeacher implements Function{
-    static List<Teacher> teacherList = new ArrayList<Teacher>();
+    static ArrayList<Teacher> teacherList = new ArrayList<Teacher>();
+    public QLTeacher(){}
 public QLTeacher(String filePath)
 {
         FileInputStream fis = null;
@@ -45,6 +46,8 @@ public QLTeacher(String filePath)
             System.out.println("An error occurred: " + e.getMessage());
         }
 }
+    public ArrayList<Teacher> is_TeacherList()
+        {return teacherList;}
     public void add() {
         Teacher tea = new Teacher();
         tea.input();
