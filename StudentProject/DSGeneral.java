@@ -72,22 +72,22 @@ public class DSGeneral {
             System.out.print("Enter your choice: ");
             choice = sc.nextInt();
             switch (choice) {
-                // case 1: {
-                // clrscr();
-                // stu.show();
-                // break;
-                // }
                 case 1: {
+                clrscr();
+                stu.ShowStudentForTeacher(id);
+                break;
+                }
+                case 2: {
                     clrscr();
                     kq.menuForTeacher(id);
                     break;
                 }
-                case 2: {
+                case 3: {
                     clrscr();
                     stu.input();
                     break;
                 }
-                case 3: {
+                case 4: {
                     clrscr();
                     sub.output();
                     break;
