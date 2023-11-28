@@ -44,11 +44,11 @@ public class DSSubject implements Function {
             System.out.println("An error occurred: " + e.getMessage());
         }
     }
-
-    public ArrayList<Subject> is_SubList() {
-        return subjectList;
-    }
-
+             
+public ArrayList<Subject> is_SubList()
+{
+    return subjectList;
+}
     public void SaveData(String f) {
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(f))) {
@@ -64,45 +64,59 @@ public class DSSubject implements Function {
         }
 
     }
-
     public void add() {
         Scanner sc = new Scanner(System.in);
-        char addSubject;
-        do {
-            Subject sb = new Subject();
-            sb.input();
-            subjectList.add(sb);
-            System.out.println("Do you want to add another subject? (y/n): ");
-            addSubject = sc.next().charAt(0); // lấy kí tự đầu tiên khi nguoi dung nhập yes/no
-        } while (addSubject == 'y' || addSubject == 'Y');
-
-        System.out.println("List of added subjects:");
-        for (Subject sub : subjectList) {
-            System.out.println(sub);
+    
+        System.out.println("Adding a new subject:");
+        System.out.println("--------------------------------------------------------------");
+        Subject newSubject = new Subject();
+        newSubject.input();
+    
+        // Kiểm tra xem môn học đã tồn tại trong danh sách hay chưa
+        if (!isSubjectExists(newSubject)) {
+            subjectList.add(newSubject);
+            System.out.println("Subject added successfully.");
+        } else {
+            System.out.println("Subject with ID " + newSubject.getID_STUDENT() + " already exists. Skipping addition.");
         }
-        SaveData("StudentManagement/StudentProject/SubjectFile.txt");
-        show();
-        sc.close();
+    }
+    
+    // Phương thức kiểm tra xem môn học đã tồn tại hay chưa
+    private boolean isSubjectExists(Subject newSubject) {
+        for (Subject existingSubject : subjectList) {
+            if (existingSubject.getID_STUDENT().equals(newSubject.getID_STUDENT())) {
+                return true; // Môn học đã tồn tại
+            }
+        }
+        return false; // Môn học chưa tồn tại
     }
 
+
+    
+        
     public void delete() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter the ID_STUDENT of the subject to delete:");
         String ID = sc.nextLine();
         List<Subject> subjectDelete = new ArrayList<>();
         for (Subject sb : subjectList) {
-            if (sb.getID_STUDENT().equals(ID)) {
+            if (sb.getID_STUDENT().equals(ID)) 
+            {
+                                  // add thằng thuộc tính muns xóa vào dsach list
                 subjectDelete.add(sb);
             }
         }
         if (!subjectDelete.isEmpty()) {
             System.out.println("Subjects with ID_STUDENT " + ID + ":");
-            for (int i = 0; i < subjectDelete.size(); i++) {
+            for (int i = 0; i < subjectDelete.size(); i++) 
+            {
+                                                                     
                 System.out.println((i + 1) + ". " + subjectDelete.get(i).getName_SJ());
             }
             System.out.println("Enter the number of the subject to delete:");
             int choice = sc.nextInt();
-            if (choice >= 1 && choice <= subjectDelete.size()) {
+            if (choice >= 1 && choice <= subjectDelete.size())
+            {
                 Subject Remove = subjectDelete.get(choice - 1);
                 subjectList.remove(Remove);
                 System.out.println("Subject with ID_STUDENT " + ID + " deleted successfully!");
@@ -114,7 +128,8 @@ public class DSSubject implements Function {
             System.out.println("No subjects found with ID_STUDENT " + ID);
         }
     }
-
+      
+    
     public void modify() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter the ID_STUDENT of the subject to modify:");
@@ -158,14 +173,14 @@ public class DSSubject implements Function {
     }
 
     public void show() {
-        System.out.printf("%-15s%-15s%-15s%-20s\n", "ID_STUDENT", "Name_SJ", "PointGK", "PointCK");
-        System.out.println("-----------------------------------------------------------");
+        System.out.println("+-----------------+-----------------+-----------------+-----------------+");
+        System.out.printf("| %-15s | %-15s | %-15s | %-15s |\n", "ID_STUDENT", "Name_SJ", "PointGK", "PointCK");
+        System.out.println("+-----------------+-----------------+-----------------+-----------------+");
         for (Subject sb : subjectList) {
-            System.out.printf("%-15s%-15s%-15s%-20s\n", sb.getID_STUDENT(), sb.getName_SJ(), sb.getPointGK_SJ(),
+            System.out.printf("| %-15s | %-15s | %-15s | %-15s |\n", sb.getID_STUDENT(), sb.getName_SJ(), sb.getPointGK_SJ(),
                     sb.getPointCK_SJ());
         }
-        System.out.print("\n");
-        System.out.println("-----------------------------------------------------------");
+        System.out.println("+-----------------+-----------------+-----------------+-----------------+");
     }
 
     public void search() {
@@ -177,16 +192,14 @@ public class DSSubject implements Function {
 
         System.out.println("Subject: " + subject);
 
-        System.out.printf("%-15s%-15s%-15s%-20s\n", "ID_STUDENT", "Name_SJ", "PointGK", "PointCK");
-        System.out.println("-----------------------------------------------------------");
+        System.out.printf("| %-15s | %-15s | %-15s | %-15s |\n", "ID_STUDENT", "Name_SJ", "PointGK", "PointCK");
+        System.out.println("+-----------------+-----------------+-----------------+-----------------+");
         for (Subject sb : subjectList) {
             if (subject.equals(sb.getName_SJ())) {
-                System.out.printf("%-15s%-15s%-15s%-20s\n", sb.getID_STUDENT(), sb.getName_SJ(), sb.getPointGK_SJ(),
-                    sb.getPointCK_SJ());
+                System.out.printf("| %-15s | %-15s | %-15s | %-15s |\n", sb.getID_STUDENT(), sb.getName_SJ(), sb.getPointGK_SJ(),sb.getPointCK_SJ());
             }
         }
-        System.out.print("\n");
-        System.out.println("-----------------------------------------------------------");
+        System.out.println("+-----------------+-----------------+-----------------+-----------------+");
 
     }
 
@@ -246,4 +259,5 @@ public class DSSubject implements Function {
         } while (choice != 0);
 
     }
+   
 }

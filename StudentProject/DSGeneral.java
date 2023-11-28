@@ -28,10 +28,12 @@ public class DSGeneral {
         int choice;
         Scanner sc = new Scanner(System.in);
         do {
-            System.out.println("1. View study results");
-            System.out.println("2. View tuition");
-            System.out.println("0. Exit");
-            System.out.println("Enter your choice: ");
+            System.out.println("+-------------------------+");
+            System.out.printf("| %-2s. %-19s|%n", "1", "View study results");
+            System.out.printf("| %-2s. %-19s|%n", "2", "View tuition");
+            System.out.printf("| %-2s. %-19s|%n", "0", "Exit");
+            System.out.println("+-------------------------+");
+            System.out.print("Enter your choice: ");
             choice = sc.nextInt();
             switch (choice) {
                 case 1: {
@@ -61,13 +63,13 @@ public class DSGeneral {
         int choice;
         Scanner sc = new Scanner(System.in);
         do {
-            // clrscr();
-            System.out.println("1. View student list");
-            System.out.println("2. View study results list");
-            System.out.println("3. Edit student list");
-            System.out.println("4. Edit study results list");
-            System.out.println("0. Exit");
-            System.out.println("Enter your choice: ");
+            System.out.printf("| %-2s. %-24s|%n", "1", "View student list");
+            System.out.printf("| %-2s. %-24s|%n", "2", "View study results list");
+            System.out.printf("| %-2s. %-24s|%n", "3", "Edit student list");
+            System.out.printf("| %-2s. %-24s|%n", "4", "Edit study results list");
+            System.out.printf("| %-2s. %-24s|%n", "0", "Exit");
+            System.out.println("+-------------------------------+");
+            System.out.print("Enter your choice: ");
             choice = sc.nextInt();
             switch (choice) {
                 case 1: {
@@ -107,12 +109,13 @@ public class DSGeneral {
         int choice;
         Scanner sc = new Scanner(System.in);
         do {
-            clrscr();
-            System.out.println("1. Student management");
-            System.out.println("2. Teacher management");
-            System.out.println("3. Class management");
-            System.out.println("0. Exit");
-            System.out.println("Enter your choice: ");
+            System.out.println("+------------------------+");
+            System.out.printf("| %-2s. %-17s|%n", "1", "Student management");
+            System.out.printf("| %-2s. %-17s|%n", "2", "Teacher management");
+            System.out.printf("| %-2s. %-17s|%n", "3", "Class management");
+            System.out.printf("| %-2s. %-17s|%n", "0", "Exit");
+            System.out.println("+------------------------+");
+            System.out.print("Enter your choice: ");
             choice = sc.nextInt();
             switch (choice) {
                 case 1: {
