@@ -12,7 +12,7 @@ public class DSCLASS implements Function
 {
   public DSCLASS(){}
   static ArrayList<StudentClass> classes = new ArrayList<StudentClass>();
-  public DSCLASS (String filePath)
+  public DSCLASS (String filePath)// ko trả về mảng 
   {
 
   FileInputStream fis = null; // Lớp này được sử dụng để đọc dữ liệu từ một file trong hệ thống tệp tin.
@@ -46,7 +46,7 @@ public class DSCLASS implements Function
       e.printStackTrace();
     }
   }
-  public ArrayList<StudentClass> is_classList(String filePath)
+  public ArrayList<StudentClass> is_classList() // trả về list. 
   {
     return classes;
   }

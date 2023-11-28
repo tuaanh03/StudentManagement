@@ -46,6 +46,7 @@ public class DSSubject implements Function
             System.out.println("An error occurred: " + e.getMessage());
         }
     }
+             
 public ArrayList<Subject> is_SubList()
 {
     return subjectList;
@@ -77,7 +78,8 @@ public ArrayList<Subject> is_SubList()
         } while (addSubject == 'y' || addSubject == 'Y');
     
         System.out.println("List of added subjects:");
-        for (Subject sub : subjectList) {
+        for (Subject sub : subjectList)
+        {
             System.out.println(sub);
         }
         SaveData("StudentManagement/StudentProject/SubjectFile.txt");
@@ -90,18 +92,23 @@ public ArrayList<Subject> is_SubList()
         String ID = sc.nextLine();
         List<Subject> subjectDelete = new ArrayList<>();
         for (Subject sb : subjectList) {
-            if (sb.getID_STUDENT().equals(ID)) {
+            if (sb.getID_STUDENT().equals(ID)) 
+            {
+                                  // add thằng thuộc tính muns xóa vào dsach list
                 subjectDelete.add(sb);
             }
         }
         if (!subjectDelete.isEmpty()) {
             System.out.println("Subjects with ID_STUDENT " + ID + ":");
-            for (int i = 0; i < subjectDelete.size(); i++) {
+            for (int i = 0; i < subjectDelete.size(); i++) 
+            {
+                                                                     
                 System.out.println((i + 1) + ". " + subjectDelete.get(i).getName_SJ());
             }
             System.out.println("Enter the number of the subject to delete:");
             int choice = sc.nextInt();
-            if (choice >= 1 && choice <= subjectDelete.size()) {
+            if (choice >= 1 && choice <= subjectDelete.size())
+            {
                 Subject Remove = subjectDelete.get(choice - 1);
                 subjectList.remove(Remove);
                 System.out.println("Subject with ID_STUDENT " + ID + " deleted successfully!");

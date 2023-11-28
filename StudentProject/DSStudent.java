@@ -37,9 +37,9 @@ public class DSStudent implements Function
                 stu.setGender(Integer.parseInt(arr[3].trim()));
                 stu.setMail(arr[4].trim());
                 stu.setPhoneNumber(Integer.parseInt(arr[5].trim()));
-                stu.setID_STUDENT(arr[6]);
+                stu.setID_STUDENT(arr[6].trim());/* */
                 stu.setGrade(arr[7].trim());
-                stu.setStudentClass(arr[8]);
+                stu.setStudentClass(arr[8].trim());/* */
                 studentList.add(stu);
             }
             reader.close();

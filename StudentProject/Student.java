@@ -65,7 +65,7 @@ public class Student extends People implements Serializable{
 
         System.out.println("Enter Student'Grade: ");
         Grade = sc.nextLine();
-        sc.nextLine();
+       
 
         System.out.println("Enter Student'Class: ");
         StudentClass = sc.nextLine();
