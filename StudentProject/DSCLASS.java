@@ -422,130 +422,103 @@ public class DSCLASS implements Function
     
     
   }
-public void modify()
-{
-  Scanner r= new Scanner(System.in);
-  System.out.print("Enter class you want to fix  :");
-  String find= r.nextLine();
-
+  public void modify() {
+    Scanner r = new Scanner(System.in);
+    System.out.print("Enter class you want to fix: ");
+    String find = r.nextLine();
   
-  for (StudentClass CLASS:classes)
-  {
-    
-    if (find.equals(CLASS.getID_class()))
-  {
-      int choice = r.nextInt();
-      do
-      {
-      System.out.println("+-----------------------------------+");
-      System.out.println("|   Which method do you want to     |");
-      System.out.println("|            search?                |");
-      System.out.println("|-----------------------------------|");
-      System.out.println("|   1. ID CLASS                     |");
-      System.out.println("|   2. ID Teacher                   |");
-      System.out.println("|   3. Types's class                |");
-      System.out.println("|   0. exit                         |");
-      System.out.println("+-----------------------------------+");
-      System.out.print(" Enter: ");
-      
-      
-      switch(choice)
-      {
-        case 1:
-        {
-          int check=0;
-          while (true)
-          {
-            System.out.println("enter ID class need to fix :");
-            r.nextLine();
-            String CL= r.nextLine();
-            for (StudentClass y :classes )
-            {
-              if (CL.equals(y.getID_class()))
-              {
-                check=1 ;
-                break;
-              }
-            }
-            if (check==1)
-            {
-              System.out.println("This class already exists!");
-              System.out.println("Invalid class ID. Please enter a valid class ID.");
-            }
-            else
-            {
-              CLASS.setID_class(CL);
-              break;
-            }
-
-          }
-          break;
-        }
-        case 2:
-        {
-          int check=0;
-          while (true)
-          {
-            System.out.println("enter ID teacher need to fix");
-            r.nextLine();
-            String CL= r.nextLine();
-            for (StudentClass y :classes )
-            {
-              if (CL.equals(y.getID_teacher()))
-              {
-                check=1 ;
-                break;
-              }
-            }
-            if (check==1)
-            {
-              System.out.println("This class already exists!");
-              System.out.println("Invalid class ID. Please enter a valid class ID.");
-            }
-            else
-            {
-              CLASS.setID_teacher(CL);
-              break;
-            }
-
-          }
-          break;
-        }
-
-        case 3:
-        {
-
-          while (true)
-          {
-            System.out.println("-----------There are 3 types of classes-----------");
-            System.out.println(" * Day boarding");
-            System.out.println(" * Boarding");
-            System.out.println(" * Outpatient");
-            
-            while (true) {
-                System.out.print("Enter class type: ");   
-                 String t = r.nextLine();
-            
-                if (t.equals("Day boarding") || t.equals("Boarding") || t.equals("Outpatient")) {
-                  CLASS.setTypes(t);  
-                  break;
-                } else {
-                    System.out.println("Invalid class type. Please enter a valid class type(Day boarding , Boarding ,Outpatient).");
+    for (StudentClass CLASS : classes) {
+  
+      if (find.equals(CLASS.getID_class())) {
+        int choice;
+        do {
+          System.out.println("+-----------------------------------+");
+          System.out.println("|   Which method do you want to     |");
+          System.out.println("|            search?                |");
+          System.out.println("|-----------------------------------|");
+          System.out.println("|   1. ID CLASS                     |");
+          System.out.println("|   2. ID Teacher                   |");
+          System.out.println("|   3. Types's class                |");
+          System.out.println("|   0. exit                         |");
+          System.out.println("+-----------------------------------+");
+          System.out.print(" Enter: ");
+          choice = r.nextInt();
+  
+          switch (choice) {
+            case 1: {
+              int check = 0;
+              while (true) {
+                System.out.println("Enter ID class need to fix: ");
+                r.nextLine();
+                String CL = r.nextLine();
+                for (StudentClass y : classes) {
+                  if (CL.equals(y.getID_class())) {
+                    check = 1;
+                    break;
+                  }
                 }
-            } 
-           break;
-          }  
-        }
-        
-        
-       
-      }
-    
-    }while(choice!=0);
-  }
-}
+                if (check == 1) {
+                  System.out.println("This class already exists!");
+                  System.out.println("Invalid class ID. Please enter a valid class ID.");
+                } else {
+                  CLASS.setID_class(CL);
+                  break;
+                }
+              }
+              break;
+            }
+            case 2: {
+              int check = 0;
+              while (true) {
+                System.out.println("Enter ID teacher need to fix: ");
+                r.nextLine();
+                String CL = r.nextLine();
+                for (StudentClass y : classes) {
+                  if (CL.equals(y.getID_teacher())) {
+                    check = 1;
+                    break;
+                  }
+                }
+                if (check == 1) {
+                  System.out.println("This class already exists!");
+                  System.out.println("Invalid class ID. Please enter a valid class ID.");
+                } else {
+                  CLASS.setID_teacher(CL);
+                  break;
+                }
+              }
+              break;
+            }
   
-} 
+            case 3: {
+              while (true) {
+                System.out.println("-----------There are 3 types of classes-----------");
+                System.out.println(" * Day boarding");
+                System.out.println(" * Boarding");
+                System.out.println(" * Outpatient");
+  
+                while (true) {
+                  System.out.print("Enter class type: ");
+                  String t = r.nextLine();
+  
+                  if (t.equals("Day boarding") || t.equals("Boarding") || t.equals("Outpatient")) {
+                    CLASS.setTypes(t);
+                    break;
+                  } else {
+                    System.out.println("Invalid class type. Please enter a valid class type (Day boarding, Boarding, Outpatient).");
+                  }
+                }
+                break;
+              }
+            }
+          }
+  
+        } while (choice != 0);
+      }
+    }
+  }
+  
+
 
 
 
@@ -667,5 +640,9 @@ public void modify()
       }
     } while (choice != 0);
   }
-  
+  public static void main(String[] args) {
+    DSCLASS a = new DSCLASS("StudentClass.txt");
+    DSStudent b=new DSStudent("StudentFile.txt");
+    a.menu();
+  }
 }
