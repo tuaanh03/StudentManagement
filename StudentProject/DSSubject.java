@@ -110,7 +110,6 @@ public ArrayList<Subject> is_SubList()
             System.out.println("Subjects with ID_STUDENT " + ID + ":");
             for (int i = 0; i < subjectDelete.size(); i++) 
             {
-                                                                     
                 System.out.println((i + 1) + ". " + subjectDelete.get(i).getName_SJ());
             }
             System.out.println("Enter the number of the subject to delete:");

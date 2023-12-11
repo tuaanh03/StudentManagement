@@ -386,7 +386,7 @@ public class DSCLASS implements Function
               System.out.println("+------------+---------------+---------------+--------------------+");
           for (StudentClass CLASS : classes)
           {
-            if (CLASS.getTypes().equals("Day boarding"))
+            if (CLASS.getTypes().equals("Boarding"))
             {
               System.out.printf("| %-10s | %-13s | %-13s | %-18s |\n", CLASS.getID_grade(), CLASS.getID_class(), CLASS.getID_teacher(), CLASS.getTypes());
             }

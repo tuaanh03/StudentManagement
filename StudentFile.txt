@@ -1,6 +1,6 @@
 Ngo Tuan Anh,3/11/2004,dasdsadsa,1,dsada@dasdasd,966770042,3122411007,grade10,10a1
 Joppy,None,dasdasdsa,2,dasa@dada,966770042,3122411194,grade10,10a1
-Ngoc Nhien,None,dsadsadsa,2,nhien123@gmail.com,966770042,3122411140,grade10,10a2
+Ngoc Nhien,None,dsadsadsa,2,nhien123@gmail.com,966770042,3122411140,grade10,10a1
 Tam,None,dasasa,2,dasasa@sada,966770042,3122411195,grade10,10a2
 Long,None,dasasa,1,dadadsa@dadaasa,966770042,3122411196,grade11,11a1
 Tien,None,dasasa,1,dadadsa@dadaasa,966770042,3122411197,grade11,11a1

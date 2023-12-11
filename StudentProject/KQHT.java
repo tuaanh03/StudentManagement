@@ -34,7 +34,6 @@ public class KQHT {
             sb.setAVG(a);
             sum += sb.getAVG();
             count += 1;
-            break;
           }
         }
       }
@@ -235,11 +234,15 @@ public void maxPointInClassOfTeacher(String id)
         }
       }
     }
+    for (String in : a) {
+      System.out.println(in);
+    }
     double max=0;
     String best="";
     for (String in : a) {
       if(finalPointID(in)>=max)
       {
+        System.out.println(finalPointID(id));
         max=finalPointID(in);
         best=in;
       }
@@ -286,5 +289,12 @@ int choice;
         }
       }
     } while (choice != 0);
+  }
+  public static void main(String[] args) {
+    QLTeacher t=new QLTeacher("TeacherFile.txt");
+    DSStudent stu=new DSStudent("StudentFile.txt");
+    DSSubject sub=new DSSubject("SubjectFile.txt");
+    KQHT a=new KQHT();
+    a.maxPointInClassOfTeacher("01CN10");
   }
 }

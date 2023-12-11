@@ -63,12 +63,13 @@ public class DSGeneral {
         int choice;
         Scanner sc = new Scanner(System.in);
         do {
+            System.out.println("+-----------------------------+");
             System.out.printf("| %-2s. %-24s|%n", "1", "View student list");
             System.out.printf("| %-2s. %-24s|%n", "2", "View study results list");
             System.out.printf("| %-2s. %-24s|%n", "3", "Edit student list");
             System.out.printf("| %-2s. %-24s|%n", "4", "Edit study results list");
             System.out.printf("| %-2s. %-24s|%n", "0", "Exit");
-            System.out.println("+-------------------------------+");
+            System.out.println("+-----------------------------+");
             System.out.print("Enter your choice: ");
             choice = sc.nextInt();
             switch (choice) {
@@ -110,10 +111,10 @@ public class DSGeneral {
         Scanner sc = new Scanner(System.in);
         do {
             System.out.println("+------------------------+");
-            System.out.printf("| %-2s. %-17s|%n", "1", "Student management");
-            System.out.printf("| %-2s. %-17s|%n", "2", "Teacher management");
-            System.out.printf("| %-2s. %-17s|%n", "3", "Class management");
-            System.out.printf("| %-2s. %-17s|%n", "0", "Exit");
+            System.out.printf("| %-2s. %-19s|%n", "1", "Student management");
+            System.out.printf("| %-2s. %-19s|%n", "2", "Teacher management");
+            System.out.printf("| %-2s. %-19s|%n", "3", "Class management");
+            System.out.printf("| %-2s. %-19s|%n", "0", "Exit");
             System.out.println("+------------------------+");
             System.out.print("Enter your choice: ");
             choice = sc.nextInt();
@@ -130,7 +131,7 @@ public class DSGeneral {
                 }
                 case 3: {
                     clrscr();
-                    kq.menu();
+                    a.menu();
                     break;
                 }
                 case 0: {
